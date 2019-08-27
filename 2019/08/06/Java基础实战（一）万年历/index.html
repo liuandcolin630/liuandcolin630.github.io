@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/25/ee0o9A.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eeBLx1.png">
-<meta property="og:updated_time" content="2019-08-27T12:40:58.549Z">
+<meta property="og:updated_time" content="2019-08-27T12:52:53.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础实战（一）：万年历">
 <meta name="twitter:description" content="题目：已知1900年1月1日是星期一，求2019年10月的日历。">
@@ -168,13 +168,22 @@
       
         <h2 id="题目：已知1900年1月1日是星期一，求2019年10月的日历。"><a href="#题目：已知1900年1月1日是星期一，求2019年10月的日历。" class="headerlink" title="题目：已知1900年1月1日是星期一，求2019年10月的日历。"></a>题目：已知1900年1月1日是星期一，求2019年10月的日历。</h2><a id="more"></a>
 
-<p>##（1）已知1900.1.1是星期一，那么2019.10.1是星期几呢？</p>
-<blockquote>
+<h2 id="1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？"><a href="#1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？" class="headerlink" title="1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？"></a>1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？</h2><blockquote>
 <p>我们来利用循环推导一下，不要怕麻烦，多写几遍自然会得出规律的！</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">			天数（第几天）	星期几</span><br><span class="line">1900.1.1		1			星期1</span><br><span class="line">1900.1.2		2			星期2</span><br><span class="line">1900.1.3		3			星期3</span><br><span class="line">1900.1.4		4			星期4</span><br><span class="line">1900.1.5		5			星期5</span><br><span class="line">1900.1.6		6			星期6</span><br><span class="line">1900.1.7		7			星期0</span><br><span class="line">1900.1.8		8			星期1</span><br><span class="line">1900.1.9		9			星期2</span><br><span class="line">1900.1.10	   10		   星期3</span><br><span class="line">1900.1.11	   11		   星期4</span><br><span class="line">1900.1.12	   12		   星期5</span><br><span class="line">1900.1.13	   13		   星期6   </span><br><span class="line">1900.1.14	   14		   星期0</span><br><span class="line">1900.1.15	   15		   星期1</span><br><span class="line">1900.1.16	   16		   星期2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">			天数（第几天）	星期几</span><br><span class="line">1900.1.1		1			星期1</span><br><span class="line">1900.1.2		2			星期2</span><br><span class="line">1900.1.3		3			星期3</span><br><span class="line">1900.1.4		4			星期4</span><br><span class="line">1900.1.5		5			星期5</span><br><span class="line">1900.1.6		6			星期6</span><br><span class="line">1900.1.7		7			星期0</span><br><span class="line">1900.1.8		8			星期1</span><br><span class="line">1900.1.9		9			星期2</span><br><span class="line">1900.1.10	   	10		   		星期3</span><br><span class="line">1900.1.11	   	11		   		星期4</span><br><span class="line">1900.1.12	   	12		   		星期5</span><br><span class="line">1900.1.13	   	13		   		星期6   </span><br><span class="line">1900.1.14	   	14		   		星期0</span><br><span class="line">1900.1.15	   	15		   		星期1</span><br><span class="line">1900.1.16	   	16		   		星期2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>截止到这里，我们能发现，经过不懈努力我们肯定能够推算出 2019.10.1 是星期几，但我们肯定不会一直的往下推导了！<br>我们发现了一个规律：<figure class="highlight plain"><figcaption><span>等于 星期几```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">##（2）从1900.1.1 到 2019.10.1 有多少天呢？</span><br><span class="line">我们拆分一下：</span><br><span class="line">&gt;a.1900 —— 2018 整个年份包含多少天？（即1900.1.1 —— 2018.12.31）。</span><br><span class="line">&gt;b.2019.1 —— 2019.9 整个月份包含多少天？（即2019.1.1 —— 2019.9.30）。</span><br><span class="line">&gt;c.最后 +1 天就是 2019.10.1 这一天了。</span><br><span class="line"></span><br><span class="line">我们可以发现，a.b两个步骤都需要用循环来实现。那么循环操作 和 循环条件 是怎样的呢？先不要接着往下看，暂停一下，自己思考一下~！</span><br><span class="line">#####代码如下：</span><br><span class="line">&gt;a.1900.1.1 - 2018.12.31     整年天数</span><br><span class="line">```Java</span><br><span class="line">//一年有365/366天；闰年是366天</span><br><span class="line">        for (i = 1900; i &lt; years; i++) &#123;</span><br><span class="line">            //如果一个年份能够4整除且不能被100整除  或   一个数字能被400整除</span><br><span class="line">            if ((i % 4 == 0 &amp;&amp; i % 100 != 0) || i % 400 == 0) &#123;</span><br><span class="line">                days += 366;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                days += 365;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>截止到这里，我们能发现，经过不懈努力我们肯定能够推算出 2019.10.1 是星期几，但我们肯定不会一直的往下推导了！<br>我们发现了一个规律：<strong>天数%7 等于 星期几</strong></p>
+<h2 id="2-从1900-1-1-到-2019-10-1-有多少天呢？"><a href="#2-从1900-1-1-到-2019-10-1-有多少天呢？" class="headerlink" title="2.从1900.1.1 到 2019.10.1 有多少天呢？"></a>2.从1900.1.1 到 2019.10.1 有多少天呢？</h2><p>我们拆分一下：</p>
+<blockquote>
+<p>a.1900 —— 2018 整个年份包含多少天？（即1900.1.1 —— 2018.12.31）。<br>b.2019.1 —— 2019.9 整个月份包含多少天？（即2019.1.1 —— 2019.9.30）。<br>c.最后 +1 天就是 2019.10.1 这一天了。</p>
+</blockquote>
+<p>我们可以发现，a.b两个步骤都需要用循环来实现。那么循环操作 和 循环条件 是怎样的呢？先不要接着往下看，暂停一下，自己思考一下~！</p>
+<h5 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h5><blockquote>
+<p>a.1900.1.1 - 2018.12.31     整年天数</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一年有365/366天；闰年是366天</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1900</span>; i &lt; years; i++) &#123;</span><br><span class="line">            <span class="comment">//如果一个年份能够4整除且不能被100整除  或   一个数字能被400整除</span></span><br><span class="line">            <span class="keyword">if</span> ((i % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; i % <span class="number">100</span> != <span class="number">0</span>) || i % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                days += <span class="number">366</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                days += <span class="number">365</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>b.2019.1.1 - 2019.9.30    整月天数</p>
 </blockquote>
@@ -186,34 +195,45 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">days++;</span><br></pre></td></tr></table></figure>
 
 <p>##（3）得到总天数，我们就可以根据之前得到的规律，计算出 星期几 了！</p>
-<figure class="highlight plain"><figcaption><span>等于 星期几```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```Java</span><br><span class="line">xingQi = days % 7;</span><br></pre></td></tr></table></figure>
+<p><strong>天数%7 等于 星期几</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xingQi = days % <span class="number">7</span>;</span><br></pre></td></tr></table></figure>
 
-<p>##（4）开始打印日历啦！<br>首先在百度上搜索一下 日历 ，观察它的格式。我得到了几个关于日历的规则！<br>a.每周的星期顺序。</p>
+<p>##（4）开始打印日历啦！<br>首先在百度上搜索一下 日历 ，观察它的格式。我得到了几个关于日历的规则！</p>
+<ul>
+<li><p>每周的星期顺序。</p>
 <blockquote>
 <p>（此处我稍微调整了一下星期的顺序，每周从星期天开始，而不是传统的从星期一开始）</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0	  1	  2	  3	   4	   5	    6	</span><br><span class="line"> 星期天  星期一  星期二  星期三   星期四   星期五   星期六</span><br></pre></td></tr></table></figure>
-
-<p>b.每一行有7天，每月1号之前会有几个空格（占位符），而且占位符的个数就是星期几。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0	  1	  2	  3	   4	   5	    6	</span><br><span class="line"> 星期天  星期一  星期二  星期三   星期四   星期五   星期六</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每一行有7天，每月1号之前会有几个空格（占位符），而且占位符的个数就是星期几。</p>
 <blockquote>
 <p>比如2019年8月：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">星期日	星期一	星期二	星期三	星期四	星期五	星期六</span><br><span class="line"> \t\t     \t\t	 \t\t	 \t\t	   1		2		3</span><br><span class="line">  4		5		6		7		 8		9		10</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	星期日	星期一	星期二	星期三	星期四	星期五	星期六</span><br><span class="line">	 \t\t     \t\t	 \t\t	 \t\t	   1		2		3</span><br><span class="line">	  4		5		6		7		 8		9		10</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>c.占位符 + 星期 等于 7时会换行。(即每7天换一行)</p>
+</li>
+<li><p>占位符 + 星期 等于 7时会换行。(即每7天换一行)</p>
+</li>
+</ul>
 <p>#####代码如下：</p>
 <blockquote>
-<p>a.每周的星期顺序。</p>
+<ul>
+<li>每周的星期顺序。</li>
+</ul>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六"</span>);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>b.每一行有7天，每月1号之前会有几个空格（占位符），而且占位符的个数就是星期几。</p>
+<ul>
+<li>每一行有7天，每月1号之前会有几个空格（占位符），而且占位符的个数就是星期几。</li>
+</ul>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; xingQi; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">"\t\t"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>c.占位符 + 星期 等于 7时会换行。</p>
+<ul>
+<li>占位符 + 星期 等于 7时会换行。</li>
+</ul>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数字1 - 每月多少天(日期)</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= daysOfMonth; i++) &#123;</span><br><span class="line">            System.out.print(i + <span class="string">"\t\t"</span>);</span><br><span class="line">            <span class="keyword">if</span> ((xingQi + i) % <span class="number">7</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println();<span class="comment">//回车</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
@@ -362,7 +382,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：已知1900年1月1日是星期一，求2019年10月的日历。"><span class="toc-number">1.</span> <span class="toc-text">题目：已知1900年1月1日是星期一，求2019年10月的日历。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：已知1900年1月1日是星期一，求2019年10月的日历。"><span class="toc-number">1.</span> <span class="toc-text">题目：已知1900年1月1日是星期一，求2019年10月的日历。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？"><span class="toc-number">2.</span> <span class="toc-text">1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-从1900-1-1-到-2019-10-1-有多少天呢？"><span class="toc-number">3.</span> <span class="toc-text">2.从1900.1.1 到 2019.10.1 有多少天呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#代码如下："><span class="toc-number">3.0.0.1.</span> <span class="toc-text">代码如下：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">4.</span> <span class="toc-text"></span></a></li></ol>
                     </div>
                 </span>
             </div>
