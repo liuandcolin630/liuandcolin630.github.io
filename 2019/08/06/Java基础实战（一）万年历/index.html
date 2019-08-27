@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/25/ee0o9A.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eeBLx1.png">
-<meta property="og:updated_time" content="2019-08-27T13:02:44.418Z">
+<meta property="og:updated_time" content="2019-08-27T13:04:57.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础实战（一）：万年历">
 <meta name="twitter:description" content="题目：已知1900年1月1日是星期一，求2019年10月的日历。1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？ 我们来利用循环推导一下，不要怕麻烦，多写几遍自然会得出规律的！">
@@ -203,12 +203,12 @@
 <blockquote>
 <p>（此处我稍微调整了一下星期的顺序，每周从星期天开始，而不是传统的从星期一开始）</p>
 </blockquote>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0	1	2	3	4	5	6	</span><br><span class="line">星期天	星期一	星期二	星期三	星期四	星期五	星期六</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  0	  1	  2	  3	  4	  5	  6	</span><br><span class="line">星期天	星期一	星期二	星期三	星期四	星期五	星期六</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>每一行有7天，每月1号之前会有几个空格（占位符），而且占位符的个数就是星期几。</p>
 <blockquote>
 <p>比如2019年8月：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">星期日		星期一		星期二		星期三		星期四		星期五		星期六</span><br><span class="line"> \t\t     	\t\t	 	\t\t	 	\t\t	   	1			2			3</span><br><span class="line">  4		 5		 6		 7		  8		 9		 10</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">星期日		星期一		星期二		星期三		星期四		星期五		星期六</span><br><span class="line"> \t\t     	\t\t	 	\t\t	 	\t\t	   	  1		2		3</span><br><span class="line">  4		 5		 6		 7		  8		 9		 10</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>占位符 + 星期 等于 7时会换行。(即每7天换一行)</p>
