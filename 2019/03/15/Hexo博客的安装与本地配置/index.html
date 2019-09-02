@@ -6,22 +6,55 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>最大子列和问题 | Hexo</title>
+  <title>Hexo博客的安装与本地配置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="中国大学MOOC-陈越、何钦铭-数据结构-2019夏01-复杂度1 最大子列和问题 (20 分)题目描述：给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1 ≤ i ≤ j ≤ K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5">
-<meta name="keywords" content="数据结构,C">
+  <meta name="description" content="前言欢迎使用 Hexo， 官方文档 将帮助您快速上手。如果您在使用过程中遇到问题，请查看 问题解答 中的解答，或者在 GitHub、Google Group 上提问。">
+<meta name="keywords" content="博客,Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最大子列和问题">
-<meta property="og:url" content="http://yoursite.com/2019/08/15/01-复杂度1 最大子列和问题 (20 分)/index.html">
+<meta property="og:title" content="Hexo博客的安装与本地配置">
+<meta property="og:url" content="http://yoursite.com/2019/03/15/Hexo博客的安装与本地配置/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="中国大学MOOC-陈越、何钦铭-数据结构-2019夏01-复杂度1 最大子列和问题 (20 分)题目描述：给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1 ≤ i ≤ j ≤ K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5">
+<meta property="og:description" content="前言欢迎使用 Hexo， 官方文档 将帮助您快速上手。如果您在使用过程中遇到问题，请查看 问题解答 中的解答，或者在 GitHub、Google Group 上提问。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/09/02/nCfgQs.png">
-<meta property="og:updated_time" content="2019-09-02T06:12:59.152Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eev1UK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eevLrR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eexpGD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eexJoV.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eexaz4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eexjyj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eezifU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eezKk6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSegg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSZ8S.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSVC8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSsPK.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSy8O.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSD56.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emScxe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emS62D.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emS2KH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSRrd.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emSWqA.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emShVI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emS4at.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emS5IP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emitBQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emFuKU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emFKrF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emAp7Q.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emkznS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emAS0g.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emkvX8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emKgtU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emMEcj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emAihn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emAkpq.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/emAA10.png">
+<meta property="og:updated_time" content="2019-09-02T12:38:52.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="最大子列和问题">
-<meta name="twitter:description" content="中国大学MOOC-陈越、何钦铭-数据结构-2019夏01-复杂度1 最大子列和问题 (20 分)题目描述：给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1 ≤ i ≤ j ≤ K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/02/nCfgQs.png">
+<meta name="twitter:title" content="Hexo博客的安装与本地配置">
+<meta name="twitter:description" content="前言欢迎使用 Hexo， 官方文档 将帮助您快速上手。如果您在使用过程中遇到问题，请查看 问题解答 中的解答，或者在 GitHub、Google Group 上提问。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/25/eev1UK.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -145,53 +178,121 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-01-复杂度1 最大子列和问题 (20 分)" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Hexo博客的安装与本地配置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      最大子列和问题
+      Hexo博客的安装与本地配置
     </h1>
   
 
         
-        <a href="/2019/08/15/01-复杂度1 最大子列和问题 (20 分)/" class="archive-article-date">
-  	<time datetime="2019-08-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
+        <a href="/2019/03/15/Hexo博客的安装与本地配置/" class="archive-article-date">
+  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="中国大学MOOC-陈越、何钦铭-数据结构-2019夏"><a href="#中国大学MOOC-陈越、何钦铭-数据结构-2019夏" class="headerlink" title="中国大学MOOC-陈越、何钦铭-数据结构-2019夏"></a>中国大学MOOC-陈越、何钦铭-数据结构-2019夏</h1><h2 id="01-复杂度1-最大子列和问题-20-分"><a href="#01-复杂度1-最大子列和问题-20-分" class="headerlink" title="01-复杂度1 最大子列和问题 (20 分)"></a>01-复杂度1 最大子列和问题 (20 分)</h2><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1 ≤ i ≤ j ≤ K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计算给定整数序列的最大子列和。 </p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>欢迎使用 Hexo， <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a> 将帮助您快速上手。如果您在使用过程中遇到问题，请查看 <a href="https://hexo.io/zh-cn/docs/troubleshooting" target="_blank" rel="noopener">问题解答</a> 中的解答，或者在 GitHub、Google Group 上提问。</p>
 <a id="more"></a>
-<p>本题旨在测试各种不同的算法在各种数据情况下的表现。各组测试数据特点如下：</p>
+<blockquote>
+<p>什么是 Hexo？<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<h2 id="准备安装Hexo的环境"><a href="#准备安装Hexo的环境" class="headerlink" title="准备安装Hexo的环境"></a>准备安装Hexo的环境</h2><p>在安装Hexo前，您必须检查电脑中是否已安装下列应用程序：</p>
 <ul>
-<li>数据1：与样例等价，测试基本正确性；</li>
-<li>数据2：102个随机整数；</li>
-<li>数据3：103个随机整数；</li>
-<li>数据4：104个随机整数；</li>
-<li>数据5：105个随机整数；</li>
+<li>Node.js(Should be at least nodejs 6.9) </li>
+<li>Git</li>
 </ul>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h2><p>输入第1行给出正整数 K (≤100000)；第2行给出 K 个整数，其间以空格分隔。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h2><p>在一行中输出最大子列和。如果序列中所有整数皆为负数，则输出0。</p>
-<h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">-2 11 -4 13 -5 -2</span><br></pre></td></tr></table></figure>
-
-<h2 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20</span><br></pre></td></tr></table></figure>
-
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ol>
-<li><p>若按 <strong>输入样例</strong> 输入，则逻辑顺序如下图：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">digit |     thissum    |    result</span><br><span class="line"> -2         -2-&gt;0            0</span><br><span class="line"> 11         0+11=11          11</span><br><span class="line"> -4         (-4)+11=7        11</span><br><span class="line"> 13         7+13=20          11-&gt;20</span><br><span class="line"> -5         20+(-5)=15       20</span><br><span class="line"> -2         15+(-2)=13       20</span><br></pre></td></tr></table></figure>
+<h2 id="Node-js-的安装"><a href="#Node-js-的安装" class="headerlink" title="Node.js 的安装"></a>Node.js 的安装</h2><p>本节我将向大家介绍在Windows安装Node.js的方法。<br>Node.js安装包下载地址为：</p>
+<blockquote>
+<p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+</blockquote>
+<ul>
+<li><p>步骤1：<br>  点击箭头指向处下载安装包：<br><a href="https://imgchr.com/i/eev1UK" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/25/eev1UK.png" alt="eev1UK.png"></a></p>
 </li>
-<li><p>最后输出 <code>20</code> 即可。</p>
+<li><p>步骤2：<br>  打开下载后的安装包，显示如下界面：<br>  <img src="https://s2.ax1x.com/2019/07/25/eevLrR.png" alt="eevLrR.png"></p>
 </li>
-</ol>
-<h2 id="C语言源码如下"><a href="#C语言源码如下" class="headerlink" title="C语言源码如下"></a>C语言源码如下</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>, thissum = <span class="number">0</span>, digit, N;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;N);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;digit);</span><br><span class="line">        thissum += digit;</span><br><span class="line">        <span class="keyword">if</span>(thissum &gt; result)&#123;</span><br><span class="line">            result = thissum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(thissum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            thissum = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="PTA测试结果"><a href="#PTA测试结果" class="headerlink" title="PTA测试结果"></a>PTA测试结果</h2><p><img src="https://s2.ax1x.com/2019/09/02/nCfgQs.png" alt="nCfgQs.png"></p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>至此，<strong>最大子列和问题</strong> 解决完毕！</p>
+<li><p>步骤3：<br>  勾选“接受”协议选项，点击next（下一步）按钮 :<br>  <img src="https://s2.ax1x.com/2019/07/25/eexpGD.png" alt="eexpGD.png"></p>
+</li>
+<li><p>步骤4：<br>  Node.js默认安装目录为 “C:\Program Files\nodejs\”，您可根据自己盘的情况安装（比如我安装在E盘），并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/eexJoV.png" alt="eexJoV.png"></p>
+</li>
+<li><p>步骤5：<br>  点击树形图标来选择您需要的安装模式，然后点击下一步 next（下一步）<br>  <img src="https://s2.ax1x.com/2019/07/25/eexaz4.png" alt="eexaz4.png"></p>
+</li>
+<li><p>步骤6：<br>  点击Install（安装）开始安装Node.js。您也可以点击 Back（返回）来修改先前的配置。<br>  <img src="https://s2.ax1x.com/2019/07/25/eexjyj.png" alt="eexjyj.png"></p>
+</li>
+<li><p>安装过程：<br>  <img src="https://s2.ax1x.com/2019/07/25/eezifU.png" alt="eezifU.png"></p>
+</li>
+<li><p>点击Finish（完成）按钮退出安装向导：<br>  <img src="https://s2.ax1x.com/2019/07/25/eezKk6.png" alt="eezKk6.png"></p>
+</li>
+</ul>
+<h2 id="Git-的安装"><a href="#Git-的安装" class="headerlink" title="Git 的安装"></a>Git 的安装</h2><p>本节我将向大家介绍在Windows安装Git的方法。<br>Git安装包下载地址为：</p>
+<blockquote>
+<p><a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a></p>
+</blockquote>
+<ul>
+<li><p>步骤1：<br>  点击箭头指向处下载安装包：<br>  <img src="https://s2.ax1x.com/2019/07/25/emSegg.png" alt="emSegg.png"></p>
+</li>
+<li><p>步骤2：<br>  跳转到新页面后，稍等一会便会自动开始下载：（若不能成功显示下载界面，请点击“ click here to download manually.”）<br>  <img src="https://s2.ax1x.com/2019/07/25/emSZ8S.png" alt="emSZ8S.png"></p>
+</li>
+<li><p>步骤3：<br>  打开下载后的安装包，显示如下界面，点击next（下一步）按钮 :<br>  <img src="https://s2.ax1x.com/2019/07/25/emSVC8.png" alt="emSVC8.png"></p>
+</li>
+<li><p>步骤4：<br>  Git默认安装目录为 “C:\Program Files\Git”，您可根据自己盘的情况安装（比如我安装在E盘），并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emSsPK.png" alt="emSsPK.png"></p>
+</li>
+<li><p>步骤5：<br>  安装配置文件，可根据自己的需要进行选择性安装，并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emSy8O.png" alt="emSy8O.png"></p>
+<blockquote>
+<p>（1）图标组件(Addition icons) : 选择是否创建桌面快捷方式。<br>  （2）桌面浏览(Windows Explorer integration) : 浏览源码的方法，使用 bash 或者使用 Git GUI 工具。<br>  （3）关联配置文件 : 是否关联 git 配置文件, 该配置文件主要显示文本编辑器的样式。<br>  （4）关联shell脚本文件 : 是否关联Bash命令行执行的脚本文件。<br>  （5）使用TrueType编码 : 在命令行中是否使用TruthType编码, 该编码是微软和苹果公司制定的通用编码。</p>
+</blockquote>
+</li>
+<li><p>步骤6：<br>  选择是否开始菜单快捷方式目录，并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emSD56.png" alt="emSD56.png"></p>
+<blockquote>
+<p>开始菜单快捷方式目录：设置开始菜单中快捷方式的目录名称, 也可以选择不在开始菜单中创建快捷方式。</p>
+</blockquote>
+</li>
+<li><p>步骤7：<br>  选择默认的编辑器，我们直接用推荐的就行，并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emScxe.png" alt="emScxe.png"></p>
+</li>
+<li><p>步骤8：<br>  设置环境变量，选择使用什么样的命令行工具，一般情况下我们默认使用Git Bash即可：<br>  <img src="https://s2.ax1x.com/2019/07/25/emS62D.png" alt="emS62D.png"></p>
+<blockquote>
+<p>（1）Git自带：使用Git自带的Git Bash命令行工具。<br>  （2）系统自带CMD：使用Windows系统的命令行工具。<br>  （3）二者都有：上面二者同时配置，但是注意，这样会将Windows中的find.exe 和 sort.exe工具覆盖，如果不懂这些尽量不要选择。</p>
+</blockquote>
+</li>
+<li><p>步骤9：<br>  使用默认设置就行，并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emS2KH.png" alt="emS2KH.png"></p>
+</li>
+<li><p>步骤10：<br>  配置选择提交的时候换行格式，保持默认“Checkout”，并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emSRrd.png" alt="emSRrd.png"></p>
+<blockquote>
+<p>（1）检查出Windows格式转换为unix格式：将Windows格式的换行转为unix格式的换行再进行提交。<br>  （2）检查出原来格式转为unix格式：不管什么格式的，一律转为unix格式的换行再进行提交。<br>  （3）不进行格式转换 : 不进行转换，检查出什么，就提交什么。</p>
+</blockquote>
+</li>
+<li><p>步骤11：<br>  在终端模拟器选择页面，默认即可，并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emSWqA.png" alt="emSWqA.png"></p>
+</li>
+<li><p>步骤12：<br>  最后配置Git额外选项，选择默认即可，并点击 next（下一步）：<br>  <img src="https://s2.ax1x.com/2019/07/25/emShVI.png" alt="emShVI.png"></p>
+</li>
+<li><p>步骤13：<br>  然后点击Install（安装）开始安装Git。您也可以点击 Back（返回）来修改先前的配置。<br>  <img src="https://s2.ax1x.com/2019/07/25/emS4at.png" alt="emS4at.png"></p>
+</li>
+<li><p>安装过程：<br>  <img src="https://s2.ax1x.com/2019/07/25/emS5IP.png" alt="emS5IP.png"></p>
+</li>
+<li><p>点击Finish（完成）按钮退出安装向导：<br>  <img src="https://s2.ax1x.com/2019/07/25/emitBQ.png" alt="emitBQ.png"></p>
+</li>
+</ul>
+<h2 id="检查安装的Node-js（内置npm）-和-Git-是否安装成功"><a href="#检查安装的Node-js（内置npm）-和-Git-是否安装成功" class="headerlink" title="检查安装的Node.js（内置npm） 和 Git 是否安装成功"></a>检查安装的Node.js（内置npm） 和 Git 是否安装成功</h2><ul>
+<li>步骤1：<br>  找到我们的 Git Bash 并打开，如下图所示：<br>  <img src="https://s2.ax1x.com/2019/07/25/emFuKU.png" alt="emFuKU.png"></li>
+<li>步骤2：<br>  在命令行中输入： <code>node -v</code>和<code>npm -v</code> 然后回车（Enter），显示如下图所示，即代表我们配置环境成功啦！<br>  <img src="https://s2.ax1x.com/2019/07/25/emFKrF.png" alt="emFKrF.png"></li>
+</ul>
+<h2 id="如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用-npm-即可完成-Hexo-的安装。"><a href="#如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用-npm-即可完成-Hexo-的安装。" class="headerlink" title="如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。"></a>如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</h2><ul>
+<li>步骤1：<br>  由于国内的镜像源速度较慢，所以我们利用 npm 来安装 cnpm ，在命令行中输入<code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code> 然后回车（Enter），稍等一会便下载好了，如下图所示：<br>  <img src="https://s2.ax1x.com/2019/07/25/emAp7Q.png" alt="emAp7Q.png"></li>
+<li>步骤2：<br>  检查 cnpm 安装是否成功，在命令行中输入 <code>cnpm</code> 和 <code>cnpm -v</code> 然后回车（Enter），显示如下图所示，及代表 cnpm 安装成功啦！<br>  <img src="https://s2.ax1x.com/2019/07/25/emkznS.png" alt="emkznS.png"></li>
+<li>步骤3：<br>  正式开始安装 Hexo ，在命令行中输入 <code>cnpm install -g hexo-cli</code>然后回车（Enter），静待一会，如下图所示：<br>  <img src="https://s2.ax1x.com/2019/07/25/emAS0g.png" alt="emAS0g.png"></li>
+<li>步骤4：<br>  验证 Hexo 安装是否成功，在命令行中输入 <code>hexo -v</code>然后回车（Enter），显示如下图所示，我们即可看到关于 Hexo 的一切详细信息：<br>  <img src="https://s2.ax1x.com/2019/07/25/emkvX8.png" alt="emkvX8.png"></li>
+<li>步骤5：<br>  利用命令行创建我们即将使用的 Hexo 博客的目录文件夹，里面将存放关于 Hexo 博客的各种配置文件、源码、文档、主题等。（如果在安装 Hexo 中出现任何问题，可以删除此目录文件夹，重新执行之前的步骤即可）。执行如下操作后，可在E盘目录下看到 hexoblog 文件夹。<br>  <img src="https://s2.ax1x.com/2019/07/25/emKgtU.png" alt="emKgtU.png"></li>
+<li>步骤6：<br>  初始化 Hexo 博客，在命令行中输入<code>hexo init</code>然后回车（Enter），显示如下图所示：<br>  <img src="https://s2.ax1x.com/2019/07/25/emMEcj.png" alt="emMEcj.png"><br>  下载非常的慢，等很久很久后，显示“INFO Start blogging with Hexo!”，即为初始化成功！如下图所示：<br>  <img src="https://s2.ax1x.com/2019/07/25/emAihn.png" alt="emAihn.png"></li>
+<li>步骤7：<br>  启动 Hexo 博客，在命令行中输入<code>hexo s</code>然后回车（Enter），进行本地部署。（由于每次启动部署本地 Hexo 博客都需要在 Hexo 博客的根目录文件夹下启动 Git Bash 命令行窗口来启动，所以我演示一下如何直接通过 Git Bash 进入根目录来启动 Hexo 博客），如下图所示：<br>  <img src="https://s2.ax1x.com/2019/07/25/emAkpq.png" alt="emAkpq.png"></li>
+<li>步骤8：<br>  在浏览器地址栏输入<code>localhost:4000</code>，即可进入 Hexo 博客的主界面！<br>  <img src="https://s2.ax1x.com/2019/07/25/emAA10.png" alt="emAA10.png"></li>
+</ul>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>至此，您的 <strong>Hexo 博客的安装与本地配置</strong> 已完毕！</p>
 <h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io"><a href="#如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io" class="headerlink" title="如果本文对您有用，请推广我的 Hexo 博客。谢谢！https://liuandcolin630.github.io/"></a><strong>如果本文对您有用，请推广我的 Hexo 博客。谢谢！</strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></h2>
       
 
@@ -226,11 +327,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
         		</li>
       		
 		</ul>
@@ -286,7 +387,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/15/01-复杂度1 最大子列和问题 (20 分)/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/15/Hexo博客的安装与本地配置/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,20 +401,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/25/LeetCode题解206. Reverse Linked List/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/15/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Reverse Linked List
+          Hello World
         
       </div>
     </a>
   
-  
-    <a href="/2019/08/06/Java基础实战（一）万年历/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java基础实战（一）：万年历</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -338,7 +434,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#中国大学MOOC-陈越、何钦铭-数据结构-2019夏"><span class="toc-number">1.</span> <span class="toc-text">中国大学MOOC-陈越、何钦铭-数据结构-2019夏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-复杂度1-最大子列和问题-20-分"><span class="toc-number">1.1.</span> <span class="toc-text">01-复杂度1 最大子列和问题 (20 分)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述："><span class="toc-number">1.2.</span> <span class="toc-text">题目描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入格式"><span class="toc-number">1.3.</span> <span class="toc-text">输入格式:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出格式"><span class="toc-number">1.4.</span> <span class="toc-text">输出格式:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入样例"><span class="toc-number">1.5.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出样例"><span class="toc-number">1.6.</span> <span class="toc-text">输出样例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">1.7.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C语言源码如下"><span class="toc-number">1.8.</span> <span class="toc-text">C语言源码如下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PTA测试结果"><span class="toc-number">1.9.</span> <span class="toc-text">PTA测试结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">2.</span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">2.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io"><span class="toc-number">2.2.</span> <span class="toc-text">如果本文对您有用，请推广我的 Hexo 博客。谢谢！https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备安装Hexo的环境"><span class="toc-number">2.</span> <span class="toc-text">准备安装Hexo的环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js-的安装"><span class="toc-number">3.</span> <span class="toc-text">Node.js 的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-的安装"><span class="toc-number">4.</span> <span class="toc-text">Git 的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检查安装的Node-js（内置npm）-和-Git-是否安装成功"><span class="toc-number">5.</span> <span class="toc-text">检查安装的Node.js（内置npm） 和 Git 是否安装成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用-npm-即可完成-Hexo-的安装。"><span class="toc-number">6.</span> <span class="toc-text">如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number"></span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io"><span class="toc-number">2.</span> <span class="toc-text">如果本文对您有用，请推广我的 Hexo 博客。谢谢！https://liuandcolin630.github.io/</span></a></li></ol>
                     </div>
                 </span>
             </div>
