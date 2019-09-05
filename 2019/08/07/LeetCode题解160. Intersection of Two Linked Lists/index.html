@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm5pWj.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm5CSs.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm5Pln.png">
-<meta property="og:updated_time" content="2019-09-05T07:22:07.207Z">
+<meta property="og:updated_time" content="2019-09-05T07:25:27.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intersection of Two Linked Lists">
 <meta name="twitter:description" content="LeetCode 160. Intersection of Two Linked Listshttps://leetcode-cn.com/problems/intersection-of-two-linked-lists/难度：Easy题目描述：Write a program to find the node at which the intersection of two singly lin">
@@ -178,13 +178,25 @@
 <a id="more"></a>
 
 <h2 id="输入-输出-样例"><a href="#输入-输出-样例" class="headerlink" title="输入/输出 样例:"></a>输入/输出 样例:</h2><ul>
-<li><p>For example, the following two linked lists:<br><img src="https://s2.ax1x.com/2019/09/05/nm4jw8.png" alt="nm4jw8.png"><br>begin to intersect at node c1.</p>
+<li><p>For example, the following two linked lists:<br><img src="https://s2.ax1x.com/2019/09/05/nm4jw8.png" alt="nm4jw8.png"></p>
+<blockquote>
+<p>begin to intersect at node c1.</p>
+</blockquote>
 </li>
-<li><p>Example 1:<br><img src="https://s2.ax1x.com/2019/09/05/nm4vTS.png" alt="nm4vTS.png"><br>Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3<br>Output: Reference of the node with value = 8<br>Input Explanation: The intersected node’s value is 8 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,0,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.</p>
+<li><p>Example 1:<br><img src="https://s2.ax1x.com/2019/09/05/nm4vTS.png" alt="nm4vTS.png"></p>
+<blockquote>
+<p>Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3<br>Output: Reference of the node with value = 8<br>Input Explanation: The intersected node’s value is 8 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,0,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.</p>
+</blockquote>
 </li>
-<li><p>Example 2:<br><img src="https://s2.ax1x.com/2019/09/05/nm4Xef.png" alt="nm4Xef.png"><br>Input: intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1<br>Output: Reference of the node with value = 2<br>Input Explanation: The intersected node’s value is 2 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [0,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.</p>
+<li><p>Example 2:<br><img src="https://s2.ax1x.com/2019/09/05/nm4Xef.png" alt="nm4Xef.png"></p>
+<blockquote>
+<p>Input: intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1<br>Output: Reference of the node with value = 2<br>Input Explanation: The intersected node’s value is 2 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [0,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.</p>
+</blockquote>
 </li>
-<li><p>Example 3:<br><img src="https://s2.ax1x.com/2019/09/05/nm4LOP.png" alt="nm4LOP.png"><br>Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2<br>Output: null<br>Input Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.<br>Explanation: The two lists do not intersect, so return null.</p>
+<li><p>Example 3:<br><img src="https://s2.ax1x.com/2019/09/05/nm4LOP.png" alt="nm4LOP.png"></p>
+<blockquote>
+<p>Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2<br>Output: null<br>Input Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.<br>Explanation: The two lists do not intersect, so return null.</p>
+</blockquote>
 </li>
 </ul>
 <blockquote>
@@ -211,7 +223,7 @@
 <p>4.额外定义两个函数 <code>get_list_length</code> 和 <code>forward_long_length</code></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求链表的长度 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_list_length</span><span class="params">(struct ListNode *head)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//遍历链表，计算链表长度 </span></span><br><span class="line">	<span class="keyword">while</span>(head)&#123;</span><br><span class="line">		len++;</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode *<span class="title">forward_long_length</span><span class="params">(<span class="keyword">int</span> long_len, <span class="keyword">int</span> short_len, struct ListNode *head)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> delta = long_len - short_len;</span><br><span class="line">	<span class="comment">//将指针向前移动至多出节点个数后面的位置 </span></span><br><span class="line">	<span class="keyword">while</span>(head &amp;&amp; delta)&#123;</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">		delta--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//移动链表头节点的长度 </span></span><br><span class="line"><span class="function">struct ListNode *<span class="title">forward_long_length</span><span class="params">(<span class="keyword">int</span> long_len, <span class="keyword">int</span> short_len, struct ListNode *head)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> delta = long_len - short_len;</span><br><span class="line">	<span class="comment">//将指针向前移动至多出节点个数后面的位置 </span></span><br><span class="line">	<span class="keyword">while</span>(head &amp;&amp; delta)&#123;</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">		delta--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>5.实现 <code>*getIntersectionNode</code></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode *<span class="title">getIntersectionNode</span><span class="params">(struct ListNode *headA, struct ListNode *headB)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//计算A、B两个链表长度 </span></span><br><span class="line">	<span class="keyword">int</span> list_A_len = get_list_length(headA);</span><br><span class="line">	<span class="keyword">int</span> list_B_len = get_list_length(headB);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//判断哪个链表长，将长链表移动与短链表对齐 </span></span><br><span class="line">	<span class="keyword">if</span>(list_A_len &gt; list_B_len)&#123;</span><br><span class="line">		headA = forward_long_length(list_A_len, list_B_len, headA);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		headB = forward_long_length(list_B_len, list_A_len, headB);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//同时移动两个链表，寻找交点。</span></span><br><span class="line">	<span class="keyword">while</span>(headA &amp;&amp; headB)&#123;</span><br><span class="line">		<span class="keyword">if</span>(headA == headB)&#123; <span class="comment">/*当两指针指向了同一个节点时，说明找到了！*/</span></span><br><span class="line">			<span class="keyword">return</span> headA;</span><br><span class="line">		&#125;</span><br><span class="line">		headA = headA-&gt;next;</span><br><span class="line">		headB = headB-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -472,6 +484,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
@@ -481,14 +501,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
