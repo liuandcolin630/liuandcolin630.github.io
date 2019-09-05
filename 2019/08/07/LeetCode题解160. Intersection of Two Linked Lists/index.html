@@ -6,15 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>Intersection of Two Linked Lists | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="LeetCode 160. Intersection of Two Linked Listshttps://leetcode-cn.com/problems/intersection-of-two-linked-lists/难度：Easy题目描述：Write a program to find the node at which the intersection of two singly lin">
+<meta name="keywords" content="数据结构,C,LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intersection of Two Linked Lists">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="LeetCode 160. Intersection of Two Linked Listshttps://leetcode-cn.com/problems/intersection-of-two-linked-lists/难度：Easy题目描述：Write a program to find the node at which the intersection of two singly lin">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm4jw8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm4vTS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm4Xef.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm4LOP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm4qyt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm4zFg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm5SYQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm5pWj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm5CSs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/05/nm5Pln.png">
+<meta property="og:updated_time" content="2019-09-05T07:22:07.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Intersection of Two Linked Lists">
+<meta name="twitter:description" content="LeetCode 160. Intersection of Two Linked Listshttps://leetcode-cn.com/problems/intersection-of-two-linked-lists/难度：Easy题目描述：Write a program to find the node at which the intersection of two singly lin">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/05/nm4jw8.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -138,36 +154,104 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-LeetCode题解160. Intersection of Two Linked Lists" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Intersection of Two Linked Lists
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/" class="archive-article-date">
+
+        
+        <a href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/" class="archive-article-date">
   	<time datetime="2019-08-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="LeetCode-160-Intersection-of-Two-Linked-Lists"><a href="#LeetCode-160-Intersection-of-Two-Linked-Lists" class="headerlink" title="LeetCode 160. Intersection of Two Linked Lists"></a>LeetCode 160. Intersection of Two Linked Lists</h1><h2 id="https-leetcode-cn-com-problems-intersection-of-two-linked-lists"><a href="#https-leetcode-cn-com-problems-intersection-of-two-linked-lists" class="headerlink" title="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/"></a><a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/intersection-of-two-linked-lists/</a></h2><h1 id="难度：Easy"><a href="#难度：Easy" class="headerlink" title="难度：Easy"></a>难度：<strong>Easy</strong></h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="输入-输出-样例"><a href="#输入-输出-样例" class="headerlink" title="输入/输出 样例:"></a>输入/输出 样例:</h2><ul>
+<li><p>For example, the following two linked lists:<br><img src="https://s2.ax1x.com/2019/09/05/nm4jw8.png" alt="nm4jw8.png"><br>begin to intersect at node c1.</p>
+</li>
+<li><p>Example 1:<br><img src="https://s2.ax1x.com/2019/09/05/nm4vTS.png" alt="nm4vTS.png"><br>Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3<br>Output: Reference of the node with value = 8<br>Input Explanation: The intersected node’s value is 8 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,0,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.</p>
+</li>
+<li><p>Example 2:<br><img src="https://s2.ax1x.com/2019/09/05/nm4Xef.png" alt="nm4Xef.png"><br>Input: intersectVal = 2, listA = [0,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1<br>Output: Reference of the node with value = 2<br>Input Explanation: The intersected node’s value is 2 (note that this must not be 0 if the two lists intersect). From the head of A, it reads as [0,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.</p>
+</li>
+<li><p>Example 3:<br><img src="https://s2.ax1x.com/2019/09/05/nm4LOP.png" alt="nm4LOP.png"><br>Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2<br>Output: null<br>Input Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.<br>Explanation: The two lists do not intersect, so return null.</p>
+</li>
+</ul>
+<blockquote>
+<p>Notes:</p>
+<ul>
+<li>If the two linked lists have no intersection at all, return null.</li>
+<li>The linked lists must retain their original structure after the function returns.</li>
+<li>You may assume there are no cycles anywhere in the entire linked structure.</li>
+<li>Your code should preferably run in O(n) time and use only O(1) memory.</li>
+</ul>
+</blockquote>
+<h2 id="该题已提供代码："><a href="#该题已提供代码：" class="headerlink" title="该题已提供代码："></a>该题已提供代码：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct ListNode *<span class="title">getIntersectionNode</span><span class="params">(struct ListNode *headA, struct ListNode *headB)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="题目解读"><a href="#题目解读" class="headerlink" title="题目解读"></a>题目解读</h2><p>已知链表A的 <strong>头节点</strong> 指针headA，链表B的 <strong>头节点</strong> 指针headB，两个链表 <strong>相交</strong> ，求两链表 <strong>交点</strong> 对应的节点。<br><img src="https://s2.ax1x.com/2019/09/05/nm4qyt.png" alt="nm4qyt.png"></p>
+<h2 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h2><ul>
+<li>如果两个链表 <strong>没有交点</strong> ，则 <strong>返回NULLL</strong> 。</li>
+<li>在求交点的过程中， <strong>不可以破坏</strong> 链表的 <strong>结构</strong> 或者 <strong>修改</strong> 链表的 <strong>数据域</strong> 。</li>
+<li>可以确保传入的链表A与链表B <strong>没有任何环</strong> 。</li>
+<li>实现算法尽可能使 <strong>时间</strong> 复杂度 <strong>O(n)</strong> ，<strong>空间</strong> 复杂度 <strong>O(1)</strong> 。</li>
+</ul>
+<h2 id="解题思路（利用数学的思想可实现最优解，时间复杂度为-O-n-，空间复杂度为-O-1-）"><a href="#解题思路（利用数学的思想可实现最优解，时间复杂度为-O-n-，空间复杂度为-O-1-）" class="headerlink" title="解题思路（利用数学的思想可实现最优解，时间复杂度为 O(n) ，空间复杂度为 O(1)）"></a>解题思路（利用数学的思想可实现最优解，时间复杂度为 O(n) ，空间复杂度为 O(1)）</h2><p>1.计算headA链表长度，计算headB链表长度，再计算 <strong>较长的链表</strong> 多出的长度。<br><img src="https://s2.ax1x.com/2019/09/05/nm4zFg.png" alt="nm4zFg.png"></p>
+<p>2.将较长链表的指针 <strong>移动</strong> 到和较短链表指针 <strong>对齐</strong> 的位置。<br><img src="https://s2.ax1x.com/2019/09/05/nm5SYQ.png" alt="nm5SYQ.png"></p>
+<p>3.headA与headB同时移动，当两指针同时指向 <strong>同一个节点</strong> 时，即 <strong>找到了交点！</strong><br><img src="https://s2.ax1x.com/2019/09/05/nm5pWj.png" alt="nm5pWj.png"></p>
+<p>4.额外定义两个函数 <code>get_list_length</code> 和 <code>forward_long_length</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//求链表的长度 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_list_length</span><span class="params">(struct ListNode *head)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//遍历链表，计算链表长度 </span></span><br><span class="line">	<span class="keyword">while</span>(head)&#123;</span><br><span class="line">		len++;</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode *<span class="title">forward_long_length</span><span class="params">(<span class="keyword">int</span> long_len, <span class="keyword">int</span> short_len, struct ListNode *head)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> delta = long_len - short_len;</span><br><span class="line">	<span class="comment">//将指针向前移动至多出节点个数后面的位置 </span></span><br><span class="line">	<span class="keyword">while</span>(head &amp;&amp; delta)&#123;</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">		delta--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.实现 <code>*getIntersectionNode</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode *<span class="title">getIntersectionNode</span><span class="params">(struct ListNode *headA, struct ListNode *headB)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//计算A、B两个链表长度 </span></span><br><span class="line">	<span class="keyword">int</span> list_A_len = get_list_length(headA);</span><br><span class="line">	<span class="keyword">int</span> list_B_len = get_list_length(headB);</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//判断哪个链表长，将长链表移动与短链表对齐 </span></span><br><span class="line">	<span class="keyword">if</span>(list_A_len &gt; list_B_len)&#123;</span><br><span class="line">		headA = forward_long_length(list_A_len, list_B_len, headA);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		headB = forward_long_length(list_B_len, list_A_len, headB);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//同时移动两个链表，寻找交点。</span></span><br><span class="line">	<span class="keyword">while</span>(headA &amp;&amp; headB)&#123;</span><br><span class="line">		<span class="keyword">if</span>(headA == headB)&#123; <span class="comment">/*当两指针指向了同一个节点时，说明找到了！*/</span></span><br><span class="line">			<span class="keyword">return</span> headA;</span><br><span class="line">		&#125;</span><br><span class="line">		headA = headA-&gt;next;</span><br><span class="line">		headB = headB-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自建测试"><a href="#自建测试" class="headerlink" title="自建测试"></a>自建测试</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单测试</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//创建A链表的2个节点</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">a1</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">a2</span>;</span></span><br><span class="line">	<span class="comment">//创建B链表的3个节点</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">b1</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">b2</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">b3</span>;</span></span><br><span class="line">	<span class="comment">//创建公共链表的3个节点 </span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">c1</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">c2</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">c3</span>;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//给A链表的2个节点的数据域赋值</span></span><br><span class="line">	a1.val = <span class="number">1</span>;</span><br><span class="line">	a2.val = <span class="number">2</span>;</span><br><span class="line">	<span class="comment">//给B链表的3个节点的数据域赋值</span></span><br><span class="line">	b1.val = <span class="number">3</span>;</span><br><span class="line">	b2.val = <span class="number">4</span>;</span><br><span class="line">	b3.val = <span class="number">5</span>;</span><br><span class="line">	<span class="comment">//给公共链表的3个节点的数据域赋值</span></span><br><span class="line">	c1.val = <span class="number">6</span>;</span><br><span class="line">	c2.val = <span class="number">7</span>;</span><br><span class="line">	c3.val = <span class="number">8</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//将A链表的5个节点地址的指针域连接在一起 </span></span><br><span class="line">	a1.next = &amp;a2;</span><br><span class="line">	a2.next = &amp;c1;</span><br><span class="line">	c1.next = &amp;c2;</span><br><span class="line">	c2.next = &amp;c3;</span><br><span class="line">	c3.next = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="comment">//将B链表的6个节点地址的指针域连接在一起 </span></span><br><span class="line">	b1.next = &amp;b2;</span><br><span class="line">	b2.next = &amp;b3;</span><br><span class="line">	b3.next = &amp;c1;</span><br><span class="line">	c1.next = &amp;c2;</span><br><span class="line">	c2.next = &amp;c3;</span><br><span class="line">	c3.next = <span class="literal">NULL</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">result</span> = <span class="title">getIntersectionNode</span>(&amp;<span class="title">a1</span>, &amp;<span class="title">b1</span>);</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//打印交点的数值 </span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, result-&gt;val);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自建测试结果<br><img src="https://s2.ax1x.com/2019/09/05/nm5CSs.png" alt="nm5CSs.png"></li>
+</ul>
+<h2 id="LeetCode测试结果"><a href="#LeetCode测试结果" class="headerlink" title="LeetCode测试结果"></a>LeetCode测试结果</h2><p><img src="https://s2.ax1x.com/2019/09/05/nm5Pln.png" alt="nm5Pln.png"></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>至此，<strong>Intersection of Two Linked Lists</strong> 解决完毕！</p>
+<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io"><a href="#如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io" class="headerlink" title="如果本文对您有用，请推广我的 Hexo 博客。谢谢！https://liuandcolin630.github.io/"></a><strong>如果本文对您有用，请推广我的 Hexo 博客。谢谢！</strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Colin谢谢您的支持！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -187,383 +271,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/02/LeetCode题解92. Reverse Linked List II/" class="archive-article-date">
-  	<time datetime="2019-08-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/02/LeetCode题解92. Reverse Linked List II/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Reverse Linked List II</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/02/LeetCode题解92. Reverse Linked List II/">Reverse Linked List II</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-160-Intersection-of-Two-Linked-Lists"><span class="toc-number">1.</span> <span class="toc-text">LeetCode 160. Intersection of Two Linked Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-leetcode-cn-com-problems-intersection-of-two-linked-lists"><span class="toc-number">1.1.</span> <span class="toc-text">https://leetcode-cn.com/problems/intersection-of-two-linked-lists/</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#难度：Easy"><span class="toc-number">2.</span> <span class="toc-text">难度：Easy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述："><span class="toc-number">2.1.</span> <span class="toc-text">题目描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入-输出-样例"><span class="toc-number">2.2.</span> <span class="toc-text">输入/输出 样例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#该题已提供代码："><span class="toc-number">2.3.</span> <span class="toc-text">该题已提供代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目解读"><span class="toc-number">2.4.</span> <span class="toc-text">题目解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目要求"><span class="toc-number">2.5.</span> <span class="toc-text">题目要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路（利用数学的思想可实现最优解，时间复杂度为-O-n-，空间复杂度为-O-1-）"><span class="toc-number">2.6.</span> <span class="toc-text">解题思路（利用数学的思想可实现最优解，时间复杂度为 O(n) ，空间复杂度为 O(1)）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自建测试"><span class="toc-number">2.7.</span> <span class="toc-text">自建测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode测试结果"><span class="toc-number">2.8.</span> <span class="toc-text">LeetCode测试结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">3.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io"><span class="toc-number">3.2.</span> <span class="toc-text">如果本文对您有用，请推广我的 Hexo 博客。谢谢！https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/LeetCode题解206. Reverse Linked List/" class="archive-article-date">
-  	<time datetime="2019-07-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/LeetCode题解206. Reverse Linked List/">Reverse Linked List</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/" class="archive-article-date">
-  	<time datetime="2019-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/">最大子列和问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/10/Spring 学习笔记/" class="archive-article-date">
-  	<time datetime="2019-05-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/10/Spring 学习笔记/">Spring 学习笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/06/Java基础实战（一）万年历/" class="archive-article-date">
-  	<time datetime="2019-04-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/06/Java基础实战（一）万年历/">Java基础实战（一）：万年历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础实战</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/16/Hexo博客如何远程部署到GitHub及使用yilia主题/" class="archive-article-date">
-  	<time datetime="2019-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/16/Hexo博客如何远程部署到GitHub及使用yilia主题/">Hexo博客如何远程部署到GitHub及使用yilia主题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/16/Hexo博客的安装与本地配置/" class="archive-article-date">
-  	<time datetime="2019-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/16/Hexo博客的安装与本地配置/">Hexo博客的安装与本地配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/15/hello-world/" class="archive-article-date">
-  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/15/您好！科林！/" class="archive-article-date">
-  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/15/您好！科林！/">您好！科林！</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -586,8 +406,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

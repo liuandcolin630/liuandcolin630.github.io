@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/nCo9Et.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/nCIxud.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/nCIzDA.png">
-<meta property="og:updated_time" content="2019-09-05T06:48:01.569Z">
+<meta property="og:updated_time" content="2019-09-05T06:55:21.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reverse Linked List">
 <meta name="twitter:description" content="LeetCode 206. Reverse Linked Listhttps://leetcode-cn.com/problems/reverse-linked-list/难度：Easy题目描述：Reverse a singly linked list.">
@@ -179,16 +179,11 @@
 <h2 id="该题已提供代码："><a href="#该题已提供代码：" class="headerlink" title="该题已提供代码："></a>该题已提供代码：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">struct ListNode* <span class="title">reverseList</span><span class="params">(struct ListNode* head)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="题目解读"><a href="#题目解读" class="headerlink" title="题目解读"></a>题目解读</h2><p>已知链表 <strong>头节点</strong> 指针head，将 <strong>链表</strong> 逆序。（不可申请 <strong>额外</strong> 空间）<br><img src="https://s2.ax1x.com/2019/09/02/nCoSHI.png" alt="nCoSHI.png"></p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ol>
-<li><p><strong>依次遍历</strong> 链表节点，每遍历一个节点即 <strong>逆置</strong> 一个节点<br><img src="https://s2.ax1x.com/2019/09/02/nCoCUP.png" alt="nCoCUP.png"></p>
-</li>
-<li><p>找到 <strong>其中一步</strong> 详细分析一下<br><img src="https://s2.ax1x.com/2019/09/02/nCo9Et.png" alt="nCo9Et.png"></p>
-</li>
-<li><p>实现 <strong>reverseList</strong> </p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>1.<strong>依次遍历</strong> 链表节点，每遍历一个节点即 <strong>逆置</strong> 一个节点<br><img src="https://s2.ax1x.com/2019/09/02/nCoCUP.png" alt="nCoCUP.png"></p>
+<p>2.找到 <strong>其中一步</strong> 详细分析一下<br><img src="https://s2.ax1x.com/2019/09/02/nCo9Et.png" alt="nCo9Et.png"></p>
+<p>3.实现 <strong>reverseList</strong> </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode* <span class="title">reverseList</span><span class="params">(struct ListNode* head)</span></span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">new_head</span> = <span class="title">NULL</span>;</span> <span class="comment">/*指向新链表头节点的指针*/</span></span><br><span class="line">	<span class="keyword">while</span>(head)&#123;</span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">next</span> = <span class="title">head</span>-&gt;<span class="title">next</span>;</span> <span class="comment">/*备份head-&gt;next，以防找不到head-&gt;next了，让*next指向head-&gt;next*/</span> </span><br><span class="line">		head-&gt;next = new_head; <span class="comment">/*让head-&gt;next指向new_head，以实现链表逆序*/</span> </span><br><span class="line">		new_head = head; <span class="comment">/*移动新链表的new_head指针，指向新加入的节点地址*/</span> </span><br><span class="line">		head = next; <span class="comment">/*移动原始链表的head指针，继续遍历原始链表来进行逆序操作*/</span> </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> new_head; <span class="comment">/*返回新链表的头节点*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
 <h2 id="自建测试"><a href="#自建测试" class="headerlink" title="自建测试"></a>自建测试</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*简单测试*/</span> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//创建5个节点 </span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">a</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">b</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">c</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">d</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">e</span>;</span></span><br><span class="line">	<span class="comment">//给5个节点的数据域赋值 </span></span><br><span class="line">	a.val = <span class="number">1</span>; </span><br><span class="line">	b.val = <span class="number">2</span>;</span><br><span class="line">	c.val = <span class="number">3</span>;</span><br><span class="line">	d.val = <span class="number">4</span>;</span><br><span class="line">	e.val = <span class="number">5</span>;</span><br><span class="line">	<span class="comment">//把5个节点地址的指针域连接在一起</span></span><br><span class="line">	a.next = &amp;b;</span><br><span class="line">	b.next = &amp;c;</span><br><span class="line">	c.next = &amp;d;</span><br><span class="line">	d.next = &amp;e;</span><br><span class="line">	e.next = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">head</span> = &amp;<span class="title">a</span>;</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Before Reverse:\n"</span>);</span><br><span class="line">	<span class="keyword">while</span>(head)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,head-&gt;val);</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	head = reverseList(&amp;a);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"After Reverse:\n"</span>);</span><br><span class="line">	<span class="keyword">while</span>(head)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,head-&gt;val);</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -454,14 +449,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
@@ -471,6 +458,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
