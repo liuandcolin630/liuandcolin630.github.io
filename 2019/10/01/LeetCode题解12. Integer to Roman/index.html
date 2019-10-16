@@ -17,7 +17,7 @@
 <meta property="og:description" content="LeetCode 12. Integer to Romanhttps://leetcode-cn.com/problems/integer-to-roman/难度：Medium题目描述：Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. 12345678Symbol       Val">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/10/01/uUcBLj.png">
-<meta property="og:updated_time" content="2019-10-01T13:30:38.245Z">
+<meta property="og:updated_time" content="2019-10-16T13:44:01.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java版：Integer to Roman">
 <meta name="twitter:description" content="LeetCode 12. Integer to Romanhttps://leetcode-cn.com/problems/integer-to-roman/难度：Medium题目描述：Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. 12345678Symbol       Val">
@@ -207,8 +207,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">罗马数字       阿拉伯数字</span><br><span class="line">M             1000</span><br><span class="line">CM            900</span><br><span class="line">D             500</span><br><span class="line">CD            400</span><br><span class="line">C             100</span><br><span class="line">XC            90</span><br><span class="line">L             50</span><br><span class="line">XL            40</span><br><span class="line">X             10</span><br><span class="line">IX            9</span><br><span class="line">V             5</span><br><span class="line">IV            4</span><br><span class="line">I             1</span><br></pre></td></tr></table></figure>
 
 <p>4.于是得到结论：“将整数转换为阿拉伯数字”的过程，就是我们用上面这张表中右边的数字作为“加法因子”去分解每一个整数，并且分解的整数个数越少越好，<strong>即尽量使用靠前的数字</strong>（大的数字），这可以认为是一种贪心法则。</p>
-<p>##实现代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] key = &#123;<span class="number">1000</span>, <span class="number">900</span>, <span class="number">500</span>, <span class="number">400</span>, <span class="number">100</span>, <span class="number">90</span>, <span class="number">50</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">1</span>&#125;;</span><br><span class="line">        String[] value = &#123;<span class="string">"M"</span>, <span class="string">"CM"</span>, <span class="string">"D"</span>, <span class="string">"CD"</span>, <span class="string">"C"</span>, <span class="string">"XC"</span>, <span class="string">"L"</span>, <span class="string">"XL"</span>, <span class="string">"X"</span>, <span class="string">"IX"</span>, <span class="string">"V"</span>, <span class="string">"IV"</span>, <span class="string">"I"</span>&#125;;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (index &lt; <span class="number">13</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (num &gt;= key[index]) &#123;</span><br><span class="line">                sb.append(value[index]);</span><br><span class="line">                num -= key[index];</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] key = &#123;<span class="number">1000</span>, <span class="number">900</span>, <span class="number">500</span>, <span class="number">400</span>, <span class="number">100</span>, <span class="number">90</span>, <span class="number">50</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">1</span>&#125;;</span><br><span class="line">        String[] value = &#123;<span class="string">"M"</span>, <span class="string">"CM"</span>, <span class="string">"D"</span>, <span class="string">"CD"</span>, <span class="string">"C"</span>, <span class="string">"XC"</span>, <span class="string">"L"</span>, <span class="string">"XL"</span>, <span class="string">"X"</span>, <span class="string">"IX"</span>, <span class="string">"V"</span>, <span class="string">"IV"</span>, <span class="string">"I"</span>&#125;;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (index &lt; <span class="number">13</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (num &gt;= key[index]) &#123;</span><br><span class="line">                sb.append(value[index]);</span><br><span class="line">                num -= key[index];</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="LeetCode测试结果"><a href="#LeetCode测试结果" class="headerlink" title="LeetCode测试结果"></a>LeetCode测试结果</h2><p><img src="https://s2.ax1x.com/2019/10/01/uUcBLj.png" alt="uUcBLj.png"></p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>至此，<strong>Integer to Roman</strong> 解决完毕！</p>
@@ -362,7 +361,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-12-Integer-to-Roman"><span class="toc-number">1.</span> <span class="toc-text">LeetCode 12. Integer to Roman</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-leetcode-cn-com-problems-integer-to-roman"><span class="toc-number">1.1.</span> <span class="toc-text">https://leetcode-cn.com/problems/integer-to-roman/</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#难度：Medium"><span class="toc-number">2.</span> <span class="toc-text">难度：Medium</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述："><span class="toc-number">2.1.</span> <span class="toc-text">题目描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入样例"><span class="toc-number">2.2.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#该题已提供代码："><span class="toc-number">2.3.</span> <span class="toc-text">该题已提供代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">2.4.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode测试结果"><span class="toc-number">2.5.</span> <span class="toc-text">LeetCode测试结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">3.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io"><span class="toc-number">3.2.</span> <span class="toc-text">如果本文对您有用，请推广我的 Hexo 博客。谢谢！https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-12-Integer-to-Roman"><span class="toc-number">1.</span> <span class="toc-text">LeetCode 12. Integer to Roman</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-leetcode-cn-com-problems-integer-to-roman"><span class="toc-number">1.1.</span> <span class="toc-text">https://leetcode-cn.com/problems/integer-to-roman/</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#难度：Medium"><span class="toc-number">2.</span> <span class="toc-text">难度：Medium</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述："><span class="toc-number">2.1.</span> <span class="toc-text">题目描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入样例"><span class="toc-number">2.2.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#该题已提供代码："><span class="toc-number">2.3.</span> <span class="toc-text">该题已提供代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">2.4.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.5.</span> <span class="toc-text">实现代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode测试结果"><span class="toc-number">2.6.</span> <span class="toc-text">LeetCode测试结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">3.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请推广我的-Hexo-博客。谢谢！https-liuandcolin630-github-io"><span class="toc-number">3.2.</span> <span class="toc-text">如果本文对您有用，请推广我的 Hexo 博客。谢谢！https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -470,14 +469,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
@@ -490,11 +481,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,15 +517,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
             
             <div class="clearfix"></div>
