@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: LeetCode | Hexo</title>
+  <title>Java——自定义RPC框架 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/LeetCode/index.html">
+  <meta name="description" content="RPC(Remote Procedure Call)是什么？比如在同一台计算机上，两个类里有两个方法之间进行调用就是本地调用。而远程调用，就是把两个方法分到两台不同的计算机上，一个方法在Server端，一个方法在Client端，而Client端的方法可以直接调用Server端的方法。即不同计算机的方法之间可以相互调用。">
+<meta name="keywords" content="Java中级,学习笔记,RPC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java——自定义RPC框架 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/10/19/Java——自定义RPC框架 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="RPC(Remote Procedure Call)是什么？比如在同一台计算机上，两个类里有两个方法之间进行调用就是本地调用。而远程调用，就是把两个方法分到两台不同的计算机上，一个方法在Server端，一个方法在Client端，而Client端的方法可以直接调用Server端的方法。即不同计算机的方法之间可以相互调用。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/19/KnDIbD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/10/19/KnD5DO.png">
+<meta property="og:updated_time" content="2019-10-19T13:26:44.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Java——自定义RPC框架 学习笔记">
+<meta name="twitter:description" content="RPC(Remote Procedure Call)是什么？比如在同一台计算机上，两个类里有两个方法之间进行调用就是本地调用。而远程调用，就是把两个方法分到两台不同的计算机上，一个方法在Server端，一个方法在Client端，而Client端的方法可以直接调用Server端的方法。即不同计算机的方法之间可以相互调用。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/10/19/KnDIbD.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -138,436 +146,297 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java——自定义RPC框架 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java——自定义RPC框架 学习笔记
+    </h1>
+  
+
+        
+        <a href="/2019/10/19/Java——自定义RPC框架 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-10-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-19</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RPC-Remote-Procedure-Call-是什么？"><a href="#RPC-Remote-Procedure-Call-是什么？" class="headerlink" title="RPC(Remote Procedure Call)是什么？"></a>RPC(Remote Procedure Call)是什么？</h2><p>比如在同一台计算机上，两个类里有两个方法之间进行调用就是本地调用。<br>而远程调用，就是把两个方法分到两台不同的计算机上，一个方法在<code>Server</code>端，一个方法在<code>Client</code>端，而<code>Client</code>端的方法可以直接调用<code>Server</code>端的方法。即不同计算机的方法之间可以相互调用。</p>
+<a id="more"></a>
+<p>RPC与本地调用，如图：<br><img src="https://s2.ax1x.com/2019/10/19/KnDIbD.png" alt="KnDIbD.png"></p>
+<p>RPC工作原理，如图：<br><img src="https://s2.ax1x.com/2019/10/19/KnD5DO.png" alt="KnD5DO.png"></p>
+<h2 id="RPC需要哪些角色？"><a href="#RPC需要哪些角色？" class="headerlink" title="RPC需要哪些角色？"></a>RPC需要哪些角色？</h2><p>大概来说需要两个角色：客户端<code>Client</code> 和 服务端<code>Server</code></p>
+<p>具体来说是三个角色：</p>
+<ul>
+<li>客户端<code>Client</code></li>
+<li>发布服务的接口</li>
+<li>服务的注册中心<code>ServiceCenter</code></li>
+</ul>
+<p>注册中心里面存放了很多具体的接口方法，以后客户端就可以通过注册中心来调用每一个具体的接口方法。</p>
+<h2 id="如何注册这些接口方法呢？"><a href="#如何注册这些接口方法呢？" class="headerlink" title="如何注册这些接口方法呢？"></a>如何注册这些接口方法呢？</h2><p>通过<code>Map</code>的键值对方式(<code>Key-Value</code> == <code>&quot;接口名&quot;-接口值</code>)来存储接口方法，然后使用方法<code>register()</code>。</p>
+<h2 id="如何获取这些接口方法呢？需要几大技术："><a href="#如何获取这些接口方法呢？需要几大技术：" class="headerlink" title="如何获取这些接口方法呢？需要几大技术："></a>如何获取这些接口方法呢？需要几大技术：</h2><ul>
+<li>反射：客户端通过一串字符串(<code>&quot;HiService&quot;</code>)来访问服务端的服务注册中心的<code>Map</code>键值对得到接口方法，因为我们需要根据字符串来获取该字符串的一切。即客户端传递的是字符串(<code>&quot;HiService&quot;</code>)，而服务端需要通过该字符串解析出该字符串代表的接口的一切信息（方法、属性等）。</li>
+<li><code>Socket</code>：客户端和服务端的通信。客户端要访问服务端的服务注册中心获取接口方法。</li>
+<li>动态代理：客户端调用接口<code>HiService</code>，那么从服务端拿到的就是接口<code>HiService</code>。客户端拿到一个代理对象，它是动态的。即服务端需要根据客户端的不同请求，返回不同的接口类型，客户端就要接收到不同的接口类型。</li>
+</ul>
+<h2 id="如何编写RPC？"><a href="#如何编写RPC？" class="headerlink" title="如何编写RPC？"></a>如何编写RPC？</h2><ul>
+<li>某个接口及实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HiService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHi</span><span class="params">(String name)</span></span>; <span class="comment">/* Hi name */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HiServiceImpl</span> <span class="keyword">implements</span> <span class="title">HiService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHi</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Hi,"</span> + name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>服务中心接口及实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Server</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Class service, Class serviceName)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerCenter</span> <span class="keyword">implements</span> <span class="title">Server</span> </span>&#123;</span><br><span class="line">	<span class="comment">// Map：服务端的所有可供客户端访问的接口，都注册到该Map中。</span></span><br><span class="line">	<span class="comment">// Key:接口的名字 “HiService” Value:真正的“HiService”实现</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String, Class&gt; serviceRegister = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> port; <span class="comment">/* =9999; */</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ServerCenter</span><span class="params">(<span class="keyword">int</span> port)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.port = port;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 开启服务端服务</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ObjectInputStream input = <span class="keyword">null</span>;</span><br><span class="line">		ObjectOutputStream output = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ServerSocket ss = <span class="keyword">new</span> ServerSocket();</span><br><span class="line">			ss.bind(<span class="keyword">new</span> InetSocketAddress(port));</span><br><span class="line">			Socket socket = ss.accept(); <span class="comment">/* 等待客户端连接 */</span></span><br><span class="line">			<span class="comment">// 接收到客户端连接及请求，处理该请求...</span></span><br><span class="line">			input = <span class="keyword">new</span> ObjectInputStream(socket.getInputStream());</span><br><span class="line">			<span class="comment">// 因为ObjectInputStream对 发送数据的顺序严格要求，因此需要参照发送的顺序逐个接收。</span></span><br><span class="line">			String serviceName = input.readUTF();</span><br><span class="line">			String methodName = input.readUTF();</span><br><span class="line">			Class[] parameterTypes = (Class[]) input.readObject(); <span class="comment">/* 方法的参数类型 String Integer */</span></span><br><span class="line">			Object[] arguments = (Object[]) input.readObject(); <span class="comment">/* 方法的参数名 */</span></span><br><span class="line">			<span class="comment">// 根据客户端的这些请求，找到Map里对应的具体的接口</span></span><br><span class="line">			Class serviceClass = serviceRegister.get(serviceName); <span class="comment">/* HiService */</span></span><br><span class="line">			<span class="comment">// 通过接口获取具体的方法</span></span><br><span class="line">			Method method = serviceClass.getMethod(methodName, parameterTypes);</span><br><span class="line">			<span class="comment">// 执行该方法</span></span><br><span class="line">			Object result = method.invoke(serviceClass.newInstance(), arguments); <span class="comment">/* person.say(参数列表); */</span></span><br><span class="line">			<span class="comment">// 将方法执行完毕的返回值 传回客户端</span></span><br><span class="line">			output = <span class="keyword">new</span> ObjectOutputStream(socket.getOutputStream());</span><br><span class="line">			output.writeObject(result);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (output != <span class="keyword">null</span>) &#123;</span><br><span class="line">					output.close();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (input != <span class="keyword">null</span>) &#123;</span><br><span class="line">					input.close();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Class service, Class serviceName)</span> </span>&#123;</span><br><span class="line">		serviceRegister.put(service.getName(), serviceName);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>某个客户端</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 获取代表服务端接口的动态代理对象（HiService）</span></span><br><span class="line">	<span class="comment">// ServiceName：请求的接口名</span></span><br><span class="line">	<span class="comment">// Addr：待请求服务端的Ip/端口号</span></span><br><span class="line">	<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="comment">/* Object */</span> &lt;T&gt; <span class="function">T <span class="title">getRemoteProxyObj</span><span class="params">(Class serviceInterface, InetSocketAddress addr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces,InvocationHandler h); </span></span><br><span class="line"><span class="comment">		 * ClassLoader loader:类加载器：需要代理哪个类（例如HiService接口），就需要将HiService的类加载器传入。HiService.getClassLoader();</span></span><br><span class="line"><span class="comment">		 * Class&lt;?&gt;[] interfaces：需要代理的对象，具备哪些功能（方法）例如 say(); sleep(); --&gt;接口里存放着方法，即传入接口。</span></span><br><span class="line"><span class="comment">		 * 由于Java的单继承，多实现，所以 A implements B接口,C接口</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">return</span> (T) Proxy.newProxyInstance(serviceInterface.getClassLoader(), <span class="keyword">new</span> Class&lt;?&gt;[] &#123; serviceInterface &#125;,</span><br><span class="line">				<span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line"></span><br><span class="line">					<span class="comment">// proxy：代理的对象 method：哪个方法（sayHi(参数列表)） args：参数列表</span></span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">						<span class="comment">// 客户端向服务端发送请求：请求某一个具体的接口</span></span><br><span class="line">						Socket socket = <span class="keyword">new</span> Socket();</span><br><span class="line">						ObjectInputStream input = <span class="keyword">null</span>;</span><br><span class="line">						ObjectOutputStream output = <span class="keyword">null</span>;</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							socket.connect(addr);</span><br><span class="line">							output = <span class="keyword">new</span> ObjectOutputStream(socket.getOutputStream()); <span class="comment">/* 发送：序列化流（对象流） */</span></span><br><span class="line">							<span class="comment">// 接口名 、 方法名：writeUTF</span></span><br><span class="line">							output.writeUTF(serviceInterface.getName());</span><br><span class="line">							output.writeUTF(method.getName());</span><br><span class="line">							<span class="comment">// 方法参数的类型、方法参数：Object</span></span><br><span class="line">							output.writeObject(method.getParameterTypes());</span><br><span class="line">							output.writeObject(args);</span><br><span class="line">							<span class="comment">// 等待服务端处理...</span></span><br><span class="line">							<span class="comment">// 接受服务端处理后的返回值</span></span><br><span class="line">							input = <span class="keyword">new</span> ObjectInputStream(socket.getInputStream());</span><br><span class="line">							<span class="keyword">return</span> input.readObject(); <span class="comment">/* 客户端-&gt;服务端-&gt;返回值 */</span></span><br><span class="line">						&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">							<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">						&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">							<span class="keyword">try</span> &#123;</span><br><span class="line">								<span class="keyword">if</span> (output != <span class="keyword">null</span>) &#123;</span><br><span class="line">									output.close();</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (input != <span class="keyword">null</span>) &#123;</span><br><span class="line">									input.close();</span><br><span class="line">								&#125;</span><br><span class="line">							&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">								e.printStackTrace();</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>动态代理对象就是该<code>getRemoteProxyObj()</code>方法的返回值<code>&lt;T&gt; T</code>，该动态代理对象可以代理<code>HiService</code>接口对象、<code>A</code>接口对象、<code>B</code>接口对象等。但在该动态代理对象的内部又有一个<code>InvocationHandler()</code>对象，新对象内部嵌套了一个<code>invoke()</code>方法，该方法的返回值<code>Object</code>就是你所调用远程服务器里面方法的返回值。<br>比如你调了<code>A</code>接口，那么动态代理对象<code>getRemoteProxyObj()</code>方法的返回值<code>&lt;T&gt; T</code>就是<code>A</code>接口。但是如果你调的是<code>A</code>接口里的<code>a1()</code>方法，那么<code>a1()</code>方法里面的返回值就在动态代理对象里面的<code>invoke()</code>方法的返回值<code>Object</code>来进行返回，即<code>input.readObject();</code>将所调<code>a1()</code>方法的返回值接收了。</p>
+<p>动态代理有两个返回值：</p>
+<ul>
+<li><code>A</code>接口的返回值。通过动态代理方法<code>&lt;T&gt; T</code>进行接收。</li>
+<li><code>A</code>接口内部的<code>a1()</code>方法的返回值。通过<code>input.readObject();</code>进行接收。</li>
+</ul>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><blockquote>
+<p>之前的服务端接收客户端的请求都是排队进行处理的，比如有100个请求，则一个一个请求的进行处理，如果想让多个客户端请求并发执行就需要多线程机制。</p>
+</blockquote>
+<p>线程池内有多条线程，当每一次客户端发送请求到服务中心，服务中心将请求转到线程池，从线程池的众多线程中选取一个线程去处理该请求，处理完成后返回给客户端。并发执行时，服务中心再去线程池中选取一个线程去处理请求，然后返回给客户端。</p>
+<ol>
+<li><p>连接池的创建</p>
+<p> 连接池（<code>ExecutorService</code>）：连接池中存在多个连接对象，每个连接对象都可以处理一个客户请求。连接池存放的线程数量跟CPU处理器有关，处理器越强连接池存放的线程数量越多并发性越高。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ExecutorService executor = Executors.newFixedThreadPool( Runtime.getRuntime().availableProcessors());</span><br></pre></td></tr></table></figure>
+
+<p> 获取处理器的个数：<code>Runtime.getRuntime().availableProcessors()</code></p>
+</li>
+<li><p>连接池的执行</p>
+<p> 从连接池中取一个连接然后去执行处理请求。<br> <code>executor.execute(Runnable 多线程对象);</code></p>
+<p> 每当执行一次<code>execute()</code>，就会从连接池里取一个线程去处理，所以需要使用多线程。并且需要通过构造方法来传入<code>Socket</code>，以便将服务中心的<code>Socket</code>合二为一。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<pre><code>客户端和服务端通过`Socket`来通信，现在服务端分为了两部分，一部分为`start()`，一部分为多线程`ServiceTask`。相当于客户端交于服务端处理一件事情，而服务端分派了两个人进行处理，但这两个人处理的时候应该拿到的是同一个客户请求，因此需要这两个人持有的`Socket`统一起来，通过构造方法传入，已达到两个人持有同一个`Socket`的目的。
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 开启服务端服务</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ServerSocket server = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		server = <span class="keyword">new</span> ServerSocket();</span><br><span class="line">		server.bind(<span class="keyword">new</span> InetSocketAddress(port));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">		e1.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	Socket socket = <span class="keyword">null</span>;</span><br><span class="line">	isRunning = <span class="keyword">true</span>; <span class="comment">/* 服务已启动 */</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">		<span class="comment">// 具体的服务内容：接受客户端请求，处理请求，并返回结果。</span></span><br><span class="line">		<span class="comment">// 现在是排队进行处理请求 100个请求 1 1 1 1... -&gt; 如果想让多个客户端请求并发执行 -&gt; 多线程</span></span><br><span class="line">		System.out.println(<span class="string">"Start Service..."</span>);</span><br><span class="line">		<span class="comment">// 客户端每次请求一个连接（发出一次请求），则服务端从连接池中获取一个线程对象去处理。</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			socket = server.accept();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="comment">/* 等待客户端连接 */</span></span><br><span class="line">		executor.execute(<span class="keyword">new</span> ServiceTask(socket)); <span class="comment">/* 启动线程去处理客户请求 */</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Socket socket;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ServiceTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ServiceTask</span><span class="params">(Socket socket)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.socket = socket;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; <span class="comment">/* 线程所做的事情 */</span></span><br><span class="line">		ObjectInputStream input = <span class="keyword">null</span>;</span><br><span class="line">		ObjectOutputStream output = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 接收到客户端连接及请求，处理该请求...</span></span><br><span class="line">			input = <span class="keyword">new</span> ObjectInputStream(socket.getInputStream());</span><br><span class="line">			<span class="comment">// 因为ObjectInputStream对 发送数据的顺序严格要求，因此需要参照发送的顺序逐个接收。</span></span><br><span class="line">			String serviceName = input.readUTF();</span><br><span class="line">			String methodName = input.readUTF();</span><br><span class="line">			Class[] parameterTypes = (Class[]) input.readObject(); <span class="comment">/* 方法的参数类型 String Integer */</span></span><br><span class="line">			Object[] arguments = (Object[]) input.readObject(); <span class="comment">/* 方法的参数名 */</span></span><br><span class="line">			<span class="comment">// 根据客户端的这些请求，找到Map里对应的具体的接口</span></span><br><span class="line">			Class serviceClass = serviceRegister.get(serviceName); <span class="comment">/* HiService */</span></span><br><span class="line">			<span class="comment">// 通过接口获取具体的方法</span></span><br><span class="line">			Method method = serviceClass.getMethod(methodName, parameterTypes);</span><br><span class="line">			<span class="comment">// 执行该方法</span></span><br><span class="line">			Object result = method.invoke(serviceClass.newInstance(), arguments); <span class="comment">/* person.say(参数列表); */</span></span><br><span class="line">			<span class="comment">// 将方法执行完毕的返回值 传回客户端</span></span><br><span class="line">			output = <span class="keyword">new</span> ObjectOutputStream(socket.getOutputStream());</span><br><span class="line">			output.writeObject(result);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (output != <span class="keyword">null</span>) &#123;</span><br><span class="line">					output.close();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (input != <span class="keyword">null</span>) &#123;</span><br><span class="line">					input.close();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><h2 id="测试RPC"><a href="#测试RPC" class="headerlink" title="测试RPC"></a>测试RPC</h2><p>客户端测试：</p>
+<p><code>HiService service = Client.getRemoteProxyObj(Class serviceInterface, InetSocketAddress addr);</code><br>参数：</p>
+<ol>
+<li><code>Class serviceInterface</code> : 因为客户端和服务端是两台计算机，如果要在客户端访问服务端的<code>HiService</code>，但因为服务端根本没有<code>HiService</code>，所以只能写字符串，字符串用反射为全类名<code>包名.类名</code>，但参数需要的类型为<code>Class</code>，所以需要将字符串转为反射的入口类型，<code>Class.forName(&quot;remote.procedure.call.server.HiService&quot;)</code>。这样它就可以告诉服务器，我准备请求服务器的这个接口。</li>
+<li><code>InetSocketAddress addr</code> :<br>服务器的地址是多少。<code>new InetSocketAddress(&quot;127.0.0.1&quot;, 9999)</code></li>
+</ol>
+<h2 id="优化后的全部代码"><a href="#优化后的全部代码" class="headerlink" title="优化后的全部代码"></a>优化后的全部代码</h2><p>remote.procedure.call.server 包下:</p>
+<ul>
+<li><p>某个接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HiService</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">sayHi</span><span class="params">(String name)</span></span>; <span class="comment">/* Hi name */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>某个接口的实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HiServiceImpl</span> <span class="keyword">implements</span> <span class="title">HiService</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sayHi</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Hi,"</span> + name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务中心接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Server</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Class service, Class serviceName)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务中心实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerCenter</span> <span class="keyword">implements</span> <span class="title">Server</span> </span>&#123;</span><br><span class="line">	<span class="comment">// Map：服务端的所有可供客户端访问的接口，都注册到该Map中。</span></span><br><span class="line">	<span class="comment">// Key: 接口的名字 “HiService” Value:真正的“HiService”实现</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String, Class&gt; serviceRegister = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> port; <span class="comment">/* =9999; */</span></span><br><span class="line">	<span class="comment">// 连接池：连接池中存在多个连接对象，每个连接对象都可以处理一个客户请求</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());</span><br><span class="line">	<span class="comment">// 当前服务中心的线程，服务中心是否已经开启服务，默认为未开启。</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> isRunning = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ServerCenter</span><span class="params">(<span class="keyword">int</span> port)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.port = port;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 开启服务端服务</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ServerSocket server = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			server = <span class="keyword">new</span> ServerSocket();</span><br><span class="line">			server.bind(<span class="keyword">new</span> InetSocketAddress(port));</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		Socket socket = <span class="keyword">null</span>;</span><br><span class="line">		isRunning = <span class="keyword">true</span>; <span class="comment">/* 服务已启动 */</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">			<span class="comment">// 具体的服务内容：接受客户端请求，处理请求，并返回结果。</span></span><br><span class="line">			<span class="comment">// 现在是排队进行处理请求 100个请求 1 1 1 1... -&gt; 如果想让多个客户端请求并发执行 -&gt; 多线程</span></span><br><span class="line">			System.out.println(<span class="string">"Start Service..."</span>);</span><br><span class="line">			<span class="comment">// 客户端每次请求一个连接（发出一次请求），则服务端从连接池中获取一个线程对象去处理。</span></span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				socket = server.accept();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125; <span class="comment">/* 等待客户端连接 */</span></span><br><span class="line">			executor.execute(<span class="keyword">new</span> ServiceTask(socket)); <span class="comment">/* 启动线程去处理客户请求 */</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		isRunning = <span class="keyword">false</span>;</span><br><span class="line">		executor.shutdown();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Class service, Class serviceName)</span> </span>&#123;</span><br><span class="line">		serviceRegister.put(service.getName(), serviceName);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> Socket socket;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ServiceTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ServiceTask</span><span class="params">(Socket socket)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.socket = socket;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; <span class="comment">/* 线程所做的事情 */</span></span><br><span class="line">			ObjectInputStream input = <span class="keyword">null</span>;</span><br><span class="line">			ObjectOutputStream output = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// 接收到客户端连接及请求，处理该请求...</span></span><br><span class="line">				input = <span class="keyword">new</span> ObjectInputStream(socket.getInputStream());</span><br><span class="line">				<span class="comment">// 因为ObjectInputStream对 发送数据的顺序严格要求，因此需要参照发送的顺序逐个接收。</span></span><br><span class="line">				String serviceName = input.readUTF();</span><br><span class="line">				String methodName = input.readUTF();</span><br><span class="line">				Class[] parameterTypes = (Class[]) input.readObject(); <span class="comment">/* 方法的参数类型 String Integer */</span></span><br><span class="line">				Object[] arguments = (Object[]) input.readObject(); <span class="comment">/* 方法的参数名 */</span></span><br><span class="line">				<span class="comment">// 根据客户端的这些请求，找到Map里对应的具体的接口</span></span><br><span class="line">				Class serviceClass = serviceRegister.get(serviceName); <span class="comment">/* HiService */</span></span><br><span class="line">				<span class="comment">// 通过接口获取具体的方法</span></span><br><span class="line">				Method method = serviceClass.getMethod(methodName, parameterTypes);</span><br><span class="line">				<span class="comment">// 执行该方法</span></span><br><span class="line">				Object result = method.invoke(serviceClass.newInstance(), arguments); <span class="comment">/* person.say(参数列表); */</span></span><br><span class="line">				<span class="comment">// 将方法执行完毕的返回值 传回客户端</span></span><br><span class="line">				output = <span class="keyword">new</span> ObjectOutputStream(socket.getOutputStream());</span><br><span class="line">				output.writeObject(result);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					<span class="keyword">if</span> (output != <span class="keyword">null</span>) &#123;</span><br><span class="line">						output.close();</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span> (input != <span class="keyword">null</span>) &#123;</span><br><span class="line">						input.close();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>remote.procedure.call.client 包下：</p>
+<ul>
+<li>客户端<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 获取代表服务端接口的动态代理对象（HiService）</span></span><br><span class="line">	<span class="comment">// ServiceName：请求的接口名</span></span><br><span class="line">	<span class="comment">// Addr：待请求服务端的Ip/端口号</span></span><br><span class="line">	<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="comment">/* Object */</span> &lt;T&gt; <span class="function">T <span class="title">getRemoteProxyObj</span><span class="params">(Class serviceInterface, InetSocketAddress addr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces,InvocationHandler</span></span><br><span class="line"><span class="comment">		 * h); ClassLoader</span></span><br><span class="line"><span class="comment">		 * loader:类加载器：需要代理哪个类（例如HiService接口），就需要将HiService的类加载器传入。HiService.getClassLoader();</span></span><br><span class="line"><span class="comment">		 * Class&lt;?&gt;[] interfaces：需要代理的对象，具备哪些功能（方法）例如 say(); sleep(); --&gt;接口里存放着方法，即传入接口。</span></span><br><span class="line"><span class="comment">		 * 由于Java的单继承，多实现，所以 A implements B接口,C接口</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">return</span> (T) Proxy.newProxyInstance(serviceInterface.getClassLoader(), <span class="keyword">new</span> Class&lt;?&gt;[] &#123; serviceInterface &#125;,</span><br><span class="line">				<span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line"></span><br><span class="line">					<span class="comment">// proxy：代理的对象 method：哪个方法（sayHi(参数列表)） args：参数列表</span></span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">						<span class="comment">// 客户端向服务端发送请求：请求某一个具体的接口</span></span><br><span class="line">						Socket socket = <span class="keyword">new</span> Socket();</span><br><span class="line">						ObjectInputStream input = <span class="keyword">null</span>;</span><br><span class="line">						ObjectOutputStream output = <span class="keyword">null</span>;</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							socket.connect(addr);</span><br><span class="line">							output = <span class="keyword">new</span> ObjectOutputStream(socket.getOutputStream()); <span class="comment">/* 发送：序列化流（对象流） */</span></span><br><span class="line">							<span class="comment">// 接口名 、 方法名：writeUTF</span></span><br><span class="line">							output.writeUTF(serviceInterface.getName());</span><br><span class="line">							output.writeUTF(method.getName());</span><br><span class="line">							<span class="comment">// 方法参数的类型、方法参数：Object</span></span><br><span class="line">							output.writeObject(method.getParameterTypes());</span><br><span class="line">							output.writeObject(args);</span><br><span class="line">							<span class="comment">// 等待服务端处理...</span></span><br><span class="line">							<span class="comment">// 接受服务端处理后的返回值</span></span><br><span class="line">							input = <span class="keyword">new</span> ObjectInputStream(socket.getInputStream());</span><br><span class="line">							<span class="keyword">return</span> input.readObject(); <span class="comment">/* 客户端-&gt;服务端-&gt;返回值 */</span></span><br><span class="line">						&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">							<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">						&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">							<span class="keyword">try</span> &#123;</span><br><span class="line">								<span class="keyword">if</span> (output != <span class="keyword">null</span>) &#123;</span><br><span class="line">									output.close();</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (input != <span class="keyword">null</span>) &#123;</span><br><span class="line">									input.close();</span><br><span class="line">								&#125;</span><br><span class="line">							&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">								e.printStackTrace();</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>remote.procedure.call.test 包下：</p>
+<ul>
+<li><p>客户端测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RPCClientTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">		HiService service = Client.getRemoteProxyObj(Class.forName(<span class="string">"remote.procedure.call.server.HiService"</span>),</span><br><span class="line">				<span class="keyword">new</span> InetSocketAddress(<span class="string">"127.0.0.1"</span>, <span class="number">9999</span>));</span><br><span class="line">		System.out.println(service.sayHi(<span class="string">"Colin"</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务端测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RPCServerTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 开启一个线程</span></span><br><span class="line">		<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// 服务中心</span></span><br><span class="line">				Server server = <span class="keyword">new</span> ServerCenter(<span class="number">9999</span>);</span><br><span class="line">				<span class="comment">// 将HiService接口及实现类注册到服务中心里</span></span><br><span class="line">				server.register(HiService.class, HiServiceImpl.class);</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					server.start();</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;).start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>客户端通过<code>Socket</code>请求服务端，并且通过字符串形式或<code>Class</code>形式将需要请求的接口发送到服务端。通过动态代理发送接口名、方法名等信息。</li>
+<li>服务端将可以提供的接口注册到 服务中心（通过Map保存 Key:发布接口的名字 Value:接口的实现类）</li>
+<li>服务端收到客户端的请求后，通过请求的接口名（字符串形式）在服务中心的Map中寻找对应的接口实现类。</li>
+<li>找到之后，解析刚才客户端发送来的接口名、方法名，解析完毕后，通过反射技术将该方法执行。执行完毕后，再将该方法的返回值返回给客户端，客户端通过接收该返回值后结束。</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Colin谢谢您的支持！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/" class="archive-article-date">
-  	<time datetime="2019-10-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/">Java版：LeetCode 19. Remove Nth Node From End of List</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RPC</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/19/Java——自定义RPC框架 学习笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/01/LeetCode题解12. Integer to Roman/" class="archive-article-date">
-  	<time datetime="2019-09-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java版：LeetCode 19. Remove Nth Node From End of List</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/01/LeetCode题解12. Integer to Roman/">Java版：Integer to Roman</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC-Remote-Procedure-Call-是什么？"><span class="toc-number">1.</span> <span class="toc-text">RPC(Remote Procedure Call)是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC需要哪些角色？"><span class="toc-number">2.</span> <span class="toc-text">RPC需要哪些角色？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何注册这些接口方法呢？"><span class="toc-number">3.</span> <span class="toc-text">如何注册这些接口方法呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何获取这些接口方法呢？需要几大技术："><span class="toc-number">4.</span> <span class="toc-text">如何获取这些接口方法呢？需要几大技术：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何编写RPC？"><span class="toc-number">5.</span> <span class="toc-text">如何编写RPC？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程池"><span class="toc-number">6.</span> <span class="toc-text">线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试RPC"><span class="toc-number">7.</span> <span class="toc-text">测试RPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化后的全部代码"><span class="toc-number">8.</span> <span class="toc-text">优化后的全部代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/01/LeetCode题解13. Roman to Integer/" class="archive-article-date">
-  	<time datetime="2019-09-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/01/LeetCode题解13. Roman to Integer/">Java版：Roman to Integer</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/29/LeetCode题解6. ZigZag Conversion/" class="archive-article-date">
-  	<time datetime="2019-09-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/29/LeetCode题解6. ZigZag Conversion/">Java版：ZigZag Conversion</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/28/LeetCode题解7. Reverse Integer/" class="archive-article-date">
-  	<time datetime="2019-09-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/28/LeetCode题解7. Reverse Integer/">Java版：Reverse Integer</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/27/LeetCode题解5. Longest Palindromic Substring/" class="archive-article-date">
-  	<time datetime="2019-09-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/27/LeetCode题解5. Longest Palindromic Substring/">Java版：Longest Palindromic Substring</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/" class="archive-article-date">
-  	<time datetime="2019-08-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/02/LeetCode题解92. Reverse Linked List II/" class="archive-article-date">
-  	<time datetime="2019-08-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/02/LeetCode题解92. Reverse Linked List II/">Reverse Linked List II</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/LeetCode题解206. Reverse Linked List/" class="archive-article-date">
-  	<time datetime="2019-07-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/LeetCode题解206. Reverse Linked List/">Reverse Linked List</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -590,9 +459,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
