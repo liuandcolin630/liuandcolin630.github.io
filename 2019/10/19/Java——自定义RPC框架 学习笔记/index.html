@@ -9,7 +9,7 @@
   <title>Java——自定义RPC框架 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="RPC(Remote Procedure Call)是什么？比如在同一台计算机上，两个类里有两个方法之间进行调用就是本地调用。而远程调用，就是把两个方法分到两台不同的计算机上，一个方法在Server端，一个方法在Client端，而Client端的方法可以直接调用Server端的方法。即不同计算机的方法之间可以相互调用。">
-<meta name="keywords" content="Java中级,学习笔记,RPC">
+<meta name="keywords" content="Java,学习笔记,RPC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java——自定义RPC框架 学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/10/19/Java——自定义RPC框架 学习笔记/index.html">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/10/19/KnDIbD.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/10/19/KnD5DO.png">
-<meta property="og:updated_time" content="2019-10-19T13:26:44.695Z">
+<meta property="og:updated_time" content="2019-10-28T06:33:12.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java——自定义RPC框架 学习笔记">
 <meta name="twitter:description" content="RPC(Remote Procedure Call)是什么？比如在同一台计算机上，两个类里有两个方法之间进行调用就是本地调用。而远程调用，就是把两个方法分到两台不同的计算机上，一个方法在Server端，一个方法在Client端，而Client端的方法可以直接调用Server端的方法。即不同计算机的方法之间可以相互调用。">
@@ -276,7 +276,7 @@
 <li>服务端收到客户端的请求后，通过请求的接口名（字符串形式）在服务中心的Map中寻找对应的接口实现类。</li>
 <li>找到之后，解析刚才客户端发送来的接口名、方法名，解析完毕后，通过反射技术将该方法执行。执行完毕后，再将该方法的返回值返回给客户端，客户端通过接收该返回值后结束。</li>
 </ol>
-
+<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
       
 
       
@@ -310,7 +310,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -388,6 +388,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/10/28/Java——反射机制与动态代理 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java——反射机制与动态代理 学习笔记
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Java版：LeetCode 19. Remove Nth Node From End of List</div>
@@ -417,7 +426,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC-Remote-Procedure-Call-是什么？"><span class="toc-number">1.</span> <span class="toc-text">RPC(Remote Procedure Call)是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC需要哪些角色？"><span class="toc-number">2.</span> <span class="toc-text">RPC需要哪些角色？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何注册这些接口方法呢？"><span class="toc-number">3.</span> <span class="toc-text">如何注册这些接口方法呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何获取这些接口方法呢？需要几大技术："><span class="toc-number">4.</span> <span class="toc-text">如何获取这些接口方法呢？需要几大技术：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何编写RPC？"><span class="toc-number">5.</span> <span class="toc-text">如何编写RPC？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程池"><span class="toc-number">6.</span> <span class="toc-text">线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试RPC"><span class="toc-number">7.</span> <span class="toc-text">测试RPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化后的全部代码"><span class="toc-number">8.</span> <span class="toc-text">优化后的全部代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC-Remote-Procedure-Call-是什么？"><span class="toc-number">1.</span> <span class="toc-text">RPC(Remote Procedure Call)是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC需要哪些角色？"><span class="toc-number">2.</span> <span class="toc-text">RPC需要哪些角色？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何注册这些接口方法呢？"><span class="toc-number">3.</span> <span class="toc-text">如何注册这些接口方法呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何获取这些接口方法呢？需要几大技术："><span class="toc-number">4.</span> <span class="toc-text">如何获取这些接口方法呢？需要几大技术：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何编写RPC？"><span class="toc-number">5.</span> <span class="toc-text">如何编写RPC？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程池"><span class="toc-number">6.</span> <span class="toc-text">线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试RPC"><span class="toc-number">7.</span> <span class="toc-text">测试RPC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化后的全部代码"><span class="toc-number">8.</span> <span class="toc-text">优化后的全部代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">10.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">11.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">12.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -537,6 +546,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
@@ -549,15 +562,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java高级</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
+                <a href="javascript:void(0)" class="js-tag color5">反射机制</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">线程</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,6 +583,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">初级实战</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">线程</a>
               </li>
              
               <li class="article-tag-list-item">

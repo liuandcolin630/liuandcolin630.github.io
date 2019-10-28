@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>Java——反射机制与动态代理 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="反射的基本概念反射机制是在运行状态中：对于任意一个类，都能够知道这个类的所有属性和方法。对于任意一个对象，都能够调用它的任意一个方法和属性。">
+<meta name="keywords" content="Java高级,反射机制,动态代理,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java——反射机制与动态代理 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/10/28/Java——反射机制与动态代理 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="反射的基本概念反射机制是在运行状态中：对于任意一个类，都能够知道这个类的所有属性和方法。对于任意一个对象，都能够调用它的任意一个方法和属性。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-28T06:33:20.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Java——反射机制与动态代理 学习笔记">
+<meta name="twitter:description" content="反射的基本概念反射机制是在运行状态中：对于任意一个类，都能够知道这个类的所有属性和方法。对于任意一个对象，都能够调用它的任意一个方法和属性。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -138,283 +143,184 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-LeetCode题解206. Reverse Linked List" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Java——反射机制与动态代理 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/25/LeetCode题解206. Reverse Linked List/">Reverse Linked List</a>
+    <h1 class="article-title" itemprop="name">
+      Java——反射机制与动态代理 学习笔记
     </h1>
   
 
         
-        <a href="/2019/07/25/LeetCode题解206. Reverse Linked List/" class="archive-article-date">
-  	<time datetime="2019-07-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+        <a href="/2019/10/28/Java——反射机制与动态代理 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-10-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="LeetCode-206-Reverse-Linked-List"><a href="#LeetCode-206-Reverse-Linked-List" class="headerlink" title="LeetCode 206. Reverse Linked List"></a>LeetCode 206. Reverse Linked List</h1><h2 id="https-leetcode-cn-com-problems-reverse-linked-list"><a href="#https-leetcode-cn-com-problems-reverse-linked-list" class="headerlink" title="https://leetcode-cn.com/problems/reverse-linked-list/"></a><a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-linked-list/</a></h2><h1 id="难度：Easy"><a href="#难度：Easy" class="headerlink" title="难度：Easy"></a>难度：<strong>Easy</strong></h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>Reverse a singly linked list.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/25/LeetCode题解206. Reverse Linked List/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-01-复杂度1 最大子列和问题 (20 分)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/">最大子列和问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/" class="archive-article-date">
-  	<time datetime="2019-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="中国大学MOOC-陈越、何钦铭-数据结构-2019夏"><a href="#中国大学MOOC-陈越、何钦铭-数据结构-2019夏" class="headerlink" title="中国大学MOOC-陈越、何钦铭-数据结构-2019夏"></a>中国大学MOOC-陈越、何钦铭-数据结构-2019夏</h1><h2 id="01-复杂度1-最大子列和问题-20-分"><a href="#01-复杂度1-最大子列和问题-20-分" class="headerlink" title="01-复杂度1 最大子列和问题 (20 分)"></a>01-复杂度1 最大子列和问题 (20 分)</h2><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定K个整数组成的序列{ N​1​​, N​2​​, …, N​K​​ }，“连续子列”被定义为{ N​i​​, N​i+1​​, …, N​j​​ }，其中 1 ≤ i ≤ j ≤ K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计算给定整数序列的最大子列和。 </p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring 学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/Spring 学习笔记/">Spring 学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/10/Spring 学习笔记/" class="archive-article-date">
-  	<time datetime="2019-05-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>整理了部分的 Spring 学习笔记，未完待续，持续更新。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/Spring 学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-【白话版】Java多线程机制 学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/14/【白话版】Java多线程机制 学习笔记/">白话版：Java多线程机制 学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/14/【白话版】Java多线程机制 学习笔记/" class="archive-article-date">
-  	<time datetime="2019-04-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>目录</strong></p>
-<ul>
-<li>线程的基本概念</li>
-<li>线程的创建和启动</li>
-<li>线程的调度和优先级</li>
-<li>线程的状态控制</li>
-<li>线程同步</li>
+        <h2 id="反射的基本概念"><a href="#反射的基本概念" class="headerlink" title="反射的基本概念"></a>反射的基本概念</h2><p>反射机制是在<strong>运行状态</strong>中：<br>对于任意一个类，都能够知道这个类的所有属性和方法。<br>对于任意一个对象，都能够调用它的任意一个方法和属性。</p>
+<a id="more"></a>
+<h2 id="反射提供的功能"><a href="#反射提供的功能" class="headerlink" title="反射提供的功能"></a>反射提供的功能</h2><ul>
+<li>在运行时判断任意一个对象所属的类。</li>
+<li>在运行时构造任意一个类的对象。</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法。</li>
+<li>在运行时调用任意一个对象的方法。</li>
+<li>生成动态代理（动态代理的底层是由反射实现的）</li>
 </ul>
+<blockquote>
+<p>虽然可以通过反射来访问<code>private</code>等访问修饰符不允许访问的属性/方法，也可以忽略掉泛型的约束。但实际开发不建议这样使用，因为可能造成程序的混乱。</p>
 </blockquote>
-        
+<h2 id="获取反射对象（即反射入口）：Class"><a href="#获取反射对象（即反射入口）：Class" class="headerlink" title="获取反射对象（即反射入口）：Class"></a>获取反射对象（即反射入口）：Class</h2><p>有三种方法来获取：<br>    1. <code>Class.forName()</code> <strong>推荐使用！</strong><br>    2. <code>类名.class</code><br>    3. <code>对象.getClass()</code></p>
+<ol>
+<li><p>通过反射获取类：</p>
+<ul>
+<li><code>Class.forName(&quot;全类名&quot;)</code>需要处理异常。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">			Class&lt;?&gt; perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">			System.out.println(perClass);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>- `类名.class`
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass2 = Person.class;</span><br><span class="line">System.out.println(perClass2);</span><br></pre></td></tr></table></figure>
+
+
+- `对象.getClass()`
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Person per = <span class="keyword">new</span> Person();</span><br><span class="line">Class&lt;? extends Person&gt; perClass3 = per.getClass();</span><br><span class="line">System.out.println(perClass3);</span><br></pre></td></tr></table></figure></code></pre><ol start="2">
+<li><p>通过反射获取方法：</p>
+<ul>
+<li><p>先获得反射入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有类的公共的方法（1.本类以及父类、接口中的所有方法 2.符合访问修饰符规律[<code>public</code>]）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Method[] methods = perClass.getMethods();</span><br><span class="line">		<span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">			System.out.println(method);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>- 获取当前类的所有的方法（1.只能是当前类 2.忽略访问修饰符[`public`、`private`]）
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Method[] declaredMethods = perClass.getDeclaredMethods();</span><br><span class="line">		<span class="keyword">for</span> (Method method : declaredMethods) &#123;</span><br><span class="line">			System.out.println(method);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure></code></pre><ol start="3">
+<li><p>通过反射获取接口（Java的单继承<strong>多实现</strong>）：</p>
+<ul>
+<li><p>先获得反射入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再获取所有的接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt;[] interfaces = perClass.getInterfaces();</span><br><span class="line">		<span class="keyword">for</span> (Class&lt;?&gt; inter : interfaces) &#123;</span><br><span class="line">			System.out.println(inter);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过反射获取父类（Java的<strong>单继承</strong>多实现）：</p>
+<ul>
+<li><p>先获得反射入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再获取所有的父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; superclass = perClass.getSuperclass();</span><br><span class="line">System.out.println(superclass);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过反射获取构造方法：</p>
+<ul>
+<li><p>先获得反射入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再获取该类所有的构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Constructor&lt;?&gt;[] constructors = perClass.getConstructors();</span><br><span class="line">		<span class="keyword">for</span> (Constructor&lt;?&gt; constructor : constructors) &#123;</span><br><span class="line">			System.out.println(constructor);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过反射获取属性：</p>
+<ul>
+<li><p>先获得反射入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有的公共的属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Field[] fields = perClass.getFields();</span><br><span class="line">		<span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">			System.out.println(field);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有的属性（属性的：公共属性/所有属性的区别 同“方法”）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Field[] declaredFields = perClass.getDeclaredFields();</span><br><span class="line">		<span class="keyword">for</span> (Field field : declaredFields) &#123;</span><br><span class="line">			System.out.println(field);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过反射获取所代表的类（接口）的对象（实例）：</p>
+<ul>
+<li><p>先获得反射入口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取获取所代表的类（接口）的对象（实例）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object instance = perClass.newInstance();</span><br><span class="line">		Person person = (Person) instance;</span><br><span class="line">		person.myInterface();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ol>
+<li><p>通过反射获取对象的实例，并操作对象</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		Person person = (Person)perClass.newInstance();</span><br><span class="line">		person.setId(<span class="number">1</span>);</span><br><span class="line">		person.setName(<span class="string">"zs"</span>);</span><br><span class="line">		person.setAge(<span class="number">23</span>);</span><br><span class="line">		System.out.println(person.getId() + <span class="string">","</span> + person.getName() + <span class="string">","</span> + person.getAge());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过反射操作属性/方法</p>
+<blockquote>
+<p>设置属性：<code>set()</code> 获得属性：<code>getXxx()</code><br>调用有参/无参方法：<code>invoke()</code>  有参方法的参数类型为<code>Class&lt;?&gt;</code>即为反射入口，用<code>类名.class</code><br>使用反射时，如果因为访问修饰符限制造成异常，可以通过 <code>Field/Method/Constructor.setAccessible(true);</code>默认为false。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getFields</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchFieldException, SecurityException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException </span>&#123;</span><br><span class="line">		Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//操作属性</span></span><br><span class="line">		Person person = (Person)perClass.newInstance();</span><br><span class="line">		Field idField = perClass.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line">		<span class="comment">//访问的是private修饰的id，由于private是私有的，只有本类可以访问，所以需要修改属性的访问权限</span></span><br><span class="line">		<span class="comment">//使用反射时，如果因为访问修饰符限制造成异常，可以通过 Field/Method.setAccessible(true);默认为false。</span></span><br><span class="line">		idField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">		idField.set(person, <span class="number">1</span>);</span><br><span class="line">		System.out.println(person.getId());</span><br><span class="line">		System.out.println(<span class="string">"------------------------------------"</span>);</span><br><span class="line">		<span class="comment">//操作无参方法</span></span><br><span class="line">		Method privateMethod = perClass.getDeclaredMethod(<span class="string">"privateMethod"</span>, <span class="keyword">null</span>);</span><br><span class="line">		privateMethod.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">		privateMethod.invoke(person, <span class="keyword">null</span>);</span><br><span class="line">		<span class="comment">//操作有参方法</span></span><br><span class="line">		Method privateMethodWithArgs = perClass.getDeclaredMethod(<span class="string">"privateMethodWithArgs"</span>, String.class); <span class="comment">/*参数类型为Class&lt;?&gt;即反射入口，使用类名.class*/</span></span><br><span class="line">		privateMethodWithArgs.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">		privateMethodWithArgs.invoke(person, <span class="string">"zs"</span>);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>通过反射操作构造方法</p>
+<blockquote>
+<p>通过构造方法产生对象的时候，构造方法参数列表和产生对象的参数列表要一一对应。</p>
+</blockquote>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getConstructor</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchMethodException, SecurityException, InstantiationException,</span></span><br><span class="line"><span class="function">			IllegalAccessException, IllegalArgumentException, InvocationTargetException </span>&#123;</span><br><span class="line">		Class&lt;?&gt; perClass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			perClass = Class.forName(<span class="string">"Reflect.Person"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 获取公共的构造方法</span></span><br><span class="line">		Constructor&lt;?&gt;[] constructors = perClass.getConstructors();</span><br><span class="line">		<span class="keyword">for</span> (Constructor&lt;?&gt; constructor : constructors) &#123;</span><br><span class="line"><span class="comment">//			System.out.println(constructor);</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 获取全部的构造方法</span></span><br><span class="line">		Constructor&lt;?&gt;[] declaredConstructors = perClass.getDeclaredConstructors();</span><br><span class="line">		<span class="keyword">for</span> (Constructor&lt;?&gt; constructor : declaredConstructors) &#123;</span><br><span class="line"><span class="comment">//			System.out.println(constructor);</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 获取指定的构造方法</span></span><br><span class="line">		<span class="comment">// 在反射中，根据类型获取方法时：基本类型（int、char...）和包装类（Integer、Character...）是不同的类型</span></span><br><span class="line">		Constructor&lt;?&gt; constructorWithArgs = perClass.getConstructor(<span class="keyword">int</span>.class);</span><br><span class="line"><span class="comment">//		System.out.println(constructor);</span></span><br><span class="line">		Constructor&lt;?&gt; constructorNoArgs = perClass.getConstructor();</span><br><span class="line"><span class="comment">//		System.out.println(constructorNoArgs);</span></span><br><span class="line">		Constructor&lt;?&gt; declaredConstructor = perClass.getDeclaredConstructor(String.class);</span><br><span class="line"><span class="comment">//		System.out.println(declaredConstructor);</span></span><br><span class="line">		<span class="comment">// 根据获取的构造方法，获取对象实例。</span></span><br><span class="line">		Person personWithArgs = (Person) constructorWithArgs</span><br><span class="line">				.newInstance(<span class="number">12</span>);<span class="comment">/* 因为constructorWithArgs是有参构造方法（Integer），因此需要传入一个Integer值 */</span></span><br><span class="line"><span class="comment">//		System.out.println(personWithArgs);</span></span><br><span class="line">		Person personNoArgs = (Person) constructorNoArgs.newInstance();<span class="comment">/* 因为constructorNoArgs是无参构造方法，因此不需要传值 */</span></span><br><span class="line"><span class="comment">//		System.out.println(personNoArgs);</span></span><br><span class="line">		<span class="comment">// 根据获取的private构造方法，获取对象实例。</span></span><br><span class="line">		declaredConstructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">		Person personPrivate = (Person) declaredConstructor.newInstance(<span class="string">"zs"</span>);</span><br><span class="line"><span class="comment">//		System.out.println(personPrivate);</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="反射的应用"><a href="#反射的应用" class="headerlink" title="反射的应用"></a>反射的应用</h2><ol>
+<li><p>动态加载类 和 方法</p>
+<p> 想要动态的执行任何一个类里面的任何一个方法。即程序在运行之前并不知道要调用哪个类的哪个方法，而在运行时才能将类名和方法名解析出来，才会知道该类的属性和信息。</p>
+<p> 配置文件：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">className=Reflect.Student</span><br><span class="line">methodName=sayHi</span><br></pre></td></tr></table></figure>
+
+<p> 主程序：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dynamic</span><span class="params">()</span> <span class="keyword">throws</span> FileNotFoundException, IOException, NoSuchMethodException, SecurityException,</span></span><br><span class="line"><span class="function">			IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException </span>&#123;</span><br><span class="line">		<span class="comment">// 动态加载类 和 方法</span></span><br><span class="line">		Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">		prop.load(<span class="keyword">new</span> FileReader(<span class="string">"class.txt"</span>));</span><br><span class="line">		String className = prop.getProperty(<span class="string">"className"</span>);</span><br><span class="line">		String methodName = prop.getProperty(<span class="string">"methodName"</span>);</span><br><span class="line">		Class&lt;?&gt; forclass = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			forclass = Class.forName(className);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		Method method = forclass.getMethod(methodName);</span><br><span class="line">		method.invoke(forclass.newInstance());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反射可以越过泛型检查</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">genericity</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException </span>&#123;</span><br><span class="line">		ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">		list.add(<span class="number">1</span>);</span><br><span class="line">		list.add(<span class="number">2</span>);</span><br><span class="line">		list.add(<span class="number">3</span>);</span><br><span class="line"><span class="comment">//		list.add("I'm not a Integer");/*The method add(Integer) in the type ArrayList&lt;Integer&gt; is not applicable for the arguments (String)*/</span></span><br><span class="line">		Class&lt;?&gt; listClass = list.getClass();</span><br><span class="line">		Method method = listClass.getMethod(<span class="string">"add"</span>, Object.class);</span><br><span class="line">		method.invoke(list, <span class="string">"I'm not a Integer"</span>);</span><br><span class="line">		System.out.println(list);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反射可以设置一个通用的属性<code>setXxx()</code>方法</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/*</span></span><br><span class="line"><span class="comment"> * public class Person&#123;</span></span><br><span class="line"><span class="comment"> * 	private String name;</span></span><br><span class="line"><span class="comment"> * 	public void setName(String name)&#123;</span></span><br><span class="line"><span class="comment"> * 		this.name = name;</span></span><br><span class="line"><span class="comment"> * 	&#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> obj 指定赋值的对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> propertyName 指定赋值的属性名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value 指定赋值的值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setProperty</span><span class="params">(Object obj, String propertyName, Object value)</span> <span class="keyword">throws</span> NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line">	 Class&lt;?&gt; objClass = obj.getClass();</span><br><span class="line">	 Field field = objClass.getDeclaredField(propertyName);</span><br><span class="line">	 field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">	 field.set(obj, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	Person person = <span class="keyword">new</span> Person();</span><br><span class="line">	setProperty(person, <span class="string">"name"</span>, <span class="string">"zs"</span>);</span><br><span class="line">	setProperty(person, <span class="string">"age"</span>, <span class="number">23</span>);</span><br><span class="line">	Student student = <span class="keyword">new</span> Student();</span><br><span class="line">	setProperty(student, <span class="string">"score"</span>, <span class="number">99</span>);</span><br><span class="line">	System.out.println(person.getName() + <span class="string">","</span> + person.getAge());</span><br><span class="line">	System.out.println(student.getScore());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Colin谢谢您的支持！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -424,17 +330,21 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java高级</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">反射机制</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态代理</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">线程</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -442,16 +352,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/14/【白话版】Java多线程机制 学习笔记/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/28/Java——反射机制与动态代理 学习笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/19/Java——自定义RPC框架 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java——自定义RPC框架 学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -466,489 +435,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java基础实战（一）万年历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/06/Java基础实战（一）万年历/">Java基础实战（一）：万年历</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/06/Java基础实战（一）万年历/" class="archive-article-date">
-  	<time datetime="2019-04-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目：已知1900年1月1日是星期一，求2019年10月的日历。"><a href="#题目：已知1900年1月1日是星期一，求2019年10月的日历。" class="headerlink" title="题目：已知1900年1月1日是星期一，求2019年10月的日历。"></a>题目：已知1900年1月1日是星期一，求2019年10月的日历。</h2><h2 id="1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？"><a href="#1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？" class="headerlink" title="1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？"></a>1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？</h2><blockquote>
-<p>我们来利用循环推导一下，不要怕麻烦，多写几遍自然会得出规律的！</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java初级</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">初级实战</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/06/Java基础实战（一）万年历/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#反射的基本概念"><span class="toc-number">1.</span> <span class="toc-text">反射的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射提供的功能"><span class="toc-number">2.</span> <span class="toc-text">反射提供的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取反射对象（即反射入口）：Class"><span class="toc-number">3.</span> <span class="toc-text">获取反射对象（即反射入口）：Class</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">3.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射的应用"><span class="toc-number">4.</span> <span class="toc-text">反射的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">5.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">6.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">7.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-【白话版】JavaIO流 学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/27/【白话版】JavaIO流 学习笔记/">白话版：JavaIO流 学习笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/27/【白话版】JavaIO流 学习笔记/" class="archive-article-date">
-  	<time datetime="2019-03-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>理解本章就想象着总有一根管子怼来怼去，怼到水桶上…</p>
-</blockquote>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li>Java流式输入/输出流</li>
-<li>Java流类的分类</li>
-<li>输入/输出流类</li>
-<li>常见的节点流和处理流</li>
-<li>文件流</li>
-<li>缓冲流</li>
-<li>数据流</li>
-<li>转换流</li>
-<li>Print流</li>
-<li>Object流
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IO</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/27/【白话版】JavaIO流 学习笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo博客的安装与本地配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/16/Hexo博客的安装与本地配置/">Hexo博客的安装与本地配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/16/Hexo博客的安装与本地配置/" class="archive-article-date">
-  	<time datetime="2019-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>欢迎使用 Hexo， <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a> 将帮助您快速上手。如果您在使用过程中遇到问题，请查看 <a href="https://hexo.io/zh-cn/docs/troubleshooting" target="_blank" rel="noopener">问题解答</a> 中的解答，或者在 GitHub、Google Group 上提问。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/16/Hexo博客的安装与本地配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo博客如何远程部署到GitHub及使用yilia主题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/16/Hexo博客如何远程部署到GitHub及使用yilia主题/">Hexo博客如何远程部署到GitHub及使用yilia主题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/16/Hexo博客如何远程部署到GitHub及使用yilia主题/" class="archive-article-date">
-  	<time datetime="2019-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如何安装Hexo博客与本地配置？请浏览：<strong><a href="https://liuandcolin630.github.io/2019/07/26/Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE/" target="_blank" rel="noopener">Hexo博客的安装与本地配置—hexo</a></strong> 或 <strong><a href="https://blog.csdn.net/Colincoin/article/details/102594799" target="_blank" rel="noopener">【超详细】Hexo博客的安装与本地配置—CSDN</a></strong> 如果未完成前面文章的内容，将无法正确的将Hexo博客远程部署到GitHub上。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/16/Hexo博客如何远程部署到GitHub及使用yilia主题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-您好！科林！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/您好！科林！/">您好！科林！</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/15/您好！科林！/" class="archive-article-date">
-  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/您好！科林！/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/15/hello-world/" class="archive-article-date">
-  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -971,8 +483,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
