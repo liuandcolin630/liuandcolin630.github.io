@@ -6,25 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java版：LeetCode 19. Remove Nth Node From End of List | Hexo</title>
+  <title>Oracle——视图 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LeetCode 19. Remove Nth Node From End of Listhttps://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/难度：Medium题目描述：Given a linked list, remove the n-th node from the end of list and return i">
-<meta name="keywords" content="数据结构,LeetCode,Java">
+  <meta name="description" content="视图的基本概念视图属于数据库对象之一。数据库对象还包括：表、视图、序列、索引、同义词、触发器等。 视图：是一个虚表。建立在表的基础之上。  注意：视图里的字段可以来自于一张表或多张表里。  如图：  视图的创建语法123create view 视图名as     select ...语句  视图的好处 简化查询  如果我们要查询部门编号为20的员工部分信息和部门名称的话，需要查两个表才可以。原始S">
+<meta name="keywords" content="数据库,Oracle,学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java版：LeetCode 19. Remove Nth Node From End of List">
-<meta property="og:url" content="http://yoursite.com/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/index.html">
+<meta property="og:title" content="Oracle——视图 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/11/11/Oracle——视图 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 19. Remove Nth Node From End of Listhttps://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/难度：Medium题目描述：Given a linked list, remove the n-th node from the end of list and return i">
+<meta property="og:description" content="视图的基本概念视图属于数据库对象之一。数据库对象还包括：表、视图、序列、索引、同义词、触发器等。 视图：是一个虚表。建立在表的基础之上。  注意：视图里的字段可以来自于一张表或多张表里。  如图：  视图的创建语法123create view 视图名as     select ...语句  视图的好处 简化查询  如果我们要查询部门编号为20的员工部分信息和部门名称的话，需要查两个表才可以。原始S">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXfhT.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXRA0.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXWNV.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXE6J.png">
-<meta property="og:updated_time" content="2019-10-16T13:50:15.529Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/07/MkBx0O.png">
+<meta property="og:updated_time" content="2019-11-11T03:35:07.875Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java版：LeetCode 19. Remove Nth Node From End of List">
-<meta name="twitter:description" content="LeetCode 19. Remove Nth Node From End of Listhttps://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/难度：Medium题目描述：Given a linked list, remove the n-th node from the end of list and return i">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/10/16/KFXfhT.png">
+<meta name="twitter:title" content="Oracle——视图 学习笔记">
+<meta name="twitter:description" content="视图的基本概念视图属于数据库对象之一。数据库对象还包括：表、视图、序列、索引、同义词、触发器等。 视图：是一个虚表。建立在表的基础之上。  注意：视图里的字段可以来自于一张表或多张表里。  如图：  视图的创建语法123create view 视图名as     select ...语句  视图的好处 简化查询  如果我们要查询部门编号为20的员工部分信息和部门名称的话，需要查两个表才可以。原始S">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/07/MkBx0O.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -148,53 +145,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode题解19. Remove Nth Node From End of List" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Oracle——视图 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java版：LeetCode 19. Remove Nth Node From End of List
+      Oracle——视图 学习笔记
     </h1>
   
 
         
-        <a href="/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/" class="archive-article-date">
-  	<time datetime="2019-10-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
+        <a href="/2019/11/11/Oracle——视图 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-11-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="LeetCode-19-Remove-Nth-Node-From-End-of-List"><a href="#LeetCode-19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LeetCode 19. Remove Nth Node From End of List"></a>LeetCode 19. Remove Nth Node From End of List</h1><h2 id="https-leetcode-cn-com-problems-remove-nth-node-from-end-of-list"><a href="#https-leetcode-cn-com-problems-remove-nth-node-from-end-of-list" class="headerlink" title="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/"></a><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/</a></h2><h1 id="难度：Medium"><a href="#难度：Medium" class="headerlink" title="难度：Medium"></a>难度：<strong>Medium</strong></h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>Given a linked list, remove the n-th node from the end of list and return its head.</p>
-<a id="more"></a>
+        <h2 id="视图的基本概念"><a href="#视图的基本概念" class="headerlink" title="视图的基本概念"></a>视图的基本概念</h2><p>视图属于数据库对象之一。数据库对象还包括：表、视图、序列、索引、同义词、触发器等。</p>
+<p>视图：是一个虚表。建立在表的基础之上。</p>
+<blockquote>
+<p>注意：视图里的字段可以来自于一张表或多张表里。</p>
+</blockquote>
+<p>如图：</p>
+<p><img src="https://s2.ax1x.com/2019/11/07/MkBx0O.png" alt="MkBx0O.png"></p>
+<h2 id="视图的创建语法"><a href="#视图的创建语法" class="headerlink" title="视图的创建语法"></a>视图的创建语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create view 视图名</span><br><span class="line">as </span><br><span class="line">    select ...语句</span><br></pre></td></tr></table></figure>
 
-<h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h2><p>Example 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</span><br><span class="line"></span><br><span class="line">After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</span><br></pre></td></tr></table></figure>
+<h2 id="视图的好处"><a href="#视图的好处" class="headerlink" title="视图的好处"></a>视图的好处</h2><ul>
+<li>简化查询</li>
+</ul>
+<p>如果我们要查询部门编号为20的员工部分信息和部门名称的话，需要查两个表才可以。<br>原始SQL:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select d.deptno 部门编号, e.empno, e.ename, e.sal, e.comm, d.dname</span><br><span class="line">from emp e, dept d </span><br><span class="line">where e.deptno = d.deptno and d.deptno=20;</span><br></pre></td></tr></table></figure>
 
-<p>Note:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Given n will always be valid.</span><br></pre></td></tr></table></figure>
+<p>查询出的结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  部门编号      EMPNO ENAME             SAL       COMM DNAME</span><br><span class="line">---------- ---------- ---------- ---------- ---------- --------------</span><br><span class="line">        20       7369 SMITH             800            RESEARCH</span><br><span class="line">        20       7566 JONES            2975            RESEARCH</span><br><span class="line">        20       7788 SCOTT            3000            RESEARCH</span><br><span class="line">        20       7876 ADAMS            1100            RESEARCH</span><br><span class="line">        20       7902 FORD             3000            RESEARCH</span><br></pre></td></tr></table></figure>
 
-<h2 id="该题已提供代码："><a href="#该题已提供代码：" class="headerlink" title="该题已提供代码："></a>该题已提供代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>明显这样的做法太麻烦了，我们只需要将如上的结果集放入（比如A视图），那么以后需要查询如上类型的数据时，只需要查询A视图，所以我们开始创建视图：</p>
+<blockquote>
+<p>如果你在<code>scott</code>用户下，默认是没有权限创建视图的，你需要修改权限：<br>创建权限：<code>revoke create view from scott;</code><br>撤销权限：<code>grant create view to scott;</code></p>
+</blockquote>
+<ol>
+<li><p>进入<code>sys</code>用户。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">请输入用户名:  sys as sysdba</span><br><span class="line">输入口令:</span><br><span class="line"></span><br><span class="line">连接到:</span><br><span class="line">Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production</span><br><span class="line">With the Partitioning, OLAP, Data Mining and Real Application Testing options</span><br></pre></td></tr></table></figure>
 
-<h2 id="解题思路（快慢指针思想）"><a href="#解题思路（快慢指针思想）" class="headerlink" title="解题思路（快慢指针思想）"></a>解题思路（快慢指针思想）</h2><ol>
-<li>初始化一个<code>DummyNode</code>，让快慢指针都指向它，需要删除第<code>n</code>个节点，就将该节点的前驱直接指向该节点的后继即可。</li>
+
+</li>
 </ol>
-<p><img src="https://s2.ax1x.com/2019/10/16/KFXfhT.png" alt="KFXfhT.png"></p>
 <ol start="2">
-<li>先将快指针移动到第<code>n</code>的位置上。</li>
+<li>修改<code>scott</code>用户的权限。</li>
 </ol>
-<p><img src="https://s2.ax1x.com/2019/10/16/KFXRA0.png" alt="KFXRA0.png"></p>
-<ol start="3">
-<li>再将双指针同时移动。</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/10/16/KFXWNV.png" alt="KFXWNV.png"></p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummyNode.next = head;</span><br><span class="line">        ListNode slow = dummyNode;</span><br><span class="line">        ListNode fast = dummyNode;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow.next = slow.next.next;</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; grant create view to scott;</span><br><span class="line"></span><br><span class="line">授权成功。</span><br></pre></td></tr></table></figure>
 
-<h2 id="LeetCode测试结果"><a href="#LeetCode测试结果" class="headerlink" title="LeetCode测试结果"></a>LeetCode测试结果</h2><p><img src="https://s2.ax1x.com/2019/10/16/KFXE6J.png" alt="KFXE6J.png"></p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>至此，<strong>Remove Nth Node From End of List</strong> 解决完毕！</p>
+<p>创建视图（用视图封装以上的查询结果）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; create  view  myempview</span><br><span class="line">  2  as</span><br><span class="line">  3  select d.deptno 部门编号,e.empno,e.ename,e.sal,e.comm ,d.dname from emp e ,dept d where e.deptno=d.deptno and  d.deptno=20;</span><br><span class="line"></span><br><span class="line">视图已创建。</span><br></pre></td></tr></table></figure>
+
+<p>然后我们再查询上述数据（用视图简化查询）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select * from myempview;</span><br><span class="line"></span><br><span class="line">  部门编号      EMPNO ENAME             SAL       COMM DNAME</span><br><span class="line">---------- ---------- ---------- ---------- ---------- --------------</span><br><span class="line">        20       7369 SMITH             800            RESEARCH</span><br><span class="line">        20       7566 JONES            2975            RESEARCH</span><br><span class="line">        20       7788 SCOTT            3000            RESEARCH</span><br><span class="line">        20       7876 ADAMS            1100            RESEARCH</span><br><span class="line">        20       7902 FORD             3000            RESEARCH</span><br></pre></td></tr></table></figure>
+
+<p>明显简化了查询！</p>
+<ul>
+<li>增加数据的安全性。可以将其他开发人员需要的某些字段封装到一个视图中再交付。</li>
+</ul>
+<h2 id="操作视图"><a href="#操作视图" class="headerlink" title="操作视图"></a>操作视图</h2><p>DML（增删改） + Query（查询） 和表是完全一致。</p>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>如果在创建视图时，给某个字段起了别名，那么在视图中就只能识别该“别名”而不能识别原来真实的字段名。</li>
+<li>在Oracle中，如果更新操作是针对单表，可以批量更新数据；但如果是 “多张表联合更新”，则必须明确更新哪一条数据，不能出现歧义。即单表可以任意更新，但是一次性更新多张表，则数据必须是唯一的那一条数据。因此如果<code>update</code>操作涉及了多张表，则很容易出现异常，<strong>建议，<code>update</code>只对单表进行操作</strong>。</li>
+<li>如果对视图进行修改（即DML操作），会影响原表的数据。<strong>所以一般建议对视图仅仅进行查询操作，不要进行DML操作</strong>。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>如果非要对视图进行增删改，还需要遵循一些严格的苛刻条件：</p>
+<ol>
+<li>当视图中存在以下之一时，不能 insert / update ：<br> <code>group by</code>、<code>distinct</code>、组函数（<code>count(*)</code>、<code>sum()</code>…）、列的定义为表达式&gt;（比如 <code>sal + 100</code>）</li>
+<li>当视图中存在以下之一时， 不能 delete<br>  <code>group by</code>、<code>distinct</code>、<code>rownum伪劣</code><br>综上所述：<strong>视图只查看，不要DML。</strong></li>
+</ol>
+</blockquote>
+<h2 id="视图选项"><a href="#视图选项" class="headerlink" title="视图选项"></a>视图选项</h2><ol>
+<li><p>with check option</p>
+<p> 语法：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create view 视图名</span><br><span class="line">as</span><br><span class="line">select 语句...</span><br><span class="line">with check option;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<pre><code>`with check option`的作用：在视图创建时，如果有`where`语句，那么在增删改的时候必须满足该`where`语句，否则报错。即限制对视图操作时，必须满足`where`子句。
+
+之前的视图，如果对`where`子句限制的字段进行修改的话，可以修改成功，但是却违背了我们的初衷，我们既然把那些满足`where`限制的数据筛选出来创建为视图，我们就不应该修改它了，所以我们需要设置`with check option`：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> create view myempview</span><br><span class="line">  2  as</span><br><span class="line">  3  select empno ,ename ,deptno from emp where deptno = 20 ;</span><br><span class="line"></span><br><span class="line">视图已创建。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from myempview;</span><br><span class="line"></span><br><span class="line">     EMPNO ENAME          DEPTNO</span><br><span class="line">---------- ---------- ----------</span><br><span class="line">      7369 SMITH              20</span><br><span class="line">      7566 JONES              20</span><br><span class="line">      7788 SCOTT              20</span><br><span class="line">      7876 ADAMS              20</span><br><span class="line">      7902 FORD               20</span><br><span class="line"></span><br><span class="line">SQL&gt; update myempview set deptno = 40 where empno = 7902 ;</span><br><span class="line"></span><br><span class="line">已更新 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from myempview;</span><br><span class="line"></span><br><span class="line">     EMPNO ENAME          DEPTNO</span><br><span class="line">---------- ---------- ----------</span><br><span class="line">      7369 SMITH              20</span><br><span class="line">      7566 JONES              20</span><br><span class="line">      7788 SCOTT              20</span><br><span class="line">      7876 ADAMS              20</span><br></pre></td></tr></table></figure>
+
+
+设置`with check option`：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; create view myempview</span><br><span class="line">  2  as</span><br><span class="line">  3  select empno, ename, deptno from emp where deptno = 20</span><br><span class="line">  4  with check option;</span><br><span class="line"></span><br><span class="line">视图已创建。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from myempview;</span><br><span class="line"></span><br><span class="line">     EMPNO ENAME          DEPTNO</span><br><span class="line">---------- ---------- ----------</span><br><span class="line">      7369 SMITH              20</span><br><span class="line">      7566 JONES              20</span><br><span class="line">      7788 SCOTT              20</span><br><span class="line">      7876 ADAMS              20</span><br><span class="line"></span><br><span class="line">SQL&gt; update myempview set deptno = 40 where empno = 7876;</span><br><span class="line">update myempview set deptno = 40 where empno = 7876</span><br><span class="line">       *</span><br><span class="line">第 1 行出现错误:</span><br><span class="line">ORA-01402: 视图 WITH CHECK OPTION where 子句违规</span><br></pre></td></tr></table></figure></code></pre><ol start="2">
+<li>with read only <strong>强烈建议设置</strong></li>
+</ol>
+<p>因为视图只建议查看，不建议DML。因为对视图的操作，会影响原表，所以在视图上，我们只需要看看就好，真的需要修改要去原表进行修改。<strong>那么就应该对视图均加只读的设置。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; create view myempview</span><br><span class="line">  2  as</span><br><span class="line">  3  select empno, ename, deptno from emp where deptno = 20</span><br><span class="line">  4  with read only;</span><br><span class="line"></span><br><span class="line">视图已创建。</span><br><span class="line"></span><br><span class="line">SQL&gt; update myempview set deptno = 40 where empno = 7876;</span><br><span class="line">update myempview set deptno = 40 where empno = 7876</span><br><span class="line">                     *</span><br><span class="line">第 1 行出现错误:</span><br><span class="line">ORA-42399: 无法对只读视图执行 DML 操作</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SQL&gt; delete from myempview;</span><br><span class="line">delete from myempview</span><br><span class="line">            *</span><br><span class="line">第 1 行出现错误:</span><br><span class="line">ORA-42399: 无法对只读视图执行 DML 操作</span><br></pre></td></tr></table></figure>
+
+<h2 id="视图分类"><a href="#视图分类" class="headerlink" title="视图分类"></a>视图分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">			                    简单视图				复杂视图</span><br><span class="line"></span><br><span class="line">表的数量			              1张				      1/n张</span><br><span class="line"></span><br><span class="line">函数（比如`count()`、`sum()`...）	没有				       有</span><br><span class="line"></span><br><span class="line">分组（比如`group by`...）		     没有				        有</span><br></pre></td></tr></table></figure>
+
 <h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
       
 
@@ -229,15 +284,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -293,7 +348,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/11/Oracle——视图 学习笔记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -307,18 +362,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/19/Java——自定义RPC框架 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java——自定义RPC框架 学习笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/10/01/LeetCode题解13. Roman to Integer/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java版：Roman to Integer</div>
+    <a href="/2019/11/09/Oracle——三大范式与PowerDesigner 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Oracle——三大范式与PowerDesigner 学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -345,7 +391,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-19-Remove-Nth-Node-From-End-of-List"><span class="toc-number">1.</span> <span class="toc-text">LeetCode 19. Remove Nth Node From End of List</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-leetcode-cn-com-problems-remove-nth-node-from-end-of-list"><span class="toc-number">1.1.</span> <span class="toc-text">https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#难度：Medium"><span class="toc-number">2.</span> <span class="toc-text">难度：Medium</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述："><span class="toc-number">2.1.</span> <span class="toc-text">题目描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入样例"><span class="toc-number">2.2.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#该题已提供代码："><span class="toc-number">2.3.</span> <span class="toc-text">该题已提供代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路（快慢指针思想）"><span class="toc-number">2.4.</span> <span class="toc-text">解题思路（快慢指针思想）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.5.</span> <span class="toc-text">实现代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode测试结果"><span class="toc-number">2.6.</span> <span class="toc-text">LeetCode测试结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">3.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">3.2.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">3.3.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#视图的基本概念"><span class="toc-number">1.</span> <span class="toc-text">视图的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图的创建语法"><span class="toc-number">2.</span> <span class="toc-text">视图的创建语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图的好处"><span class="toc-number">3.</span> <span class="toc-text">视图的好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作视图"><span class="toc-number">4.</span> <span class="toc-text">操作视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图选项"><span class="toc-number">5.</span> <span class="toc-text">视图选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图分类"><span class="toc-number">6.</span> <span class="toc-text">视图分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">7.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">8.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">9.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
                     </div>
                 </span>
             </div>

@@ -6,25 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java版：LeetCode 19. Remove Nth Node From End of List | Hexo</title>
+  <title>Oracle——三大范式与PowerDesigner 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LeetCode 19. Remove Nth Node From End of Listhttps://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/难度：Medium题目描述：Given a linked list, remove the n-th node from the end of list and return i">
-<meta name="keywords" content="数据结构,LeetCode,Java">
+  <meta name="description" content="范式 NF第一范式 1NF确保每列的原子性（不可再分） 比如： 12345student表：	id	name	address		1	zs	    陕西省西安市长安区  可以发现address部分仍然是可以继续拆分的，所以不满足第一范式。我们需要继续拆分： 12id	name	province    city    zone1   zs      陕西省      西安市   长安区  此时不可再拆">
+<meta name="keywords" content="数据库,Oracle,学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java版：LeetCode 19. Remove Nth Node From End of List">
-<meta property="og:url" content="http://yoursite.com/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/index.html">
+<meta property="og:title" content="Oracle——三大范式与PowerDesigner 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/11/09/Oracle——三大范式与PowerDesigner 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LeetCode 19. Remove Nth Node From End of Listhttps://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/难度：Medium题目描述：Given a linked list, remove the n-th node from the end of list and return i">
+<meta property="og:description" content="范式 NF第一范式 1NF确保每列的原子性（不可再分） 比如： 12345student表：	id	name	address		1	zs	    陕西省西安市长安区  可以发现address部分仍然是可以继续拆分的，所以不满足第一范式。我们需要继续拆分： 12id	name	province    city    zone1   zs      陕西省      西安市   长安区  此时不可再拆">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXfhT.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXRA0.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXWNV.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/10/16/KFXE6J.png">
-<meta property="og:updated_time" content="2019-10-16T13:50:15.529Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/07/MkDpAe.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/07/MkBz7D.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/11/MMrx0g.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/11/MMrO6f.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/11/MMrXX8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/11/MMrqpt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/11/MMrL1P.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/11/MMrvnS.png">
+<meta property="og:updated_time" content="2019-11-11T03:25:59.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java版：LeetCode 19. Remove Nth Node From End of List">
-<meta name="twitter:description" content="LeetCode 19. Remove Nth Node From End of Listhttps://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/难度：Medium题目描述：Given a linked list, remove the n-th node from the end of list and return i">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/10/16/KFXfhT.png">
+<meta name="twitter:title" content="Oracle——三大范式与PowerDesigner 学习笔记">
+<meta name="twitter:description" content="范式 NF第一范式 1NF确保每列的原子性（不可再分） 比如： 12345student表：	id	name	address		1	zs	    陕西省西安市长安区  可以发现address部分仍然是可以继续拆分的，所以不满足第一范式。我们需要继续拆分： 12id	name	province    city    zone1   zs      陕西省      西安市   长安区  此时不可再拆">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/07/MkDpAe.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -148,53 +152,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode题解19. Remove Nth Node From End of List" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Oracle——三大范式与PowerDesigner 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java版：LeetCode 19. Remove Nth Node From End of List
+      Oracle——三大范式与PowerDesigner 学习笔记
     </h1>
   
 
         
-        <a href="/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/" class="archive-article-date">
-  	<time datetime="2019-10-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
+        <a href="/2019/11/09/Oracle——三大范式与PowerDesigner 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-11-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="LeetCode-19-Remove-Nth-Node-From-End-of-List"><a href="#LeetCode-19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LeetCode 19. Remove Nth Node From End of List"></a>LeetCode 19. Remove Nth Node From End of List</h1><h2 id="https-leetcode-cn-com-problems-remove-nth-node-from-end-of-list"><a href="#https-leetcode-cn-com-problems-remove-nth-node-from-end-of-list" class="headerlink" title="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/"></a><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/</a></h2><h1 id="难度：Medium"><a href="#难度：Medium" class="headerlink" title="难度：Medium"></a>难度：<strong>Medium</strong></h1><h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>Given a linked list, remove the n-th node from the end of list and return its head.</p>
-<a id="more"></a>
+        <h2 id="范式-NF"><a href="#范式-NF" class="headerlink" title="范式 NF"></a>范式 NF</h2><h2 id="第一范式-1NF"><a href="#第一范式-1NF" class="headerlink" title="第一范式 1NF"></a>第一范式 1NF</h2><p>确保每列的原子性（不可再分）</p>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">student表：</span><br><span class="line"></span><br><span class="line">	id	name	address</span><br><span class="line">	</span><br><span class="line">	1	zs	    陕西省西安市长安区</span><br></pre></td></tr></table></figure>
 
-<h2 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h2><p>Example 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</span><br><span class="line"></span><br><span class="line">After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</span><br></pre></td></tr></table></figure>
+<p>可以发现<code>address</code>部分仍然是可以继续拆分的，所以不满足第一范式。我们需要继续拆分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id	name	province    city    zone</span><br><span class="line">1   zs      陕西省      西安市   长安区</span><br></pre></td></tr></table></figure>
 
-<p>Note:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Given n will always be valid.</span><br></pre></td></tr></table></figure>
-
-<h2 id="该题已提供代码："><a href="#该题已提供代码：" class="headerlink" title="该题已提供代码："></a>该题已提供代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解题思路（快慢指针思想）"><a href="#解题思路（快慢指针思想）" class="headerlink" title="解题思路（快慢指针思想）"></a>解题思路（快慢指针思想）</h2><ol>
-<li>初始化一个<code>DummyNode</code>，让快慢指针都指向它，需要删除第<code>n</code>个节点，就将该节点的前驱直接指向该节点的后继即可。</li>
+<p>此时不可再拆分了，即满足了第一范式。</p>
+<h2 id="第二范式-2NF"><a href="#第二范式-2NF" class="headerlink" title="第二范式 2NF"></a>第二范式 2NF</h2><p>我们从两个层面来理解：</p>
+<ul>
+<li><p>宏观定义：每张表只描述一件事情（比如：一个student表描述的全部是学生信息，而不包括教师、什么猫狗等）</p>
+</li>
+<li><p>微观定义：通过2NF定义：除了主键以外的其他字段（列），都依赖于主键。（依赖：A依赖于B，即“决定”的反义词，B决定了A）即<code>a,b,c,d,e : a-&gt;b,a-&gt;c,a-&gt;d,a-&gt;e</code></p>
+</li>
+</ul>
+<p>如图：</p>
+<p><img src="https://s2.ax1x.com/2019/11/07/MkDpAe.png" alt="MkDpAe.png"></p>
+<h2 id="第三范式-3NF"><a href="#第三范式-3NF" class="headerlink" title="第三范式 3NF"></a>第三范式 3NF</h2><p>首先，什么叫传递依赖？</p>
+<p>A依赖于B，则B决定了A。那么X决定了Y，Y决定了Z（<code>X-&gt;Y-&gt;Z</code>），那么X就传递决定了Z，Z则传递依赖于X。</p>
+<p>那么，第三范式的微观定义：除了主键以外的其他字段，都不传递依赖于主键。<br>比如：<code>a    b   c   d</code>，d依赖于c，c依赖于a，那么d就传递依赖于a，就不满足第三范式。</p>
+<p>如图：</p>
+<p><img src="https://s2.ax1x.com/2019/11/07/MkBz7D.png" alt="MkBz7D.png"></p>
+<p>由此可得，2张表需要1个外键，3张表需要2个外键，N张表需要N-1个外键。</p>
+<p>但是如果有一张表有100个字段，我们要判断是否属于第三范式，是不是特别的困难？首先在100个字段中寻找3个具有传递依赖关系特别困难，而且就算找到了，将100个字段拆分成多个表该如何拆呢？也十分困难，由此我们需要注意：</p>
+<ul>
+<li>要么满足第N范式，必须先满足第N-1范式。</li>
+<li>三大范式可以帮助我们规范数据库的设计。好处是防止数据混乱、数据冗余（重复）。而缺点是很难严格排除出所有不满足的表，并且难以拆分，而且会一定程度影响性能。<br>  比如：a表不满足某一范式，但查询a表，只是单表查询。满足范式要求后，拆为多表，在查询时就要涉及联合查询、关联查询。多表查询肯定会比单表查询更加消耗性能。</li>
+<li>建议：三大范式只是一个建议，不必严格遵守。<strong>在实际使用时，需要在“规范性”和“易用性、性能”间综合考虑</strong>。</li>
+</ul>
+<h2 id="数据库设计软件-PowerDesigner"><a href="#数据库设计软件-PowerDesigner" class="headerlink" title="数据库设计软件 PowerDesigner"></a>数据库设计软件 PowerDesigner</h2><ol>
+<li><p>打开<code>PowerDesigner</code>，选择<code>Create Model...</code> 或者 在<code>File</code> -&gt; <code>New Model</code>等其他方式。</p>
+<p> <img src="https://s2.ax1x.com/2019/11/11/MMrx0g.png" alt="MMrx0g.png"></p>
+</li>
+<li><p>进入新窗口，选择<code>Model Types</code> -&gt; <code>Physical Data Model</code> -&gt; <code>Physical Diagram</code>。在<code>Model name</code>处自定义名称，<code>DBMS</code>处选择<code>Oracle 11g</code>即可OK。</p>
+<p> <img src="https://s2.ax1x.com/2019/11/11/MMrO6f.png" alt="MMrO6f.png"></p>
+</li>
+<li><p>生成画板，在右侧<code>Physical Diagram</code>处，可选择<code>Package</code>、<code>Table</code>、<code>View</code>、<code>Reference</code>、<code>Procedure</code>、<code>File</code>。此次演示只使用<code>Table</code>。</p>
+<p> <img src="https://s2.ax1x.com/2019/11/11/MMrXX8.png" alt="MMrXX8.png"></p>
+</li>
+<li><p>选好后，在画板上点击即可生成。双击可进入详细配置。</p>
+<p> <img src="https://s2.ax1x.com/2019/11/11/MMrqpt.png" alt="MMrqpt.png"><br> <img src="https://s2.ax1x.com/2019/11/11/MMrL1P.png" alt="MMrL1P.png"><br> <img src="https://s2.ax1x.com/2019/11/11/MMrvnS.png" alt="MMrvnS.png"></p>
+</li>
 </ol>
-<p><img src="https://s2.ax1x.com/2019/10/16/KFXfhT.png" alt="KFXfhT.png"></p>
-<ol start="2">
-<li>先将快指针移动到第<code>n</code>的位置上。</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/10/16/KFXRA0.png" alt="KFXRA0.png"></p>
-<ol start="3">
-<li>再将双指针同时移动。</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/10/16/KFXWNV.png" alt="KFXWNV.png"></p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode dummyNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummyNode.next = head;</span><br><span class="line">        ListNode slow = dummyNode;</span><br><span class="line">        ListNode fast = dummyNode;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow.next = slow.next.next;</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="LeetCode测试结果"><a href="#LeetCode测试结果" class="headerlink" title="LeetCode测试结果"></a>LeetCode测试结果</h2><p><img src="https://s2.ax1x.com/2019/10/16/KFXE6J.png" alt="KFXE6J.png"></p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>至此，<strong>Remove Nth Node From End of List</strong> 解决完毕！</p>
 <h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
       
 
@@ -229,15 +249,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -293,7 +313,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/11/LeetCode题解19. Remove Nth Node From End of List/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/09/Oracle——三大范式与PowerDesigner 学习笔记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -307,18 +327,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/19/Java——自定义RPC框架 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/11/Oracle——视图 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java——自定义RPC框架 学习笔记
+          Oracle——视图 学习笔记
         
       </div>
     </a>
   
   
-    <a href="/2019/10/01/LeetCode题解13. Roman to Integer/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java版：Roman to Integer</div>
+    <a href="/2019/11/05/Oracle——约束 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Oracle——约束 学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -345,7 +365,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-19-Remove-Nth-Node-From-End-of-List"><span class="toc-number">1.</span> <span class="toc-text">LeetCode 19. Remove Nth Node From End of List</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-leetcode-cn-com-problems-remove-nth-node-from-end-of-list"><span class="toc-number">1.1.</span> <span class="toc-text">https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#难度：Medium"><span class="toc-number">2.</span> <span class="toc-text">难度：Medium</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述："><span class="toc-number">2.1.</span> <span class="toc-text">题目描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入样例"><span class="toc-number">2.2.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#该题已提供代码："><span class="toc-number">2.3.</span> <span class="toc-text">该题已提供代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路（快慢指针思想）"><span class="toc-number">2.4.</span> <span class="toc-text">解题思路（快慢指针思想）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.5.</span> <span class="toc-text">实现代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode测试结果"><span class="toc-number">2.6.</span> <span class="toc-text">LeetCode测试结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">3.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">3.2.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">3.3.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#范式-NF"><span class="toc-number">1.</span> <span class="toc-text">范式 NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一范式-1NF"><span class="toc-number">2.</span> <span class="toc-text">第一范式 1NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二范式-2NF"><span class="toc-number">3.</span> <span class="toc-text">第二范式 2NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三范式-3NF"><span class="toc-number">4.</span> <span class="toc-text">第三范式 3NF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库设计软件-PowerDesigner"><span class="toc-number">5.</span> <span class="toc-text">数据库设计软件 PowerDesigner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">6.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">7.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">8.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
                     </div>
                 </span>
             </div>
