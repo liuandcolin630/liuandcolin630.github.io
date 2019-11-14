@@ -182,31 +182,16 @@
 </ul>
 <p>生命周期是指：事务从什么时候开始，到什么时候结束。如图：</p>
 <p><img src="https://s2.ax1x.com/2019/11/12/M38hRS.png" alt="M38hRS.png"></p>
-<ol>
-<li><p>事务的开始标识：第一条DML语句。</p>
-</li>
-<li><p>事务的中间过程：各种DML操作。</p>
-</li>
-<li><p>事务的结束标识：有两种情况：</p>
-<ul>
-<li><p>正常结束 也叫 提交：把自己客户端的缓存数据存入数据库里面。<br>  Oracle分为两阶段提交，如图：</p>
-<p>  <img src="https://s2.ax1x.com/2019/11/12/M384xg.png" alt="M384xg.png"></p>
-<p>  正常提交有两部分：</p>
-<ol>
-<li>显式提交：执行<code>commit</code>。</li>
-<li>隐式提交（自动提交）：正常退出<code>（exit 或 Ctrl + c）</code>、DCL(<code>grant...to...</code>, <code>revoke ..from</code>)、DDL(<code>create...</code>、<code>drop...</code>)</li>
-</ol>
-</li>
-<li><p>回滚：对修改后的数据进行撤销、回退。</p>
-<ol>
-<li>显式回滚：执行<code>rollback</code>。</li>
-<li>隐式回滚：异常退出（宕机、断电）</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="提交实例"><a href="#提交实例" class="headerlink" title="提交实例"></a>提交实例</h3><p>测试一下显式提交与隐式提交，启动两个<code>sqlplus</code>进入<code>scott</code>用户下：</p>
+<p>1.事务的开始标识：第一条DML语句。<br>2.事务的中间过程：各种DML操作。<br>3.事务的结束标识：有两种情况：<br>    - 正常结束 也叫 提交：把自己客户端的缓存数据存入数据库里面。<br>        Oracle分为两阶段提交，如图：</p>
+<pre><code>    ![M384xg.png](https://s2.ax1x.com/2019/11/12/M384xg.png)
+
+    正常提交有两部分：
+    - 显式提交：执行`commit`。
+    - 隐式提交（自动提交）：正常退出`（exit 或 Ctrl + c）`、DCL(`grant...to...`, `revoke ..from`)、DDL(`create...`、`drop...`)
+
+- 回滚：对修改后的数据进行撤销、回退。
+    - 显式回滚：执行`rollback`。
+    - 隐式回滚：异常退出（宕机、断电）</code></pre><h3 id="提交实例"><a href="#提交实例" class="headerlink" title="提交实例"></a>提交实例</h3><p>测试一下显式提交与隐式提交，启动两个<code>sqlplus</code>进入<code>scott</code>用户下：</p>
 <ul>
 <li><p>显式查询：<code>commit</code></p>
 <p>  客户端A:</p>
@@ -264,10 +249,32 @@
 <p>  <img src="https://s2.ax1x.com/2019/11/13/MYuDhT.png" alt="MYuDhT.png"></p>
 </li>
 </ul>
+<blockquote>
+<p>三种并发问题是递进关系，即 脏读 -&gt; 不可重复读 -&gt; 幻读。<br>满足幻读必满足不可重复读，满足不可重复读必满足脏读。    </p>
+</blockquote>
 <h3 id="不可重复读和幻读的区别："><a href="#不可重复读和幻读的区别：" class="headerlink" title="不可重复读和幻读的区别："></a>不可重复读和幻读的区别：</h3><ol>
 <li>不可重复读指的是对于“同一条”数据的查询操作。  数据a -&gt; 数据b<br> 幻读指的是对于“多条数据”的查询操作（数据量数）：  20条数据 -&gt; 18条数据  </li>
 <li>不可重复读：针对<code>update</code>操作。<br> 幻读：针对<code>insert | delete</code>操作。        </li>
 </ol>
+<h3 id="SQL99标准定义的四种隔离级别"><a href="#SQL99标准定义的四种隔离级别" class="headerlink" title="SQL99标准定义的四种隔离级别"></a>SQL99标准定义的四种隔离级别</h3><p>如图：</p>
+<p><img src="https://s2.ax1x.com/2019/11/14/MNkY8J.png" alt="MNkY8J.png"></p>
+<blockquote>
+<p>序列化解释，如图：<br><img src="https://s2.ax1x.com/2019/11/14/MNkJC4.png" alt="MNkJC4.png"></p>
+</blockquote>
+<p>四种隔离级别的程度依次递进（即解决并发的效果，越来越稳定），但是性能越来越低。因为并发性与可用性本身就是矛盾的，并发性高则可用性低，可用性高则并发性低。 </p>
+<h3 id="Oracle只支持其中两种：Read-Committed（默认且推荐）和-Serializable"><a href="#Oracle只支持其中两种：Read-Committed（默认且推荐）和-Serializable" class="headerlink" title="Oracle只支持其中两种：Read Committed（默认且推荐）和 Serializable"></a>Oracle只支持其中两种：Read Committed（<strong>默认且推荐</strong>）和 Serializable</h3><p>Oracle自身还扩展了一种<code>read only</code>，实际<code>read only</code>隶属于<code>Serializable</code>级别。设置为该级别后，不管是当前事务还是其他事务都只能读取，不能进行DML操作了。</p>
+<p>MySQL支持全部的四种隔离级别。</p>
+<h3 id="如何切换四种隔离级别"><a href="#如何切换四种隔离级别" class="headerlink" title="如何切换四种隔离级别"></a>如何切换四种隔离级别</h3><p>语法：<br><code>set transaction isolation level Serializable;</code></p>
+<blockquote>
+<p>注意：<br>必须在事务处理的第一个语句，即切换好隔离级别后再进行事务的查询与DML等操作。</p>
+</blockquote>
+<p>但如果要切换<code>read only</code>则比较特殊，语法：<br><code>set transaction read only;</code></p>
+<h3 id="隔离级别实例"><a href="#隔离级别实例" class="headerlink" title="隔离级别实例"></a>隔离级别实例</h3><p>客户端A：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; set transaction isolation level Read Committed;</span><br><span class="line"></span><br><span class="line">事务处理集。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from test;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">         1 zs</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into test(id, name) values(2, &apos;ls&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; commit;</span><br><span class="line"></span><br><span class="line">提交完成。</span><br></pre></td></tr></table></figure>
+
+<p>客户端B：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; set transaction isolation level Read Committed;</span><br><span class="line"></span><br><span class="line">事务处理集。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from test;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">         1 zs</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from test;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">         1 zs</span><br><span class="line"></span><br><span class="line">-- 当客户端A执行提交后再执行以下查询。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from test;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">         1 zs</span><br><span class="line">         2 ls</span><br></pre></td></tr></table></figure>
+
 <h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
       
 
@@ -1624,14 +1631,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
@@ -1641,6 +1640,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1672,14 +1679,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java初级</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">初级实战</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java高级</a>
               </li>
              
@@ -1692,11 +1691,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RPC</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java初级</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+                <a href="javascript:void(0)" class="js-tag color5">初级实战</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RPC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1705,6 +1708,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
             
             <div class="clearfix"></div>
