@@ -6,23 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java基础实战（一）：万年历 | Hexo</title>
+  <title>Tag: 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目：已知1900年1月1日是星期一，求2019年10月的日历。1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？ 我们来利用循环推导一下，不要怕麻烦，多写几遍自然会得出规律的！">
-<meta name="keywords" content="Java初级,初级实战">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java基础实战（一）：万年历">
-<meta property="og:url" content="http://yoursite.com/2019/04/06/Java基础实战（一）万年历/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/学习笔记/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目：已知1900年1月1日是星期一，求2019年10月的日历。1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？ 我们来利用循环推导一下，不要怕麻烦，多写几遍自然会得出规律的！">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/ee0o9A.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/25/eeBLx1.png">
-<meta property="og:updated_time" content="2019-11-12T06:35:20.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础实战（一）：万年历">
-<meta name="twitter:description" content="题目：已知1900年1月1日是星期一，求2019年10月的日历。1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？ 我们来利用循环推导一下，不要怕麻烦，多写几遍自然会得出规律的！">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/25/ee0o9A.png">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -146,266 +138,117 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java基础实战（一）万年历" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java基础实战（一）：万年历
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/04/14/【白话版】Java多线程机制 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-04-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/04/14/【白话版】Java多线程机制 学习笔记/">白话版：Java多线程机制 学习笔记</a>
     </h1>
   
 
-        
-        <a href="/2019/04/06/Java基础实战（一）万年历/" class="archive-article-date">
-  	<time datetime="2019-04-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="题目：已知1900年1月1日是星期一，求2019年10月的日历。"><a href="#题目：已知1900年1月1日是星期一，求2019年10月的日历。" class="headerlink" title="题目：已知1900年1月1日是星期一，求2019年10月的日历。"></a>题目：已知1900年1月1日是星期一，求2019年10月的日历。</h2><h2 id="1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？"><a href="#1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？" class="headerlink" title="1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？"></a>1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？</h2><blockquote>
-<p>我们来利用循环推导一下，不要怕麻烦，多写几遍自然会得出规律的！</p>
-</blockquote>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">			天数（第几天）	星期几</span><br><span class="line">1900.1.1		1		星期1</span><br><span class="line">1900.1.2		2		星期2</span><br><span class="line">1900.1.3		3		星期3</span><br><span class="line">1900.1.4		4		星期4</span><br><span class="line">1900.1.5		5		星期5</span><br><span class="line">1900.1.6		6		星期6</span><br><span class="line">1900.1.7		7		星期0</span><br><span class="line">1900.1.8		8		星期1</span><br><span class="line">1900.1.9		9		星期2</span><br><span class="line">1900.1.10	   	10		星期3</span><br><span class="line">1900.1.11	   	11		星期4</span><br><span class="line">1900.1.12	   	12		星期5</span><br><span class="line">1900.1.13	   	13		星期6   </span><br><span class="line">1900.1.14	   	14		星期0</span><br><span class="line">1900.1.15	   	15		星期1</span><br><span class="line">1900.1.16	   	16		星期2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>截止到这里，我们能发现，经过不懈努力我们肯定能够推算出 2019.10.1 是星期几，但我们肯定不会一直的往下推导了！<br>我们发现了一个规律：<strong>天数%7 等于 星期几</strong></p>
-<h2 id="2-从1900-1-1-到-2019-10-1-有多少天呢？"><a href="#2-从1900-1-1-到-2019-10-1-有多少天呢？" class="headerlink" title="2.从1900.1.1 到 2019.10.1 有多少天呢？"></a>2.从1900.1.1 到 2019.10.1 有多少天呢？</h2><p>我们拆分一下：</p>
-<blockquote>
-<p>a.1900 —— 2018 整个年份包含多少天？（即1900.1.1 —— 2018.12.31）。<br>b.2019.1 —— 2019.9 整个月份包含多少天？（即2019.1.1 —— 2019.9.30）。<br>c.最后 +1 天就是 2019.10.1 这一天了。</p>
-</blockquote>
-<p>我们可以发现，a.b两个步骤都需要用循环来实现。那么循环操作 和 循环条件 是怎样的呢？先不要接着往下看，暂停一下，自己思考一下~！</p>
-<h5 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h5><blockquote>
-<p>a.1900.1.1 - 2018.12.31     整年天数</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一年有365/366天；闰年是366天</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1900</span>; i &lt; years; i++) &#123;</span><br><span class="line">            <span class="comment">//如果一个年份能够4整除且不能被100整除  或   一个数字能被400整除</span></span><br><span class="line">            <span class="keyword">if</span> ((i % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; i % <span class="number">100</span> != <span class="number">0</span>) || i % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                days += <span class="number">366</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                days += <span class="number">365</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>b.2019.1.1 - 2019.9.30    整月天数</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//12个月份中:1.3.5.7.8.10.12月为31天;2月分为闰年29天/非闰年28天;4.6.9.11月为30天</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; months; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((years % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; years % <span class="number">100</span> != <span class="number">0</span>) || years % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    days += <span class="number">29</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    days += <span class="number">28</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span> (i) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">                        days += <span class="number">31</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">                        days += <span class="number">30</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>c.到9月30日为days，则10月1日为</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">days++;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-得到总天数，我们就可以根据之前得到的规律，计算出-星期几-了！"><a href="#3-得到总天数，我们就可以根据之前得到的规律，计算出-星期几-了！" class="headerlink" title="3.得到总天数，我们就可以根据之前得到的规律，计算出 星期几 了！"></a>3.得到总天数，我们就可以根据之前得到的规律，计算出 星期几 了！</h2><p><strong>天数%7 等于 星期几</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xingQi = days % <span class="number">7</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-开始打印日历啦！"><a href="#4-开始打印日历啦！" class="headerlink" title="4.开始打印日历啦！"></a>4.开始打印日历啦！</h2><p>首先在百度上搜索一下 日历 ，观察它的格式。我得到了几个关于日历的规则！</p>
-<ul>
-<li><p>每周的星期顺序。</p>
-<blockquote>
-<p>（此处我稍微调整了一下星期的顺序，每周从星期天开始，而不是传统的从星期一开始）</p>
-</blockquote>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  0	  1	  2	  3	  4	  5	  6	</span><br><span class="line">星期天	星期一	星期二	星期三	星期四	星期五	星期六</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每一行有7天，每月1号之前会有几个空格（占位符），而且占位符的个数就是星期几。</p>
-<blockquote>
-<p>比如2019年8月：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">星期日		星期一		星期二		星期三		星期四		星期五		星期六</span><br><span class="line"> \t\t     	\t\t	 	\t\t	 	\t\t	   	  1		 2		 3</span><br><span class="line">  4		 5		 6		 7		  8		 9		 10</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>占位符 + 星期 等于 7时会换行。(即每7天换一行)</p>
-</li>
-</ul>
-<h5 id="代码如下：-1"><a href="#代码如下：-1" class="headerlink" title="代码如下："></a>代码如下：</h5><blockquote>
-<ul>
-<li>每周的星期顺序。</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六"</span>);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li>每一行有7天，每月1号之前会有几个空格（占位符），而且占位符的个数就是星期几。</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; xingQi; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">"\t\t"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li>占位符 + 星期 等于 7时会换行。</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数字1 - 每月多少天(日期)</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= daysOfMonth; i++) &#123;</span><br><span class="line">            System.out.print(i + <span class="string">"\t\t"</span>);</span><br><span class="line">            <span class="keyword">if</span> ((xingQi + i) % <span class="number">7</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println();<span class="comment">//回车</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-好啦！最后我们整理一下变量，汇总一下代码"><a href="#5-好啦！最后我们整理一下变量，汇总一下代码" class="headerlink" title="5.好啦！最后我们整理一下变量，汇总一下代码~"></a>5.好啦！最后我们整理一下变量，汇总一下代码~</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Project;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PerpetualCalendar</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> years = <span class="number">2019</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> months = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> days = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> xingQi;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> daysOfMonth;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1900.1.1 - 2018.12.31     整年天数</span></span><br><span class="line">        <span class="comment">//一年有365/366天 闰年是366天</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1900</span>; i &lt; years; i++) &#123;</span><br><span class="line">            <span class="comment">//如果一个年份能够4整除且不能被100整除  或   一个数字能被400整除</span></span><br><span class="line">            <span class="keyword">if</span> ((i % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; i % <span class="number">100</span> != <span class="number">0</span>) || i % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                days += <span class="number">366</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                days += <span class="number">365</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2019.1.1 - 2019.10    整月天数</span></span><br><span class="line">        <span class="comment">//12个月份中 1.3.5.7.8.10.12月为31天	2月 闰年29天/非闰年28天	4.6.9.11月为30天</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; months; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((years % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; years % <span class="number">100</span> != <span class="number">0</span>) || years % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    days += <span class="number">29</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    days += <span class="number">28</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span> (i) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">                        days += <span class="number">31</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">                        days += <span class="number">30</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//到9月30日为days，则10月1日为 days++</span></span><br><span class="line">        days++;</span><br><span class="line">        xingQi = days % <span class="number">7</span>;</span><br><span class="line">        System.out.println(<span class="string">"1900年1月1日到2019年10月1日的天数为"</span> + days);</span><br><span class="line">        System.out.println(<span class="string">"2019年10月1日为星期"</span> + xingQi);</span><br><span class="line">        <span class="comment">//开始打印日历</span></span><br><span class="line">        System.out.println(<span class="string">"星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六"</span>);</span><br><span class="line">        <span class="comment">//星期几前面有空格，然后再星期几</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; xingQi; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">"\t\t"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//定义当月有多少天</span></span><br><span class="line">        daysOfMonth = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (months == <span class="number">1</span> || months == <span class="number">3</span> || months == <span class="number">5</span> || months == <span class="number">7</span> || months == <span class="number">8</span> || months == <span class="number">10</span> || months == <span class="number">12</span>) &#123;</span><br><span class="line">            daysOfMonth = <span class="number">31</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (months == <span class="number">4</span> || months == <span class="number">6</span> || months == <span class="number">9</span> || months == <span class="number">11</span>) &#123;</span><br><span class="line">            daysOfMonth = <span class="number">30</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> ((years % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; years % <span class="number">100</span> != <span class="number">0</span>) || years % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                daysOfMonth = <span class="number">29</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                daysOfMonth = <span class="number">28</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//数字1 - 每月多少天(日期)</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= daysOfMonth; i++) &#123;</span><br><span class="line">            System.out.print(i + <span class="string">"\t\t"</span>);</span><br><span class="line">            <span class="keyword">if</span> ((xingQi + i) % <span class="number">7</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-通过Interllij-Idea-2019-1-3-jbr8-测试运行结果截图为："><a href="#6-通过Interllij-Idea-2019-1-3-jbr8-测试运行结果截图为：" class="headerlink" title="6.通过Interllij Idea 2019.1.3-jbr8 测试运行结果截图为："></a>6.通过Interllij Idea 2019.1.3-jbr8 测试运行结果截图为：</h2><h2 id><a href="#" class="headerlink" title></a><img src="https://s2.ax1x.com/2019/07/25/ee0o9A.png" alt="ee0o9A.png"></h2><h2 id="扩展：上面的程序只完成了定向的日历，其实没有实现真正的万年历！我们只需稍作修改即可！代码如下，自己思考吧"><a href="#扩展：上面的程序只完成了定向的日历，其实没有实现真正的万年历！我们只需稍作修改即可！代码如下，自己思考吧" class="headerlink" title="扩展：上面的程序只完成了定向的日历，其实没有实现真正的万年历！我们只需稍作修改即可！代码如下，自己思考吧~"></a>扩展：上面的程序只完成了定向的日历，其实没有实现真正的万年历！我们只需稍作修改即可！代码如下，自己思考吧~</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Project;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PerpetualCalendar</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> years;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> months;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> days = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> xingQi;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> input;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> daysOfMonth;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.println(<span class="string">"请输入年份："</span>);</span><br><span class="line">        years = input.nextInt();</span><br><span class="line">        System.out.println(<span class="string">"请输入月份："</span>);</span><br><span class="line">        months = input.nextInt();</span><br><span class="line">        <span class="comment">//1900.1.1 - 2018.12.31     整年天数</span></span><br><span class="line">        <span class="comment">//一年有365/366天 闰年是366天</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1900</span>; i &lt; years; i++) &#123;</span><br><span class="line">            <span class="comment">//如果一个年份能够4整除且不能被100整除  或   一个数字能被400整除</span></span><br><span class="line">            <span class="keyword">if</span> ((i % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; i % <span class="number">100</span> != <span class="number">0</span>) || i % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                days += <span class="number">366</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                days += <span class="number">365</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2019.1.1 - 2019.10    整月天数</span></span><br><span class="line">        <span class="comment">//12个月份中 1.3.5.7.8.10.12月为31天	2月 闰年29天/非闰年28天	4.6.9.11月为30天</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; months; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((years % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; years % <span class="number">100</span> != <span class="number">0</span>) || years % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    days += <span class="number">29</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    days += <span class="number">28</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span> (i) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">                        days += <span class="number">31</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">                        days += <span class="number">30</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//到9月30日为days，则10月1日为 days++</span></span><br><span class="line">        days++;</span><br><span class="line">        xingQi = days % <span class="number">7</span>;</span><br><span class="line">        System.out.println(<span class="string">"1900年1月1日到"</span> + years + <span class="string">"年"</span> + months + <span class="string">"月1日的天数为"</span> + days);</span><br><span class="line">        System.out.println(years + <span class="string">"年"</span> + months + <span class="string">"月1日为星期"</span> + xingQi);</span><br><span class="line">        <span class="comment">//开始打印日历</span></span><br><span class="line">        System.out.println(<span class="string">"星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六"</span>);</span><br><span class="line">        <span class="comment">//星期几前面有空格，然后再星期几</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; xingQi; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">"\t\t"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//定义当月有多少天</span></span><br><span class="line">        daysOfMonth = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (months == <span class="number">1</span> || months == <span class="number">3</span> || months == <span class="number">5</span> || months == <span class="number">7</span> || months == <span class="number">8</span> || months == <span class="number">10</span> || months == <span class="number">12</span>) &#123;</span><br><span class="line">            daysOfMonth = <span class="number">31</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (months == <span class="number">4</span> || months == <span class="number">6</span> || months == <span class="number">9</span> || months == <span class="number">11</span>) &#123;</span><br><span class="line">            daysOfMonth = <span class="number">30</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> ((years % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; years % <span class="number">100</span> != <span class="number">0</span>) || years % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                daysOfMonth = <span class="number">29</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                daysOfMonth = <span class="number">28</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//数字1 - 每月多少天(日期)</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= daysOfMonth; i++) &#123;</span><br><span class="line">            System.out.print(i + <span class="string">"\t\t"</span>);</span><br><span class="line">            <span class="keyword">if</span> ((xingQi + i) % <span class="number">7</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>##通过Interllij Idea 2019.1.3-jbr8 测试运行结果截图为：<br><img src="https://s2.ax1x.com/2019/07/25/eeBLx1.png" alt="eeBLx1.png"></p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>至此，<strong>Java基础实战（一）：万年历</strong> 已完成！</p>
-<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>Colin谢谢您的支持！<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java初级</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">初级实战</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">线程</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/06/Java基础实战（一）万年历/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2019/04/14/【白话版】Java多线程机制 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          白话版：Java多线程机制 学习笔记
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/03/27/【白话版】JavaIO流 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">白话版：JavaIO流 学习笔记</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/03/27/【白话版】JavaIO流 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-03-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
+</a>
         </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目：已知1900年1月1日是星期一，求2019年10月的日历。"><span class="toc-number">1.</span> <span class="toc-text">题目：已知1900年1月1日是星期一，求2019年10月的日历。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-已知1900-1-1是星期一，那么2019-10-1是星期几呢？"><span class="toc-number">2.</span> <span class="toc-text">1.已知1900.1.1是星期一，那么2019.10.1是星期几呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-从1900-1-1-到-2019-10-1-有多少天呢？"><span class="toc-number">3.</span> <span class="toc-text">2.从1900.1.1 到 2019.10.1 有多少天呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#代码如下："><span class="toc-number">3.0.0.1.</span> <span class="toc-text">代码如下：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-得到总天数，我们就可以根据之前得到的规律，计算出-星期几-了！"><span class="toc-number">4.</span> <span class="toc-text">3.得到总天数，我们就可以根据之前得到的规律，计算出 星期几 了！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-开始打印日历啦！"><span class="toc-number">5.</span> <span class="toc-text">4.开始打印日历啦！</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#代码如下：-1"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">代码如下：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-好啦！最后我们整理一下变量，汇总一下代码"><span class="toc-number">6.</span> <span class="toc-text">5.好啦！最后我们整理一下变量，汇总一下代码~</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-通过Interllij-Idea-2019-1-3-jbr8-测试运行结果截图为："><span class="toc-number">7.</span> <span class="toc-text">6.通过Interllij Idea 2019.1.3-jbr8 测试运行结果截图为：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">8.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展：上面的程序只完成了定向的日历，其实没有实现真正的万年历！我们只需稍作修改即可！代码如下，自己思考吧"><span class="toc-number">9.</span> <span class="toc-text">扩展：上面的程序只完成了定向的日历，其实没有实现真正的万年历！我们只需稍作修改即可！代码如下，自己思考吧~</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-number"></span> <span class="toc-text">结语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">2.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">3.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/03/27/【白话版】JavaIO流 学习笔记/">白话版：JavaIO流 学习笔记</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IO</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
         </div>
-        
-    </div>
-</aside>
-
-
-
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
   
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/学习笔记/">&laquo; Prev</a><a class="page-number" href="/tags/学习笔记/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -429,9 +272,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
