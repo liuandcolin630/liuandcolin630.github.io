@@ -6,15 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: C | Hexo</title>
+  <title>Oracle——存储过程与存储函数 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/C/index.html">
+  <meta name="description" content="目录 存储过程的基本概念 存储过程的创建 存储过程的调用 实例1：存储过程的创建 存储函数与存储过程最大的区别 存储函数的创建 实例2：存储函数的使用 实例3：存储函数的调试 如何选择使用存储过程还是存储函数？ 实例4：返回值 包的基本概念 包的创建">
+<meta name="keywords" content="数据库,Oracle,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle——存储过程与存储函数 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/11/24/Oracle——存储过程与存储函数 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目录 存储过程的基本概念 存储过程的创建 存储过程的调用 实例1：存储过程的创建 存储函数与存储过程最大的区别 存储函数的创建 实例2：存储函数的使用 实例3：存储函数的调试 如何选择使用存储过程还是存储函数？ 实例4：返回值 包的基本概念 包的创建">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/22/MTay3n.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/22/MTaDhj.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/22/MTaBNQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/22/MThyod.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/22/MT5GCR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/22/MThsdH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/24/MOCBCQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/24/MOCw4g.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/24/MOCsvn.png">
+<meta property="og:updated_time" content="2019-11-24T07:45:14.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Oracle——存储过程与存储函数 学习笔记">
+<meta name="twitter:description" content="目录 存储过程的基本概念 存储过程的创建 存储过程的调用 实例1：存储过程的创建 存储函数与存储过程最大的区别 存储函数的创建 实例2：存储函数的使用 实例3：存储函数的调试 如何选择使用存储过程还是存储函数？ 实例4：返回值 包的基本概念 包的创建">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/22/MTay3n.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -138,202 +153,343 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Oracle——存储过程与存储函数 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Oracle——存储过程与存储函数 学习笔记
+    </h1>
+  
+
+        
+        <a href="/2019/11/24/Oracle——存储过程与存储函数 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-11-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>存储过程的基本概念</li>
+<li>存储过程的创建</li>
+<li>存储过程的调用</li>
+<li>实例1：存储过程的创建</li>
+<li>存储函数与存储过程最大的区别</li>
+<li>存储函数的创建</li>
+<li>实例2：存储函数的使用</li>
+<li>实例3：存储函数的调试</li>
+<li>如何选择使用存储过程还是存储函数？</li>
+<li>实例4：返回值</li>
+<li>包的基本概念</li>
+<li>包的创建</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><h2 id="存储过程的基本概念"><a href="#存储过程的基本概念" class="headerlink" title="存储过程的基本概念"></a>存储过程的基本概念</h2><p>在Java中可以将代码写入一个方法（函数）。</p>
+<h2 id="存储过程的创建"><a href="#存储过程的创建" class="headerlink" title="存储过程的创建"></a>存储过程的创建</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create or reaplace procedure 存储过程名(参数列表)</span><br><span class="line">as</span><br><span class="line">	PLSQL语句;</span><br></pre></td></tr></table></figure>
+
+<p>存储过程（存储函数）根据参数列表不同分为两类：</p>
+<ul>
+<li><p>无参数列表</p>
+<p>  语法：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create or reaplace procedure 存储过程名</span><br><span class="line">as</span><br><span class="line">    PLSQL语句;</span><br><span class="line">begin </span><br><span class="line">    PLSQL语句;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有参数列表</p>
+<p>  列表内的参数有：</p>
+<ul>
+<li><p>输入参数<code>in</code>：在存储过程中需要使用到的参数。</p>
+</li>
+<li><p>输出参数<code>out</code>：该存储过程将要返回的参数，相当于返回值。</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure 存储过程名(参数名 in/out 参数类型) </span><br><span class="line">as </span><br><span class="line">    PLSQL语句;</span><br><span class="line">begin </span><br><span class="line">    PLSQL语句;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="存储过程的调用"><a href="#存储过程的调用" class="headerlink" title="存储过程的调用"></a>存储过程的调用</h2><p>根据可调用的数量分为两种：</p>
+<ul>
+<li><p><code>exec 存储过程名;</code><br>  只能每次调用一个存储过程。</p>
+</li>
+<li><p><code>begin 存储过程名; end;</code><br>  每次可以调用多个存储过程。</p>
+</li>
+</ul>
+<h2 id="实例1：存储过程的创建"><a href="#实例1：存储过程的创建" class="headerlink" title="实例1：存储过程的创建"></a>实例1：存储过程的创建</h2><ul>
+<li><p>无参存储过程的创建</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">create or replace procedure test1</span><br><span class="line">as</span><br><span class="line">    pnum number:=10;</span><br><span class="line">begin</span><br><span class="line">    dbms_output.put_line(&apos;hello: &apos; || pnum);</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">--exec test1;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">    test1;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>运行结果：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Procedure TEST1 已编译</span><br><span class="line"></span><br><span class="line">hello: 10</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><p>有参存储过程的创建</p>
+<p>  传入一个员工编号，给该员工涨薪500元，并打印涨薪比较。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">create or replace procedure raiseSalary(pid in number)</span><br><span class="line">as</span><br><span class="line">    psal emp.sal%type;</span><br><span class="line">begin</span><br><span class="line">    select sal into psal from emp where empno = pid;</span><br><span class="line">    update emp set sal = sal + 500 where empno = pid;</span><br><span class="line">    dbms_output.put_line(&apos;涨薪前： &apos; || psal || &apos; 涨薪后： &apos; || (psal + 500));</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">begin</span><br><span class="line">    raiseSalary(7788);</span><br><span class="line">    raiseSalary(7839);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Procedure RAISESALARY 已编译</span><br><span class="line"></span><br><span class="line">涨薪前： 3740 涨薪后： 4240</span><br><span class="line">涨薪前： 6600 涨薪后： 7100</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储函数"><a href="#存储函数" class="headerlink" title="存储函数"></a>存储函数</h2><h3 id="存储函数与存储过程最大的区别"><a href="#存储函数与存储过程最大的区别" class="headerlink" title="存储函数与存储过程最大的区别"></a>存储函数与存储过程最大的区别</h3><p>存储函数必须有<code>return</code>。而且也可以有<code>in</code>和<code>out</code>作为输入与输出。<br>该返回值可以通过Java、MyBatis、JDBC来调用获取。</p>
+<h2 id="存储函数的创建"><a href="#存储函数的创建" class="headerlink" title="存储函数的创建"></a>存储函数的创建</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create [or replace] function 函数名(参数列表)</span><br><span class="line">    return 返回值类型</span><br><span class="line">as</span><br><span class="line">    PLSQL语句;</span><br><span class="line">begin </span><br><span class="line">    PLSQL语句;</span><br><span class="line">    return 返回值</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例2：存储函数的使用"><a href="#实例2：存储函数的使用" class="headerlink" title="实例2：存储函数的使用"></a>实例2：存储函数的使用</h2><p>查询某个员工的年收入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create function getTotalSal(pid in number)</span><br><span class="line">    return number</span><br><span class="line">as</span><br><span class="line">    empSal emp.sal%type;</span><br><span class="line">    empComm emp.comm%type;</span><br><span class="line">begin</span><br><span class="line">    select sal, comm into empSal, empComm from emp where empno = pid;</span><br><span class="line">    return empSal*12 + nvl(empComm, 0);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>该函数的返回值可以通过Java、MyBatis、JDBC来调用获取。也可以通过SQL Developer模拟：</p>
+<ol>
+<li><p>创建好函数后，在函数中选择它，右键点击运行，如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/11/22/MTay3n.png" alt="MTay3n.png"></p>
+</li>
+<li><p>修改<code>PID := NULL</code>的值，改为你想要测试的值。并将<code>/* Legacy output: */</code>下面的输出注释关闭。点击确定，如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/11/22/MTaDhj.png" alt="MTaDhj.png"><br> <img src="https://s2.ax1x.com/2019/11/22/MTaBNQ.png" alt="MTaBNQ.png"></p>
+</li>
+</ol>
+<h2 id="实例3：存储函数的调试"><a href="#实例3：存储函数的调试" class="headerlink" title="实例3：存储函数的调试"></a>实例3：存储函数的调试</h2><blockquote>
+<p>注意：<br>使用调试功能需要在函数内的编辑框（即双击函数而弹出的窗口）进行打断点、调试，而不是在默认的工作表进行调试，工作表只是一个普通编辑器，只是个记事本的功能。</p>
+</blockquote>
+<ol>
+<li><p>在需要代码行的左侧行号处点击，打上断点，然后选择调试功能，弹出窗口进行修改，然后确定即可，如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/11/22/MThyod.png" alt="MThyod.png"></p>
+<p> 根据日志显示，可能会报错权限不足，根据提示来开启具体的权限，如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/11/22/MT5GCR.png" alt="MT5GCR.png"></p>
+<p> 开启权限：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grant DEBUG CONNECT SESSION to scott;</span><br><span class="line">grant DEBUG ANY PROCEDURE to scott;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>但我这边仍有问题未解决，在运行调试的时候总是与数据库连接断开，未能正常的进入调试界面，如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/11/22/MThsdH.png" alt="MThsdH.png"></p>
+</li>
+</ol>
+<h2 id="如何选择使用存储过程还是存储函数？"><a href="#如何选择使用存储过程还是存储函数？" class="headerlink" title="如何选择使用存储过程还是存储函数？"></a>如何选择使用存储过程还是存储函数？</h2><p>由于存储过程和存储函数都可以通过<code>return</code>和<code>out</code>来返回值，而存储函数必须有<code>return</code>。所以<strong>建议：</strong></p>
+<ul>
+<li>只有一个返回值时，选择存储函数<code>return</code> </li>
+<li>没有、多个返回值时，选择存储过程<code>out,out,out</code> </li>
+</ul>
+<h2 id="实例4：返回值"><a href="#实例4：返回值" class="headerlink" title="实例4：返回值"></a>实例4：返回值</h2><ul>
+<li><p>使用存储过程：传入员工编号，返回姓名、工作。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create procedure getEmpInfo(pempno in emp.empno%type, pname out emp.ename%type, pjob out emp.job%type)</span><br><span class="line">as</span><br><span class="line">   </span><br><span class="line">begin </span><br><span class="line">    select ename, job into pname, pjob from emp where empno = pempno;</span><br><span class="line">end ;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>调参如图：
+
+![MThgJI.png](https://s2.ax1x.com/2019/11/22/MThgJI.png)
+
+运行结果：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">连接到数据库 Scott。</span><br><span class="line">PNAME = SCOTT</span><br><span class="line">PJOB = ANALYST</span><br><span class="line">进程已退出。</span><br><span class="line">从数据库 Scott 断开连接。</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><p>使用存储函数：传入员工编号，返回姓名、工作。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create function getEmpInfoFunc(pempno in emp.empno%type, pname out emp.ename%type, pjob out emp.job%type)</span><br><span class="line">    return varchar</span><br><span class="line">as</span><br><span class="line">   </span><br><span class="line">begin </span><br><span class="line">    select ename, job into pname, pjob from emp where empno = pempno;</span><br><span class="line">    return &apos;I am return&apos;;</span><br><span class="line">end ;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>调参如图：
+
+![MTh2Wt.png](https://s2.ax1x.com/2019/11/22/MTh2Wt.png)
+
+运行结果：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">连接到数据库 Scott。</span><br><span class="line">v_Return = I am return</span><br><span class="line">PNAME = SCOTT</span><br><span class="line">PJOB = ANALYST</span><br><span class="line">进程已退出。</span><br><span class="line">从数据库 Scott 断开连接。</span><br></pre></td></tr></table></figure></code></pre><h2 id="包的基本概念"><a href="#包的基本概念" class="headerlink" title="包的基本概念"></a>包的基本概念</h2><p>利用存储过程来查询某个部门的所有员工信息。比如我们平时的查询使用：<code>select * from emp where deptno = 10;</code>，可查出多行数据，则需要使用游标来保存输出的集合数据。<br>而在存储过程或存储函数中，使用返回值或输出参数为游标类型时，则需要使用包。</p>
+<h2 id="包的创建"><a href="#包的创建" class="headerlink" title="包的创建"></a>包的创建</h2><p>包由包头和包体构成。</p>
+<h3 id="包头的创建"><a href="#包头的创建" class="headerlink" title="包头的创建"></a>包头的创建</h3><ol>
+<li><p>在Oracle SQL Developer中，右键<strong>程序包</strong>，选择<strong>新建程序包</strong>，如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/11/24/MOCBCQ.png" alt="MOCBCQ.png"></p>
+</li>
+<li><p>填写包头的名称，然后确定，如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/11/24/MOCw4g.png" alt="MOCw4g.png"></p>
+</li>
+<li><p>在包头中填写返回集合的游标。</p>
+<p> 语法：<code>type 游标名 is ref cursor;</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE </span><br><span class="line">PACKAGE MYPACKAGE AS </span><br><span class="line"></span><br><span class="line">  /* TODO enter package declarations (types, exceptions, methods etc) here */ </span><br><span class="line">  type empcursor is ref cursor;</span><br><span class="line">  procedure queryEmpList(dno in number, empList out empcursor);</span><br><span class="line"></span><br><span class="line">END MYPACKAGE;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="包体的创建"><a href="#包体的创建" class="headerlink" title="包体的创建"></a>包体的创建</h3><p>在程序包的<strong>包头（即：<code>MYPACKAGE</code>）</strong>处右键，选择<strong>创建主体</strong>，如图：</p>
+<p><img src="https://s2.ax1x.com/2019/11/24/MOCsvn.png" alt="MOCsvn.png"></p>
+<p>语法：<code>open 游标名 for 游标</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE</span><br><span class="line">PACKAGE BODY MYPACKAGE AS</span><br><span class="line"></span><br><span class="line">  procedure queryEmpList(dno in number, empList out empcursor) AS</span><br><span class="line">  BEGIN</span><br><span class="line">    -- TODO: procedure MYPACKAGE.queryEmpList所需的实施</span><br><span class="line">    open empList for </span><br><span class="line">    select * from emp where deptno = dno;</span><br><span class="line">  END queryEmpList;</span><br><span class="line"></span><br><span class="line">END MYPACKAGE;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以通过<code>desc 包名</code>，查看包。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc mypackage;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PROCEDURE QUERYEMPLIST</span><br><span class="line">参数名           类型         输入/输出     默认值?                                                                            </span><br><span class="line">------   -----------------  ----------  ----------</span><br><span class="line">DNO            NUMBER          IN                                                                                        </span><br><span class="line">EMPLIST      REF CURSOR        OUT</span><br></pre></td></tr></table></figure>
+
+<p>由于Oracle SQL Developer并不支持包的测试，所以只能从Java代码中去获取。</p>
+<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Colin谢谢您的支持！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/" class="archive-article-date">
-  	<time datetime="2019-08-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/24/Oracle——存储过程与存储函数 学习笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/02/LeetCode题解92. Reverse Linked List II/" class="archive-article-date">
-  	<time datetime="2019-08-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/22/Oracle——PLSQL编程语言与游标 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Oracle——PLSQL编程语言与游标 学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/02/LeetCode题解92. Reverse Linked List II/">Reverse Linked List II</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程"><span class="toc-number">1.1.</span> <span class="toc-text">存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程的基本概念"><span class="toc-number">1.2.</span> <span class="toc-text">存储过程的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程的创建"><span class="toc-number">1.3.</span> <span class="toc-text">存储过程的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程的调用"><span class="toc-number">1.4.</span> <span class="toc-text">存储过程的调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例1：存储过程的创建"><span class="toc-number">1.5.</span> <span class="toc-text">实例1：存储过程的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储函数"><span class="toc-number">1.6.</span> <span class="toc-text">存储函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#存储函数与存储过程最大的区别"><span class="toc-number">1.6.1.</span> <span class="toc-text">存储函数与存储过程最大的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储函数的创建"><span class="toc-number">1.7.</span> <span class="toc-text">存储函数的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例2：存储函数的使用"><span class="toc-number">1.8.</span> <span class="toc-text">实例2：存储函数的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例3：存储函数的调试"><span class="toc-number">1.9.</span> <span class="toc-text">实例3：存储函数的调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何选择使用存储过程还是存储函数？"><span class="toc-number">1.10.</span> <span class="toc-text">如何选择使用存储过程还是存储函数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例4：返回值"><span class="toc-number">1.11.</span> <span class="toc-text">实例4：返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包的基本概念"><span class="toc-number">1.12.</span> <span class="toc-text">包的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包的创建"><span class="toc-number">1.13.</span> <span class="toc-text">包的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#包头的创建"><span class="toc-number">1.13.1.</span> <span class="toc-text">包头的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#包体的创建"><span class="toc-number">1.13.2.</span> <span class="toc-text">包体的创建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">1.14.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">1.15.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">1.16.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/LeetCode题解206. Reverse Linked List/" class="archive-article-date">
-  	<time datetime="2019-07-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/LeetCode题解206. Reverse Linked List/">Reverse Linked List</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/" class="archive-article-date">
-  	<time datetime="2019-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/">最大子列和问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -356,9 +512,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

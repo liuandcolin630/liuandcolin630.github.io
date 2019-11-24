@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: C | Hexo</title>
+  <title>Oracle——PLSQL编程语言与游标 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/C/index.html">
+  <meta name="description" content="目录 PLSQL的基本概念 PLSQL的编写 实例1：编写输出语句 实例2：定义变量并动态赋值变量 PLSQL的变量推荐设置 实例3：引用型变量与记录型变量 PLSQL的选择结构：if语句 实例4：选择结构 PLSQL的循环结构 实例5：循环结构 游标的基本概念 游标的创建 游标的四个属性 实例6：游标的基本使用 游标的例外（异常） 实例7：游标的例外 实例8：游标的使用场景">
+<meta name="keywords" content="数据库,Oracle,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle——PLSQL编程语言与游标 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/11/22/Oracle——PLSQL编程语言与游标 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目录 PLSQL的基本概念 PLSQL的编写 实例1：编写输出语句 实例2：定义变量并动态赋值变量 PLSQL的变量推荐设置 实例3：引用型变量与记录型变量 PLSQL的选择结构：if语句 实例4：选择结构 PLSQL的循环结构 实例5：循环结构 游标的基本概念 游标的创建 游标的四个属性 实例6：游标的基本使用 游标的例外（异常） 实例7：游标的例外 实例8：游标的使用场景">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://s1.ax1x.com/2019/11/19/M2x1AJ.png">
+<meta property="og:updated_time" content="2019-11-24T07:40:56.841Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Oracle——PLSQL编程语言与游标 学习笔记">
+<meta name="twitter:description" content="目录 PLSQL的基本概念 PLSQL的编写 实例1：编写输出语句 实例2：定义变量并动态赋值变量 PLSQL的变量推荐设置 实例3：引用型变量与记录型变量 PLSQL的选择结构：if语句 实例4：选择结构 PLSQL的循环结构 实例5：循环结构 游标的基本概念 游标的创建 游标的四个属性 实例6：游标的基本使用 游标的例外（异常） 实例7：游标的例外 实例8：游标的使用场景">
+<meta name="twitter:image" content="https://s1.ax1x.com/2019/11/19/M2x1AJ.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -138,202 +145,418 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Oracle——PLSQL编程语言与游标 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Oracle——PLSQL编程语言与游标 学习笔记
+    </h1>
+  
+
+        
+        <a href="/2019/11/22/Oracle——PLSQL编程语言与游标 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-11-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>PLSQL的基本概念</li>
+<li>PLSQL的编写</li>
+<li>实例1：编写输出语句</li>
+<li>实例2：定义变量并动态赋值变量</li>
+<li>PLSQL的变量推荐设置</li>
+<li>实例3：引用型变量与记录型变量</li>
+<li>PLSQL的选择结构：if语句</li>
+<li>实例4：选择结构</li>
+<li>PLSQL的循环结构</li>
+<li>实例5：循环结构</li>
+<li>游标的基本概念</li>
+<li>游标的创建</li>
+<li>游标的四个属性</li>
+<li>实例6：游标的基本使用</li>
+<li>游标的例外（异常）</li>
+<li>实例7：游标的例外</li>
+<li>实例8：游标的使用场景</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="PLSQL的基本概念"><a href="#PLSQL的基本概念" class="headerlink" title="PLSQL的基本概念"></a>PLSQL的基本概念</h2><p>可以对SQL进行编程，比如：<code>if...else...</code>、<code>for</code>循环、存储过程、存储函数等。</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><ul>
+<li>PL/SQL Developer</li>
+<li>Oracle SQL Developer</li>
+</ul>
+<h2 id="PLSQL的编写"><a href="#PLSQL的编写" class="headerlink" title="PLSQL的编写"></a>PLSQL的编写</h2><h3 id="通用模板"><a href="#通用模板" class="headerlink" title="通用模板"></a>通用模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">	变量、常量、光标（游标）、例外（自定义异常）</span><br><span class="line">begin</span><br><span class="line">	程序代码...</span><br><span class="line">	exception</span><br><span class="line">		异常代码...</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例1：编写输出语句"><a href="#实例1：编写输出语句" class="headerlink" title="实例1：编写输出语句"></a>实例1：编写输出语句</h2><p>编写输出语句“hello world”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set serverout on;</span><br><span class="line">declare</span><br><span class="line">	</span><br><span class="line">begin</span><br><span class="line">	dbms_output.put_line(&apos;hello world&apos;);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<br>要打开输出语句的设置，默认为关闭。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set serverout on;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例2：定义变量并动态赋值变量"><a href="#实例2：定义变量并动态赋值变量" class="headerlink" title="实例2：定义变量并动态赋值变量"></a>实例2：定义变量并动态赋值变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">	pesex char(3) := &apos;男&apos;;</span><br><span class="line">    pename varchar2(10);</span><br><span class="line">begin</span><br><span class="line">	dbms_output.put_line(&apos;hello world:&apos; || pesex);</span><br><span class="line">    select ename into pename from emp where empno = 7499;</span><br><span class="line">    dbms_output.put_line(&apos;hello world:&apos; || pesex || &apos;---&apos; || pename);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hello world:男 </span><br><span class="line">hello world:男 ---ALLEN</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<p><strong>但此例是我们不常用并且是不推荐使用的，由此引出在PLSQL中对变量的推荐设置。</strong></p>
+<h2 id="PLSQL的变量推荐设置"><a href="#PLSQL的变量推荐设置" class="headerlink" title="PLSQL的变量推荐设置"></a>PLSQL的变量推荐设置</h2><p>PLSQL的变量分为两类：</p>
+<ul>
+<li>引用型变量。比如：<code>pename emp.ename%type;</code>即变量<code>pename</code>与<code>emp</code>表中的<code>ename</code>字段的类型保持一致，此类型包括字段类型和字段长度等。以便于之后如果<code>emp</code>表的字段发生改变而导致PLSQL无法使用。</li>
+<li>记录型变量。比如：<code>emp_info emp%rowtype;</code>即变量<code>emp_info</code>与<code>emp</code>表中的所有行的类型都保持一致。类似于Java的对象：<code>Person per = new Person(1, &#39;zs&#39;, 28, 175cm, 65kg);</code>，可以用于同时保存多个变量值。</li>
+</ul>
+<h2 id="实例3：引用型变量与记录型变量"><a href="#实例3：引用型变量与记录型变量" class="headerlink" title="实例3：引用型变量与记录型变量"></a>实例3：引用型变量与记录型变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">	emp_info emp%rowtype;</span><br><span class="line">begin</span><br><span class="line">    select * into emp_info from emp where empno = 7499;</span><br><span class="line">    dbms_output.put_line(emp_info.empno || &apos;---&apos; || emp_info.ename || &apos;---&apos; || emp_info.job);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">7499---ALLEN---SALESMAN</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<h2 id="PLSQL的选择结构：if语句"><a href="#PLSQL的选择结构：if语句" class="headerlink" title="PLSQL的选择结构：if语句"></a>PLSQL的选择结构：if语句</h2><p>有三种语法：</p>
+<ul>
+<li><p>第一种</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if 条件 then ... ;</span><br><span class="line">end if;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if 条件 then ...;</span><br><span class="line">else ...</span><br><span class="line">end if;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三种</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if 条件 then ...;</span><br><span class="line">elsif 条件 then ...;</span><br><span class="line">else ...;</span><br><span class="line">end if ;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="实例4：选择结构"><a href="#实例4：选择结构" class="headerlink" title="实例4：选择结构"></a>实例4：选择结构</h2><p><code>pnum</code> 为 1 时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">	pnum number := 1;</span><br><span class="line">begin</span><br><span class="line">    if pnum = 1 then dbms_output.put_line(&apos;一&apos;);</span><br><span class="line">    elsif pnum = 2 then dbms_output.put_line(&apos;二&apos;);</span><br><span class="line">    else dbms_output.put_line(&apos;其他&apos;);</span><br><span class="line">    end if;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<p><code>pnum</code> 为 3 时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">	pnum number := 3;</span><br><span class="line">begin</span><br><span class="line">    if pnum = 1 then dbms_output.put_line(&apos;一&apos;);</span><br><span class="line">    elsif pnum = 2 then dbms_output.put_line(&apos;二&apos;);</span><br><span class="line">    else dbms_output.put_line(&apos;其他&apos;);</span><br><span class="line">    end if;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">其他</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<h2 id="PLSQL的循环结构"><a href="#PLSQL的循环结构" class="headerlink" title="PLSQL的循环结构"></a>PLSQL的循环结构</h2><ul>
+<li><p><code>for</code>语句</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in 开始 .. 结束</span><br><span class="line">loop</span><br><span class="line">...</span><br><span class="line">end loop;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>while</code>语句</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while 条件</span><br><span class="line">loop </span><br><span class="line">...</span><br><span class="line">end loop;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>do while</code>语句</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">loop </span><br><span class="line">...</span><br><span class="line">   exit when 条件;</span><br><span class="line">end loop;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>注意：<br>PLSQL的<code>do while</code>语句与Java的<code>do while</code>语句的<strong>判断条件是相反的</strong>！<br>比如 i大于5是结束。PLSQL表示为 <code>exit when i &gt; 5;</code>而Java表示为 <code>while(i &lt;= 5)</code>。</p>
+</blockquote>
+<h2 id="实例5：循环结构"><a href="#实例5：循环结构" class="headerlink" title="实例5：循环结构"></a>实例5：循环结构</h2><ul>
+<li><p><code>for</code>语句<br>  输出数字1—5。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">	</span><br><span class="line">begin</span><br><span class="line">    for i in 1 .. 5</span><br><span class="line">    loop</span><br><span class="line">        dbms_output.put_line(i);</span><br><span class="line">    end loop;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>输出结果：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><p><code>do while</code>语句<br>  计算1—5之和。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">	psum number := 0;</span><br><span class="line">    i number := 1;</span><br><span class="line">begin</span><br><span class="line">    loop</span><br><span class="line">        psum := psum + i;</span><br><span class="line">        i := i + 1;</span><br><span class="line">        exit when i &gt; 5;</span><br><span class="line">    end loop;</span><br><span class="line">    dbms_output.put_line(psum);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>输出结果：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">15</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure></code></pre><h2 id="游标（光标）"><a href="#游标（光标）" class="headerlink" title="游标（光标）"></a>游标（光标）</h2><h2 id="游标的基本概念"><a href="#游标的基本概念" class="headerlink" title="游标的基本概念"></a>游标的基本概念</h2><p>比如：<code>select ename from emp;</code>，输出结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ENAME</span><br><span class="line">----------</span><br><span class="line">xxx</span><br><span class="line">xxx</span><br><span class="line">x</span><br><span class="line">x</span><br><span class="line">李四</span><br><span class="line">SMITH</span><br><span class="line">ALLEN</span><br><span class="line">WARD</span><br><span class="line">JONES</span><br><span class="line">MARTIN</span><br><span class="line">BLAKE</span><br><span class="line">CLARK</span><br><span class="line">SCOTT</span><br><span class="line">KING</span><br><span class="line">TURNER</span><br><span class="line">ADAMS</span><br><span class="line">JAMES</span><br><span class="line">FORD</span><br><span class="line">MILLER</span><br><span class="line">seq</span><br><span class="line"></span><br><span class="line">已选择20行。</span><br></pre></td></tr></table></figure>
+
+<p>现在<code>ename</code>有一堆数据，怎么保存呢？之前的变量<code>pname</code>只能保存一个或一行数据，而多行数据或一大推数据该怎么保存呢？由此引出：</p>
+<p>游标（光标）<code>cursor</code>：用来保存一个<strong>集合</strong>的数据。</p>
+<h2 id="游标的创建"><a href="#游标的创建" class="headerlink" title="游标的创建"></a>游标的创建</h2><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cursor 游标名（参数列表）</span><br><span class="line">is</span><br><span class="line">select ...</span><br></pre></td></tr></table></figure>
+
+<h2 id="游标的四个属性"><a href="#游标的四个属性" class="headerlink" title="游标的四个属性"></a>游标的四个属性</h2><ul>
+<li><p>%isopen：<br>  游标使用之前必须打开。用来判断游标是否开启。</p>
+</li>
+<li><p>%rowcount：<br>  用来判断游标已经读取了多少行数据。</p>
+</li>
+<li><p>%found：<br>  判断当前行数据的下一行数据是否存在。</p>
+</li>
+<li><p>%notfound：<br>  判断当前行数据的下一行数据是否存在。</p>
+</li>
+</ul>
+<h2 id="实例6：游标的基本使用"><a href="#实例6：游标的基本使用" class="headerlink" title="实例6：游标的基本使用"></a>实例6：游标的基本使用</h2><ul>
+<li><p>查询并打印全体员工的姓名、薪水，如图：</p>
+<p>  <img src="https://s1.ax1x.com/2019/11/19/M2x1AJ.png" alt="M2x1AJ.png"></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">declare</span><br><span class="line">    cursor cemp is select ename, sal from emp;</span><br><span class="line">    pename emp.ename%type;</span><br><span class="line">    psal emp.sal%type;</span><br><span class="line">begin</span><br><span class="line">    open cemp;--1.打开游标。</span><br><span class="line">    loop    --2.循环 准备获取每一行数据。</span><br><span class="line">        fetch cemp into pename, psal;   --3.一行一行获取游标的值。</span><br><span class="line">        exit when cemp%notfound;</span><br><span class="line">        dbms_output.put_line(pename || &apos;工资是：&apos; || psal);</span><br><span class="line">    end loop;    </span><br><span class="line">    close cemp;--关闭游标。</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>输出结果：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">xxx工资是：999</span><br><span class="line">xxx工资是：999</span><br><span class="line">x工资是：9999</span><br><span class="line">x工资是：9999</span><br><span class="line">李四工资是：</span><br><span class="line">SMITH工资是：800</span><br><span class="line">ALLEN工资是：1600</span><br><span class="line">WARD工资是：1250</span><br><span class="line">JONES工资是：2975</span><br><span class="line">MARTIN工资是：1250</span><br><span class="line">BLAKE工资是：2850</span><br><span class="line">CLARK工资是：2450</span><br><span class="line">SCOTT工资是：3000</span><br><span class="line">KING工资是：5000</span><br><span class="line">TURNER工资是：1500</span><br><span class="line">ADAMS工资是：1100</span><br><span class="line">JAMES工资是：950</span><br><span class="line">FORD工资是：3000</span><br><span class="line">MILLER工资是：1300</span><br><span class="line">seq工资是：</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+
+&gt; 注意：
+&gt; 游标有几个字段，就定义几个变量进行保存。
+&gt; 一行一行的取数据，必然需要使用循环。</code></pre><ul>
+<li><p>按照职位进行涨工资，PRESIDENT职位涨薪1000元，MANAGER职位涨薪800元，其他职位涨薪400元。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">declare</span><br><span class="line">    cursor cemp is select empno, job from emp;</span><br><span class="line">    pempno emp.empno%type;</span><br><span class="line">    pjob emp.job%type;</span><br><span class="line">begin</span><br><span class="line">    open cemp;--打开游标。</span><br><span class="line">    loop</span><br><span class="line">        fetch cemp into pempno, pjob;</span><br><span class="line">        exit when cemp%notfound;</span><br><span class="line">        --判断职位</span><br><span class="line">        if pjob = &apos;PRESIDENT&apos;</span><br><span class="line">            then update emp set sal = sal + 1000 where empno = pempno;</span><br><span class="line">        elsif pjob = &apos;MANAGER&apos;</span><br><span class="line">            then update emp set sal = sal + 800 where empno = pempno;</span><br><span class="line">        else </span><br><span class="line">            update emp set sal = sal + 400 where empno = pempno;</span><br><span class="line">        end if;</span><br><span class="line">    end loop;</span><br><span class="line">    close cemp;--关闭游标。</span><br><span class="line">end;</span><br><span class="line">commit;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>&gt; 注意：
+&gt; Oralce 的ACID默认级别是：`read commit`即一边（终端）不提交，另一个访问不到。</code></pre><ul>
+<li><p>查询某个部门的员工姓名，带参数的光标。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">    cursor cename(dno number) is select ename from emp where deptno = dno;</span><br><span class="line">    pename emp.ename%type;</span><br><span class="line">begin</span><br><span class="line">    open cename(20);</span><br><span class="line">    loop</span><br><span class="line">        fetch cename into pename;</span><br><span class="line">        exit when cename%notfound;</span><br><span class="line">        dbms_output.put_line(pename);</span><br><span class="line">    end loop;</span><br><span class="line">    close cename;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<pre><code>输出结果：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SMITH</span><br><span class="line">ADAMS</span><br><span class="line">SCOTT</span><br><span class="line">JONES</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure></code></pre><h2 id="游标的例外（异常）"><a href="#游标的例外（异常）" class="headerlink" title="游标的例外（异常）"></a>游标的例外（异常）</h2><ul>
+<li><p>系统例外：</p>
+<ul>
+<li><code>no_data_found</code>：没有该数据。</li>
+<li><code>too_many_rows</code>：变量无法保存太多的数据。</li>
+<li><code>zero_divide</code>：数学例外。</li>
+<li><code>value_error</code>：算术或转换错误。</li>
+<li><code>timeout_on_resource</code>：资源等待超时。（分布式数据库）</li>
+</ul>
+</li>
+<li><p>自定义例外：</p>
+<p>  就像Java一样，自建一个异常，如果满足条件则抛出异常，然后用<code>try...catch</code>进行捕获。比如：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">自建异常：MyExc</span><br><span class="line"></span><br><span class="line">try&#123;</span><br><span class="line">    if(...) throws new MyExc();</span><br><span class="line">&#125;catch()&#123;...&#125;</span><br><span class="line">catch()&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="实例7：游标的例外"><a href="#实例7：游标的例外" class="headerlink" title="实例7：游标的例外"></a>实例7：游标的例外</h2><h3 id="系统例外"><a href="#系统例外" class="headerlink" title="系统例外"></a>系统例外</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">    pnum number;</span><br><span class="line">begin</span><br><span class="line">    pnum := 1/0;</span><br><span class="line">    </span><br><span class="line">    exception</span><br><span class="line">        when zero_divide then dbms_output.put_line(&apos;0不能作为除数&apos;);</span><br><span class="line">        when value_error then dbms_output.put_line(&apos;行数太多&apos;);</span><br><span class="line">        when others then dbms_output.put_line(&apos;其他例外&apos;);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0不能作为除数</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义例外"><a href="#自定义例外" class="headerlink" title="自定义例外"></a>自定义例外</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">declare</span><br><span class="line">    myexc exception;</span><br><span class="line">    pnum number := 1;</span><br><span class="line">begin</span><br><span class="line">    if pnum = 1 then raise myexc;</span><br><span class="line">    end if;</span><br><span class="line">    exception</span><br><span class="line">        when myexc then dbms_output.put_line(&apos;自定义例外&apos;);</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">自定义例外</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<h3 id="是否存在问题"><a href="#是否存在问题" class="headerlink" title="是否存在问题"></a>是否存在问题</h3><p>是否存在编号为50的部门，如果不存在，抛出一个例外；如果存在，将该部门的员工姓名打印出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">declare</span><br><span class="line">    cursor cemp(dno number) is select ename from emp where deptno = dno;</span><br><span class="line">    pename emp.ename%type;</span><br><span class="line">    no_emp_found exception;--自定义例外</span><br><span class="line">begin</span><br><span class="line">    open cemp(50);</span><br><span class="line">    fetch cemp into pename;--先获取一行游标数据，才能进行判断</span><br><span class="line">    if cemp%notfound then raise no_emp_found;</span><br><span class="line">    else </span><br><span class="line">        loop</span><br><span class="line">            exit when cemp%notfound;</span><br><span class="line">            fetch cemp into pename;</span><br><span class="line">            dbms_output.put_line(pename);</span><br><span class="line">        end loop;</span><br><span class="line">    end if;</span><br><span class="line">    exception when no_emp_found then dbms_output.put_line(&apos;自定义例外，没有此号部门。&apos;);</span><br><span class="line">    close cemp;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">自定义例外，没有此号部门。</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例8：游标的使用场景"><a href="#实例8：游标的使用场景" class="headerlink" title="实例8：游标的使用场景"></a>实例8：游标的使用场景</h2><h3 id="统计每年的入职人数"><a href="#统计每年的入职人数" class="headerlink" title="统计每年的入职人数"></a>统计每年的入职人数</h3><ul>
+<li><p>思考普通SQL的做法：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select to_char(hiredate, &apos;yyyy&apos;), count(*) from emp group by to_char(hiredate, &apos;yyyy&apos;);</span><br><span class="line"></span><br><span class="line">TO_C   COUNT(*)</span><br><span class="line">---- ----------</span><br><span class="line">1987          2</span><br><span class="line">1980          1</span><br><span class="line">1982          1</span><br><span class="line">1981         10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>思考Java的做法：</p>
+<p>  将每个人的数据获取出来，判断入职年份，如果是1980年，则计数+1；如果是1981年，则计数+1，以此类推。</p>
+</li>
+<li><p>将Java思想转为PLSQL的做法：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">declare</span><br><span class="line">    cursor cemp is select to_char(hiredate, &apos;yyyy&apos;) from emp;</span><br><span class="line">    phiredate varchar(4);--判断年份，以备计数。</span><br><span class="line">    count80 number := 0;</span><br><span class="line">    count81 number := 0;</span><br><span class="line">    count82 number := 0;</span><br><span class="line">    count87 number := 0;</span><br><span class="line">begin</span><br><span class="line">    open cemp;</span><br><span class="line">    loop</span><br><span class="line">        fetch cemp into phiredate;</span><br><span class="line">        exit when cemp%notfound;</span><br><span class="line">        if phiredate = &apos;1980&apos; then count80 := count80 + 1;</span><br><span class="line">        elsif phiredate = &apos;1981&apos; then count81 := count81 + 1;</span><br><span class="line">        elsif phiredate = &apos;1982&apos; then count82 := count82 + 1;</span><br><span class="line">        else count87 := count87 + 1;</span><br><span class="line">        end if;</span><br><span class="line">    end loop;</span><br><span class="line">    dbms_output.put_line(&apos;1980 &apos; || count80);</span><br><span class="line">    dbms_output.put_line(&apos;1981 &apos; || count81);</span><br><span class="line">    dbms_output.put_line(&apos;1982 &apos; || count82);</span><br><span class="line">    dbms_output.put_line(&apos;1987 &apos; || count87);</span><br><span class="line">    dbms_output.put_line(&apos;总人数 &apos; || ( count80 + count81 + count82 + count87 ) );</span><br><span class="line">    close cemp;    </span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>  输出结果：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1980 1</span><br><span class="line">1981 10</span><br><span class="line">1982 1</span><br><span class="line">1987 8</span><br><span class="line">总人数 20</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="涨工资问题"><a href="#涨工资问题" class="headerlink" title="涨工资问题"></a>涨工资问题</h3><p>每人涨10%的工资，但是按入职时间顺序涨工资，且涨后的全体员工的总工资不能超过5万，超过则剩下的员工就不涨工资了。计算需要涨工资的人的个数以及涨后的工资总额。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">declare</span><br><span class="line">    cursor cemp is select empno, sal from emp order by hiredate asc;</span><br><span class="line">    pempno emp.empno%type;</span><br><span class="line">    psal emp.sal%type;</span><br><span class="line">    countEmp number := 0;</span><br><span class="line">    salTotal number := 0;</span><br><span class="line">begin</span><br><span class="line">    open cemp;</span><br><span class="line">    loop</span><br><span class="line">        fetch cemp into pempno, psal;</span><br><span class="line">        exit when cemp%notfound;--全体员工都统计完毕了</span><br><span class="line">        if salTotal + psal * 1.1 &lt; 50000</span><br><span class="line">            then update emp set sal = sal * 1.1 where empno = pempno;</span><br><span class="line">            countEmp := countEmp + 1;</span><br><span class="line">            salTotal := salTotal + psal * 1.1;</span><br><span class="line">        else </span><br><span class="line">            dbms_output.put_line(&apos;人数&apos; || countEmp || &apos;--- 涨后的总额&apos; || salTotal);</span><br><span class="line">            exit;</span><br><span class="line">        end if;</span><br><span class="line">    end loop;</span><br><span class="line">    close cemp;    </span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">人数14--- 涨后的总额40067.5</span><br><span class="line"></span><br><span class="line">PL/SQL 过程已成功完成。</span><br></pre></td></tr></table></figure>
+
+<h3 id="统计各部门的工资情况"><a href="#统计各部门的工资情况" class="headerlink" title="统计各部门的工资情况"></a>统计各部门的工资情况</h3><p>格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">部门编号    工资小于2000的人数     工资在2000至4000的人数     工资大于4000的人数     各部门工资总额</span><br><span class="line">pdeptno		    count1		    	  count2			       count3		     salTotal</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line">declare</span><br><span class="line">    --各个部门编号</span><br><span class="line">    cursor cdept is select deptno from dept;</span><br><span class="line">    pdeptno dept.deptno%type;</span><br><span class="line">    --部门中所有员工的工资</span><br><span class="line">    cursor cemp(dno number) is select sal from emp where deptno = dno;</span><br><span class="line">    psal emp.sal%type;</span><br><span class="line">    --统计各部门工资分布的人数</span><br><span class="line">    count1 number;</span><br><span class="line">    count2 number;</span><br><span class="line">    count3 number;</span><br><span class="line">    --统计各部门工资总额</span><br><span class="line">    salTotal number;</span><br><span class="line">begin</span><br><span class="line">    open cdept;</span><br><span class="line">    --外层循环：遍历所有的部门编号</span><br><span class="line">    loop</span><br><span class="line">        fetch cdept into pdeptno;</span><br><span class="line">        exit when cdept%notfound;</span><br><span class="line">        count1 := 0;</span><br><span class="line">        count2 := 0;</span><br><span class="line">        count3 := 0;</span><br><span class="line">        select sum(sal) into salTotal from emp where deptno = pdeptno;</span><br><span class="line">        open cemp(pdeptno);</span><br><span class="line">        --内层循环：遍历某个部门的所有员工的工资</span><br><span class="line">        loop</span><br><span class="line">            fetch cemp into psal;</span><br><span class="line">            exit when cemp%notfound;</span><br><span class="line">            if psal &lt; 2000 then count1 := count1 + 1;</span><br><span class="line">            elsif psal &gt;=2000 and psal &lt; 4000 then count2 := count2 + 1;</span><br><span class="line">            elsif psal &gt;= 4000 then count3 := count3 + 1;</span><br><span class="line">            end if;</span><br><span class="line">        end loop;</span><br><span class="line">        close cemp;</span><br><span class="line">        dbms_output.put_line(pdeptno || &apos;号部门的工资总额是：&apos; || salTotal || &apos; 工资小于2000的人数是：&apos; || count1 || &apos; 工资在2000至4000的人数是：&apos; || count2 || &apos; 工资大于4000的人数是：&apos; || count3 );</span><br><span class="line">    end loop;</span><br><span class="line">    close cdept;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Colin谢谢您的支持！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/" class="archive-article-date">
-  	<time datetime="2019-08-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/LeetCode题解160. Intersection of Two Linked Lists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/22/Oracle——PLSQL编程语言与游标 学习笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/02/LeetCode题解92. Reverse Linked List II/" class="archive-article-date">
-  	<time datetime="2019-08-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/11/24/Oracle——存储过程与存储函数 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Oracle——存储过程与存储函数 学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/18/Oracle——同义词 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Oracle——同义词 学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/02/LeetCode题解92. Reverse Linked List II/">Reverse Linked List II</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PLSQL的基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">PLSQL的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#开发工具"><span class="toc-number">1.1.1.</span> <span class="toc-text">开发工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PLSQL的编写"><span class="toc-number">1.2.</span> <span class="toc-text">PLSQL的编写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通用模板"><span class="toc-number">1.2.1.</span> <span class="toc-text">通用模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例1：编写输出语句"><span class="toc-number">1.3.</span> <span class="toc-text">实例1：编写输出语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例2：定义变量并动态赋值变量"><span class="toc-number">1.4.</span> <span class="toc-text">实例2：定义变量并动态赋值变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PLSQL的变量推荐设置"><span class="toc-number">1.5.</span> <span class="toc-text">PLSQL的变量推荐设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例3：引用型变量与记录型变量"><span class="toc-number">1.6.</span> <span class="toc-text">实例3：引用型变量与记录型变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PLSQL的选择结构：if语句"><span class="toc-number">1.7.</span> <span class="toc-text">PLSQL的选择结构：if语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例4：选择结构"><span class="toc-number">1.8.</span> <span class="toc-text">实例4：选择结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PLSQL的循环结构"><span class="toc-number">1.9.</span> <span class="toc-text">PLSQL的循环结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例5：循环结构"><span class="toc-number">1.10.</span> <span class="toc-text">实例5：循环结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游标（光标）"><span class="toc-number">1.11.</span> <span class="toc-text">游标（光标）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游标的基本概念"><span class="toc-number">1.12.</span> <span class="toc-text">游标的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游标的创建"><span class="toc-number">1.13.</span> <span class="toc-text">游标的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游标的四个属性"><span class="toc-number">1.14.</span> <span class="toc-text">游标的四个属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例6：游标的基本使用"><span class="toc-number">1.15.</span> <span class="toc-text">实例6：游标的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游标的例外（异常）"><span class="toc-number">1.16.</span> <span class="toc-text">游标的例外（异常）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例7：游标的例外"><span class="toc-number">1.17.</span> <span class="toc-text">实例7：游标的例外</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统例外"><span class="toc-number">1.17.1.</span> <span class="toc-text">系统例外</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义例外"><span class="toc-number">1.17.2.</span> <span class="toc-text">自定义例外</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#是否存在问题"><span class="toc-number">1.17.3.</span> <span class="toc-text">是否存在问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例8：游标的使用场景"><span class="toc-number">1.18.</span> <span class="toc-text">实例8：游标的使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#统计每年的入职人数"><span class="toc-number">1.18.1.</span> <span class="toc-text">统计每年的入职人数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#涨工资问题"><span class="toc-number">1.18.2.</span> <span class="toc-text">涨工资问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#统计各部门的工资情况"><span class="toc-number">1.18.3.</span> <span class="toc-text">统计各部门的工资情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">1.19.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">1.20.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">1.21.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/LeetCode题解206. Reverse Linked List/" class="archive-article-date">
-  	<time datetime="2019-07-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/LeetCode题解206. Reverse Linked List/">Reverse Linked List</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/" class="archive-article-date">
-  	<time datetime="2019-07-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/15/01-复杂度1 最大子列和问题 (20 分)/">最大子列和问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -356,9 +579,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
