@@ -6,22 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Oracle——伪列 学习笔记 | Hexo</title>
+  <title>Tag: 常用类 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="伪列的基本概念不属于任何一张表，但是会被所有的表共享  1select rowid, rownum, e.* from emp e;  rownum：逻辑序列、逻辑伪列    比如 1    2 3 4 5 6 7...rowid：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。 那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：  前6位：">
-<meta name="keywords" content="学习笔记,数据库,Oracle">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Oracle——伪列 学习笔记">
-<meta property="og:url" content="http://yoursite.com/2019/11/03/Oracle——伪列 学习笔记/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/常用类/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="伪列的基本概念不属于任何一张表，但是会被所有的表共享  1select rowid, rownum, e.* from emp e;  rownum：逻辑序列、逻辑伪列    比如 1    2 3 4 5 6 7...rowid：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。 那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：  前6位：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KXo1XT.png">
-<meta property="og:updated_time" content="2019-11-03T09:46:55.192Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle——伪列 学习笔记">
-<meta name="twitter:description" content="伪列的基本概念不属于任何一张表，但是会被所有的表共享  1select rowid, rownum, e.* from emp e;  rownum：逻辑序列、逻辑伪列    比如 1    2 3 4 5 6 7...rowid：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。 那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：  前6位：">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/03/KXo1XT.png">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -145,169 +138,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Oracle——伪列 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Oracle——伪列 学习笔记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/03/25/【白话版】Java常用类 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-03-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/03/25/【白话版】Java常用类 学习笔记/">白话版：Java常用类 学习笔记</a>
     </h1>
   
 
-        
-        <a href="/2019/11/03/Oracle——伪列 学习笔记/" class="archive-article-date">
-  	<time datetime="2019-11-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="伪列的基本概念"><a href="#伪列的基本概念" class="headerlink" title="伪列的基本概念"></a>伪列的基本概念</h2><p>不属于任何一张表，但是会被所有的表共享 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rowid, rownum, e.* from emp e;</span><br></pre></td></tr></table></figure>
-
-<p><code>rownum</code>：逻辑序列、逻辑伪列    比如 <code>1    2 3 4 5 6 7...</code><br><code>rowid</code>：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。</p>
-<p>那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：</p>
-<p><img src="https://s2.ax1x.com/2019/11/03/KXo1XT.png" alt="KXo1XT.png"></p>
-<p>前6位：数据对象编号<br>依次往后数3位：数据文件编号<br>依次往后数6位：数据块编号<br>依次往后数3位：行号<br>由此可知：<code>rowid</code>是根据插入的顺序依次递增。</p>
-<h2 id="rownum"><a href="#rownum" class="headerlink" title="rownum"></a>rownum</h2><ol>
-<li>在不同SQL语句在执行时，rownum的值不一致。</li>
-<li>在相同SQL语句在执行时，rownum的值保持一致。(即在第一次查询时产生的rownum，之后保持不变)</li>
-</ol>
-<h3 id="什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。"><a href="#什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。" class="headerlink" title="什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。"></a>什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。</h3><p>比如：查询工资最高的前3条员工信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select ename,sal from emp </span><br><span class="line">where rownum &lt;=3</span><br><span class="line">order by sal desc;</span><br></pre></td></tr></table></figure>
-
-<p>使用此查询并不正确，因为此SQL语句有两张表，会产生一张临时表。</p>
-<p>分解解析：</p>
-<ol>
-<li>先执行此句话会产生<code>emp</code>表，生成结果集。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select ename ,sal from emp </span><br><span class="line">where rownum &lt;=3;</span><br></pre></td></tr></table></figure>
-
-<p>假如查询的结果集为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1       zs  7000</span><br><span class="line">2       ls  6000</span><br><span class="line">3       ww  5000</span><br><span class="line">4       zl  9000</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>此时的<code>rownum</code>已经确定了，相当于绑定上了。</p>
-<ol start="2">
-<li>再加入SQL语句<code>order by sal desc;</code>，会产生临时表，然后在结果集中排序，排序后的结果在临时表中显示。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1	    zs	7000</span><br><span class="line">2	    ls	6000</span><br><span class="line">3	    ww	5000</span><br><span class="line">4	    zl	9000</span><br><span class="line"></span><br><span class="line">--- order by sal desc</span><br><span class="line"></span><br><span class="line">4	    zl	9000</span><br><span class="line">1	    zs	7000</span><br><span class="line">2	    ls	6000</span><br><span class="line">3	    ww	5000</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>此时再<code>rownum &lt;=3;</code>就不正确了，只能查到这样的数据：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1	    zs	7000</span><br><span class="line">2	    ls	6000</span><br><span class="line">3	    ww	5000</span><br></pre></td></tr></table></figure>
-
-
-<p>如何解决？子查询。</p>
-<blockquote>
-<p>子查询一般不排序，除非是<code>top - n</code>的问题。</p>
-</blockquote>
-<ol>
-<li>先作为新表进行查询、降序。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp order by sal desc;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ename sal</span><br><span class="line">zl	9000</span><br><span class="line">zs	7000</span><br><span class="line">ls	6000</span><br><span class="line">ww	5000</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>再对新表进行查询。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, ename, sal from (select * from emp order by sal desc);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1       zl	9000</span><br><span class="line">2       zs	7000</span><br><span class="line">3       ls	6000</span><br><span class="line">4       ww	5000</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>最后进行筛选即可。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, ename, sal from (select * from emp order by sal desc) where rownum &lt;= 3;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1       zl	9000</span><br><span class="line">2       zs	7000</span><br><span class="line">3       ls	6000</span><br></pre></td></tr></table></figure>
-
-<h3 id="总结-top-n类问题如何解决。"><a href="#总结-top-n类问题如何解决。" class="headerlink" title="总结 top - n类问题如何解决。"></a>总结 <code>top - n</code>类问题如何解决。</h3><p><code>top - n</code>：前n个数据 比如：前三、前五…</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, .... from (select * from xxx order by ...) where rownum &lt;= n ;</span><br></pre></td></tr></table></figure>
-
-<h2 id="rownum-rowid：删除重复数据"><a href="#rownum-rowid：删除重复数据" class="headerlink" title="rownum/rowid：删除重复数据"></a>rownum/rowid：删除重复数据</h2><p>首先插入一些数据及重复数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">create table mystudent(</span><br><span class="line">stuno number,</span><br><span class="line">stuname varchar2(10),</span><br><span class="line">stuage number </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">insert into mystudent values(1,&apos;zs&apos;,23) ;</span><br><span class="line">insert into mystudent values(1,&apos;zs&apos;,23) ;</span><br><span class="line"></span><br><span class="line">insert into mystudent values(2,&apos;ls&apos;,24) ;</span><br><span class="line">insert into mystudent values(2,&apos;ls&apos;,24) ;</span><br><span class="line"></span><br><span class="line">insert into mystudent values(3,&apos;ww&apos;,25) ;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     STUNO STUNAME        STUAGE</span><br><span class="line">---------- ---------- ----------</span><br><span class="line">         1 zs                 23</span><br><span class="line">         1 zs                 23</span><br><span class="line">         2 ls                 24</span><br><span class="line">         2 ls                 24</span><br><span class="line">         3 ww                 25</span><br></pre></td></tr></table></figure>
-
-<h3 id="通过多条SQL语句来删除"><a href="#通过多条SQL语句来删除" class="headerlink" title="通过多条SQL语句来删除"></a>通过多条SQL语句来删除</h3><p>平时删除是这样做的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from mystudent where stuno = 1;</span><br></pre></td></tr></table></figure>
-
-<p>但这样是不行的，把两条数据都删除了，我们只需要删除一个数据。<br>我们可以通过伪列来删除。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, s.* from mystudent s;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    ROWNUM      STUNO STUNAME        STUAGE</span><br><span class="line">---------- ---------- ---------- ----------</span><br><span class="line">         1          1 zs                 23</span><br><span class="line">         2          1 zs                 23</span><br><span class="line">         3          2 ls                 24</span><br><span class="line">         4          2 ls                 24</span><br><span class="line">         5          3 ww                 25</span><br></pre></td></tr></table></figure>
-
-<p>通过<code>delete from mystudent where rownum = 1</code>即可把一个个重复的数据一条条的删除。或者：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, rowid, s.* from mystudent s;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    ROWNUM ROWID                   STUNO STUNAME        STUAGE</span><br><span class="line">---------- ------------------ ---------- ---------- ----------</span><br><span class="line">         1 AAASPzAAEAAAAKMAAB          1 zs                 23</span><br><span class="line">         2 AAASPzAAEAAAAKMAAC          2 ls                 24</span><br><span class="line">         3 AAASPzAAEAAAAKMAAD          2 ls                 24</span><br><span class="line">         4 AAASPzAAEAAAAKMAAE          3 ww                 25</span><br></pre></td></tr></table></figure>
-
-<p>此时<code>rownum</code>又重新生成了一组序列。通过<code>delete from mystudent where rowid = &#39;AAASPzAAEAAAAKMAAC&#39;;</code>即可把一个个重复的数据一条条的删除。</p>
-<h3 id="通过一条SQL语句来删除"><a href="#通过一条SQL语句来删除" class="headerlink" title="通过一条SQL语句来删除"></a>通过一条SQL语句来删除</h3><p>使用<code>distinct</code>能否可以？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct stuno from mystudent;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     STUNO</span><br><span class="line">----------</span><br><span class="line">         1</span><br><span class="line">         2</span><br><span class="line">         3</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from mystudent where stuno in( select distinct stuno from mystudent );</span><br></pre></td></tr></table></figure>
-
-<p>这样就把全部数据删除了，肯定不行！</p>
-<p>那么如何解决呢？我们要仔细研究一下<code>rowid</code>的规律：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rowid, s.* from mystudent s;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ROWID                   STUNO STUNAME        STUAGE</span><br><span class="line">------------------ ---------- ---------- ----------</span><br><span class="line">AAASP0AAEAAAAKMAAA          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAB          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAC          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAD          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAE          3 ww                 25</span><br></pre></td></tr></table></figure>
-
-<p>观察<code>rowid</code>的最后一位是<code>A B C D E</code>，我们再插入几条数据慢慢观察。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into mystudent values(3,&apos;ww&apos;,25) ;</span><br><span class="line"></span><br><span class="line">insert into mystudent values(4,&apos;zl&apos;,26) ;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ROWID                   STUNO STUNAME        STUAGE</span><br><span class="line">------------------ ---------- ---------- ----------</span><br><span class="line">AAASP0AAEAAAAKMAAA          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAB          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAC          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAD          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAE          3 ww                 25</span><br><span class="line">AAASP0AAEAAAAKMAAF          3 ww                 25</span><br><span class="line">AAASP0AAEAAAAKMAAG          4 zl                 26</span><br></pre></td></tr></table></figure>
-
-<p>我们发现：<strong><code>rowid</code>是根据插入的顺序依次递增。</strong><br>所以我们有了一个思路：根据编号进行分组（将重复的数据<code>stuno</code>放到一组），然后每组数据中只保留一个。如何只保留一个？我们可以只保留<code>rowid</code>的最大值或最小值（因为无论多少个重复的编号，每个编号的<code>rowid</code>是唯一的，而且<code>rowid</code>的最大值或最小值也是唯一的）。现在我们选择保留<code>rowid</code>最小的。</p>
-<ol>
-<li>通过<code>select min(rowid) from mystudent group by stuno;</code>来进行分组。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MIN(ROWID)</span><br><span class="line">------------------</span><br><span class="line">AAASP0AAEAAAAKMAAA</span><br><span class="line">AAASP0AAEAAAAKMAAC</span><br><span class="line">AAASP0AAEAAAAKMAAG</span><br><span class="line">AAASP0AAEAAAAKMAAE</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>再进行删除，只保留上述的<code>rowid</code>即可。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete from mystudent where rowid not in </span><br><span class="line">(select min(rowid) from mystudent  group by stuno );</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">     STUNO STUNAME        STUAGE</span><br><span class="line">---------- ---------- ----------</span><br><span class="line">         1 zs                 23</span><br><span class="line">         2 ls                 24</span><br><span class="line">         3 ww                 25</span><br><span class="line">         4 zl                 26</span><br></pre></td></tr></table></figure>
-
-<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>Colin谢谢您的支持！<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -317,138 +177,29 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">常用类</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/03/Oracle——伪列 学习笔记/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/05/Oracle——约束 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Oracle——约束 学习笔记
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/10/28/Java——反射机制与动态代理 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java——反射机制与动态代理 学习笔记</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#伪列的基本概念"><span class="toc-number">1.</span> <span class="toc-text">伪列的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rownum"><span class="toc-number">2.</span> <span class="toc-text">rownum</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。"><span class="toc-number">2.1.</span> <span class="toc-text">什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结-top-n类问题如何解决。"><span class="toc-number">2.2.</span> <span class="toc-text">总结 top - n类问题如何解决。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rownum-rowid：删除重复数据"><span class="toc-number">3.</span> <span class="toc-text">rownum/rowid：删除重复数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过多条SQL语句来删除"><span class="toc-number">3.1.</span> <span class="toc-text">通过多条SQL语句来删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过一条SQL语句来删除"><span class="toc-number">3.2.</span> <span class="toc-text">通过一条SQL语句来删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">4.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">5.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">6.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -471,9 +222,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

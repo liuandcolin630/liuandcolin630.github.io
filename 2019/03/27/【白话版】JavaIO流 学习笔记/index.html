@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="理解本章就想象着总有一根管子怼来怼去，怼到水桶上…  目录 Java流式输入/输出流 Java流类的分类 输入/输出流类 常见的节点流和处理流 文件流 缓冲流 数据流 转换流 Print流 Object流">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-28T06:59:31.205Z">
+<meta property="og:updated_time" content="2019-12-08T07:41:51.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="白话版：JavaIO流 学习笔记">
 <meta name="twitter:description" content="理解本章就想象着总有一根管子怼来怼去，怼到水桶上…  目录 Java流式输入/输出流 Java流类的分类 输入/输出流类 常见的节点流和处理流 文件流 缓冲流 数据流 转换流 Print流 Object流">
@@ -166,7 +166,7 @@
         <blockquote>
 <p>理解本章就想象着总有一根管子怼来怼去，怼到水桶上…</p>
 </blockquote>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
 <li>Java流式输入/输出流</li>
 <li>Java流类的分类</li>
 <li>输入/输出流类</li>
@@ -177,9 +177,10 @@
 <li>转换流</li>
 <li>Print流</li>
 <li>Object流<a id="more"></a>
-<h2 id="输入-输出流的分类"><a href="#输入-输出流的分类" class="headerlink" title="输入/输出流的分类"></a>输入/输出流的分类</h2></li>
+
+</li>
 </ul>
-<p><code>java.io</code> 包中定义了多个流类型（类或抽象类）来实现输入/输出功能：可以从不同的角度对其进行分类：</p>
+<h2 id="输入-输出流的分类"><a href="#输入-输出流的分类" class="headerlink" title="输入/输出流的分类"></a>输入/输出流的分类</h2><p><code>java.io</code> 包中定义了多个流类型（类或抽象类）来实现输入/输出功能：可以从不同的角度对其进行分类：</p>
 <ul>
 <li>按数据流的放行不同可以分为输入流和输出流。</li>
 <li>按处理数据单位不同可以分为字节流和字符流。</li>
@@ -298,7 +299,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li>InputStream/OutputStream</li>
 <li>Reader/Writer</li>
 <li>FileInputStream/FileOutputStream</li>
@@ -433,8 +434,8 @@
     </a>
   
   
-    <a href="/2019/03/16/Hexo博客如何远程部署到GitHub及使用yilia主题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo博客如何远程部署到GitHub及使用yilia主题</div>
+    <a href="/2019/03/25/【白话版】Java常用类 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">白话版：Java常用类 学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -461,7 +462,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入-输出流的分类"><span class="toc-number">2.</span> <span class="toc-text">输入/输出流的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-输出流"><span class="toc-number">2.1.</span> <span class="toc-text">输入/输出流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字节-字符流"><span class="toc-number">2.2.</span> <span class="toc-text">字节/字符流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点-处理流"><span class="toc-number">2.3.</span> <span class="toc-text">节点/处理流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InputStream"><span class="toc-number">2.4.</span> <span class="toc-text">InputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OutputStream"><span class="toc-number">2.5.</span> <span class="toc-text">OutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reader"><span class="toc-number">2.6.</span> <span class="toc-text">Reader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Writer"><span class="toc-number">2.7.</span> <span class="toc-text">Writer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点流类型"><span class="toc-number">2.8.</span> <span class="toc-text">节点流类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理流类型"><span class="toc-number">2.9.</span> <span class="toc-text">处理流类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">4.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">5.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">6.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#输入-输出流的分类"><span class="toc-number">1.1.</span> <span class="toc-text">输入/输出流的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-输出流"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入/输出流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字节-字符流"><span class="toc-number">1.1.2.</span> <span class="toc-text">字节/字符流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点-处理流"><span class="toc-number">1.1.3.</span> <span class="toc-text">节点/处理流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InputStream"><span class="toc-number">1.1.4.</span> <span class="toc-text">InputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OutputStream"><span class="toc-number">1.1.5.</span> <span class="toc-text">OutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reader"><span class="toc-number">1.1.6.</span> <span class="toc-text">Reader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Writer"><span class="toc-number">1.1.7.</span> <span class="toc-text">Writer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点流类型"><span class="toc-number">1.1.8.</span> <span class="toc-text">节点流类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理流类型"><span class="toc-number">1.1.9.</span> <span class="toc-text">处理流类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">2.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">2.2.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">2.3.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -597,26 +598,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java高级</a>
               </li>
              
@@ -629,6 +610,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java初级</a>
               </li>
              
@@ -637,7 +622,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RPC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">常用类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,10 +655,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
             
             <div class="clearfix"></div>

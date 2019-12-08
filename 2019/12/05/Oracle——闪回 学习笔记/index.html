@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Oracle——闪回 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录 闪回的作用 闪回的类型 闪回操作 实例1：闪回表中的数据 实例2：闪回删除的表 实例3：闪回已删除但有触发器的表 不同用户的删除特点 闪回事务查询 实例5：闪回事务查询  闪回的作用 将错误的DML操作并且commit的，进行撤销，即撤销已提交的事务。 还原删除的表。 获取表上的历史记录。例如Git的版本控制，  闪回的类型 闪回表中的数据：将表中的数据回退到历史的某一个点。 闪回删除的表：">
-<meta name="keywords" content="数据库,Oracle,学习笔记">
+  <meta name="description" content="目录 闪回的作用 闪回的类型 闪回操作 实例1：闪回表中的数据 实例2：闪回删除的表 实例3：闪回已删除但有触发器的表 不同用户的删除特点 闪回事务查询 实例5：闪回事务查询">
+<meta name="keywords" content="学习笔记,数据库,Oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle——闪回 学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/12/05/Oracle——闪回 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="目录 闪回的作用 闪回的类型 闪回操作 实例1：闪回表中的数据 实例2：闪回删除的表 实例3：闪回已删除但有触发器的表 不同用户的删除特点 闪回事务查询 实例5：闪回事务查询  闪回的作用 将错误的DML操作并且commit的，进行撤销，即撤销已提交的事务。 还原删除的表。 获取表上的历史记录。例如Git的版本控制，  闪回的类型 闪回表中的数据：将表中的数据回退到历史的某一个点。 闪回删除的表：">
+<meta property="og:description" content="目录 闪回的作用 闪回的类型 闪回操作 实例1：闪回表中的数据 实例2：闪回删除的表 实例3：闪回已删除但有触发器的表 不同用户的删除特点 闪回事务查询 实例5：闪回事务查询">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8nymF.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8nDyT.png">
-<meta property="og:updated_time" content="2019-12-05T08:55:27.003Z">
+<meta property="og:updated_time" content="2019-12-05T08:58:17.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle——闪回 学习笔记">
-<meta name="twitter:description" content="目录 闪回的作用 闪回的类型 闪回操作 实例1：闪回表中的数据 实例2：闪回删除的表 实例3：闪回已删除但有触发器的表 不同用户的删除特点 闪回事务查询 实例5：闪回事务查询  闪回的作用 将错误的DML操作并且commit的，进行撤销，即撤销已提交的事务。 还原删除的表。 获取表上的历史记录。例如Git的版本控制，  闪回的类型 闪回表中的数据：将表中的数据回退到历史的某一个点。 闪回删除的表：">
+<meta name="twitter:description" content="目录 闪回的作用 闪回的类型 闪回操作 实例1：闪回表中的数据 实例2：闪回删除的表 实例3：闪回已删除但有触发器的表 不同用户的删除特点 闪回事务查询 实例5：闪回事务查询">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/12/05/Q8nymF.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -177,6 +177,8 @@
 <li>闪回事务查询</li>
 <li>实例5：闪回事务查询</li>
 </ul>
+<a id="more"></a>
+
 <h2 id="闪回的作用"><a href="#闪回的作用" class="headerlink" title="闪回的作用"></a>闪回的作用</h2><ol>
 <li>将错误的DML操作并且<code>commit</code>的，进行撤销，即撤销已提交的事务。</li>
 <li>还原删除的表。</li>
@@ -320,15 +322,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -563,26 +565,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java高级</a>
               </li>
              
@@ -595,6 +577,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java初级</a>
               </li>
              
@@ -603,7 +589,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RPC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">常用类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,10 +622,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
             
             <div class="clearfix"></div>

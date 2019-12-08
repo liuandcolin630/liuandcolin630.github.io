@@ -6,22 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Oracle——伪列 学习笔记 | Hexo</title>
+  <title>白话版：Java常用类 学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="伪列的基本概念不属于任何一张表，但是会被所有的表共享  1select rowid, rownum, e.* from emp e;  rownum：逻辑序列、逻辑伪列    比如 1    2 3 4 5 6 7...rowid：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。 那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：  前6位：">
-<meta name="keywords" content="学习笔记,数据库,Oracle">
+  <meta name="description" content="目录 字符串相关类（String、StringBuffer） 基本数据类型包装类 Math类 File类 枚举类">
+<meta name="keywords" content="学习笔记,Java中级,常用类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Oracle——伪列 学习笔记">
-<meta property="og:url" content="http://yoursite.com/2019/11/03/Oracle——伪列 学习笔记/index.html">
+<meta property="og:title" content="白话版：Java常用类 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/03/25/【白话版】Java常用类 学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="伪列的基本概念不属于任何一张表，但是会被所有的表共享  1select rowid, rownum, e.* from emp e;  rownum：逻辑序列、逻辑伪列    比如 1    2 3 4 5 6 7...rowid：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。 那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：  前6位：">
+<meta property="og:description" content="目录 字符串相关类（String、StringBuffer） 基本数据类型包装类 Math类 File类 枚举类">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/11/03/KXo1XT.png">
-<meta property="og:updated_time" content="2019-11-03T09:46:55.192Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/08/QaVaAU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/08/QaVN7T.png">
+<meta property="og:updated_time" content="2019-12-08T07:42:05.357Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle——伪列 学习笔记">
-<meta name="twitter:description" content="伪列的基本概念不属于任何一张表，但是会被所有的表共享  1select rowid, rownum, e.* from emp e;  rownum：逻辑序列、逻辑伪列    比如 1    2 3 4 5 6 7...rowid：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。 那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：  前6位：">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/03/KXo1XT.png">
+<meta name="twitter:title" content="白话版：Java常用类 学习笔记">
+<meta name="twitter:description" content="目录 字符串相关类（String、StringBuffer） 基本数据类型包装类 Math类 File类 枚举类">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/08/QaVaAU.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -145,140 +146,296 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Oracle——伪列 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-【白话版】Java常用类 学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Oracle——伪列 学习笔记
+      白话版：Java常用类 学习笔记
     </h1>
   
 
         
-        <a href="/2019/11/03/Oracle——伪列 学习笔记/" class="archive-article-date">
-  	<time datetime="2019-11-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-03</time>
+        <a href="/2019/03/25/【白话版】Java常用类 学习笔记/" class="archive-article-date">
+  	<time datetime="2019-03-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="伪列的基本概念"><a href="#伪列的基本概念" class="headerlink" title="伪列的基本概念"></a>伪列的基本概念</h2><p>不属于任何一张表，但是会被所有的表共享 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rowid, rownum, e.* from emp e;</span><br></pre></td></tr></table></figure>
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>字符串相关类（<code>String</code>、<code>StringBuffer</code>）</li>
+<li>基本数据类型包装类</li>
+<li><code>Math</code>类</li>
+<li><code>File</code>类</li>
+<li>枚举类<a id="more"></a>
 
-<p><code>rownum</code>：逻辑序列、逻辑伪列    比如 <code>1    2 3 4 5 6 7...</code><br><code>rowid</code>：物理序列、物理伪列（18位） 物理硬盘上真实的存放位置。</p>
-<p>那么数据库在底层是如何存储文件的呢？先放入数据对象，然后是数据文件，最终放入块里面的行里的。如图：</p>
-<p><img src="https://s2.ax1x.com/2019/11/03/KXo1XT.png" alt="KXo1XT.png"></p>
-<p>前6位：数据对象编号<br>依次往后数3位：数据文件编号<br>依次往后数6位：数据块编号<br>依次往后数3位：行号<br>由此可知：<code>rowid</code>是根据插入的顺序依次递增。</p>
-<h2 id="rownum"><a href="#rownum" class="headerlink" title="rownum"></a>rownum</h2><ol>
-<li>在不同SQL语句在执行时，rownum的值不一致。</li>
-<li>在相同SQL语句在执行时，rownum的值保持一致。(即在第一次查询时产生的rownum，之后保持不变)</li>
+</li>
+</ul>
+<h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><ol>
+<li><code>java.lang.String</code>类代表<strong>不可变</strong>的字符序列。</li>
+<li><code>&quot;xxxxx&quot;</code>为该类的一个对象。</li>
+<li><code>String</code>类的常见构造方法：<ul>
+<li><code>String(String original)</code><ul>
+<li>创建一个<code>String</code>对象为<code>original</code>的拷贝。</li>
+</ul>
+</li>
+<li><code>String(char[] value)</code><ul>
+<li>用一个字符数组创建一个<code>String</code>对象。</li>
+</ul>
+</li>
+<li><code>String(char[] value, int offset, int count)</code><ul>
+<li>用一个字符数组从<code>offset</code>项开始的<code>count</code>个字符序列创建一个<code>String</code>对象。</li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
-<h3 id="什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。"><a href="#什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。" class="headerlink" title="什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。"></a>什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。</h3><p>比如：查询工资最高的前3条员工信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select ename,sal from emp </span><br><span class="line">where rownum &lt;=3</span><br><span class="line">order by sal desc;</span><br></pre></td></tr></table></figure>
+<h3 id="实例1："><a href="#实例1：" class="headerlink" title="实例1："></a>实例1：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">String01</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String s1 = <span class="string">"hello"</span>;</span><br><span class="line">		String s2 = <span class="string">"world"</span>;</span><br><span class="line">		String s3 = <span class="string">"hello"</span>;</span><br><span class="line">		System.out.println(s1 == s3); <span class="comment">/* true */</span></span><br><span class="line"></span><br><span class="line">		s1 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line">		s2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</span><br><span class="line">		System.out.println(s1 == s2); <span class="comment">/* false */</span></span><br><span class="line">		System.out.println(s1.equals(s2)); <span class="comment">/* true */</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">char</span> c[] = &#123; <span class="string">'s'</span>, <span class="string">'u'</span>, <span class="string">'n'</span>, <span class="string">' '</span>, <span class="string">'j'</span>, <span class="string">'a'</span>, <span class="string">'v'</span>, <span class="string">'a'</span> &#125;;</span><br><span class="line">		String s4 = <span class="keyword">new</span> String(c);</span><br><span class="line">		String s5 = <span class="keyword">new</span> String(c, <span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">		System.out.println(s4); <span class="comment">/* sun java */</span></span><br><span class="line">		System.out.println(s5); <span class="comment">/* java */</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用此查询并不正确，因为此SQL语句有两张表，会产生一张临时表。</p>
-<p>分解解析：</p>
-<ol>
-<li>先执行此句话会产生<code>emp</code>表，生成结果集。</li>
+<ul>
+<li><code>System.out.println(s1 == s3);</code>是相等的吗？</li>
+</ul>
+<p><code>&quot;hello&quot;</code>这个字符串常量分配在<code>Data Segment</code>里面，<code>s1</code>分配在栈空间里，<code>s1</code>指向字符串<code>&quot;hello&quot;</code>，但是编译器往往对于存在于<code>Data</code>数据区里面的这些字符串有一个优化，当你再写<code>s3 = &quot;hello&quot;</code>的时候，它发现在<code>Data</code>数据区已经有一个<code>&quot;hello&quot;</code>了，它就不会再分配一个，而<code>s3</code>指向的仍然是跟原来一样的<code>&quot;hello&quot;</code>字符串，所以<code>s1 == s3</code>。</p>
+<ul>
+<li><code>System.out.println(s1 == s2);</code>是相等的吗？</li>
+</ul>
+<p><code>s1</code>和<code>s2</code>虽然内容一样，但是他们不是同一个对象。</p>
+<ul>
+<li><code>System.out.println(s1.equals(s2));</code>是相等的吗？</li>
+</ul>
+<p><code>Object</code>类里面定义了一个<code>equals</code>方法是让我们来重写的，默认的比较方法就是<code>s1 == s2</code>。而<code>s1</code>是不是<code>equals(s2)</code>要查一查<code>String</code>类里有没有重写<code>equals</code>方法？只要它俩有相同的字符序列，就相等。</p>
+<p>一个字符数组<code>char c[]</code>，<code>String</code>类有一个可以通过字节数组来构造的构造方法。<br><code>String s4 = new String(c);</code>把一个个的字符构建成一个字符串。<br><code>String s5 = new String(c, 4, 4);</code>从第4个位置截取4个字符构建成一个字符串。</p>
+<h2 id="String类常用方法"><a href="#String类常用方法" class="headerlink" title="String类常用方法"></a>String类常用方法</h2><p>（1）：</p>
+<ul>
+<li><p><code>public char charAt(int index)</code><br>返回字符串中第<code>index</code>个字符。<br>把字符串看成一个字符数组，下标从0开始，第几个位置上的字符。</p>
+</li>
+<li><p><code>public int length()</code><br>返回字符串的长度。<br>指字符而不是字节。</p>
+</li>
+<li><p><code>public int indexOf(String str)</code><br>返回字符串中出现<code>str</code>的第一个位置。</p>
+</li>
+<li><p><code>public int indexOf(String str, int fromIndex)</code><br>返回字符串中从<code>fromIndex</code>开始出现<code>str</code>的第一个位置。</p>
+</li>
+<li><p><code>public boolean equalsIgnoreCase(String another)</code><br>比较字符串与<code>another</code>是否一样（忽略大小写）</p>
+</li>
+<li><p><code>public String replace(char oldChar, char newChar)</code><br>在字符串中用<code>newChar</code>字符替换<code>oldChar</code>字符。</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String s1 = <span class="string">"sun java"</span>;</span><br><span class="line">		String s2 = <span class="string">"Sun Java"</span>;</span><br><span class="line">		System.out.println(s1.charAt(<span class="number">1</span>)); <span class="comment">/* u */</span></span><br><span class="line">		System.out.println(s2.length()); <span class="comment">/* 8 */</span></span><br><span class="line">		System.out.println(s1.indexOf(<span class="string">"java"</span>)); <span class="comment">/* 4 */</span></span><br><span class="line">		System.out.println(s1.indexOf(<span class="string">"Java"</span>)); <span class="comment">/*-1*/</span></span><br><span class="line">		System.out.println(s1.equals(s2)); <span class="comment">/* false */</span></span><br><span class="line">		System.out.println(s1.equalsIgnoreCase(s2)); <span class="comment">/* true */</span></span><br><span class="line"></span><br><span class="line">		String s = <span class="string">"我是程序员，我在学Java"</span>;</span><br><span class="line">		String sr = s.replace(<span class="string">'我'</span>, <span class="string">'你'</span>);</span><br><span class="line">		System.out.println(sr); <span class="comment">/* 你是程序员，你在学Java */</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）：</p>
+<ul>
+<li><p><code>public boolean startsWith(String prefix)</code><br>判断字符串是否以<code>prefix</code>字符串开头。</p>
+</li>
+<li><p><code>public boolean endsWith(String suffix)</code><br>判断字符串是否以<code>suffix</code>字符串结尾。</p>
+</li>
+<li><p><code>public String toUpperCase()</code><br>返回一个字符串为该字符串的大写形式。</p>
+</li>
+<li><p><code>public String toLowerCase()</code><br>返回一个字符串为该字符串的小写形式。</p>
+</li>
+<li><p><code>public String substring(int beginIndex)</code><br>返回该字符串从<code>beginIndex</code>开始到结尾的子字符串。</p>
+</li>
+<li><p><code>public String substring(int beginIndex, int endIndex)</code><br>返回该字符串从<code>beginIndex</code>开始到<code>endIndex</code>结尾的子字符串。</p>
+</li>
+<li><p><code>public String trim()</code><br>返回将该字符串去掉开头和结尾空格后的字符串。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">String03</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String s = <span class="string">"Welcome to Java World!"</span>;</span><br><span class="line">		String s1 = <span class="string">"	sun java	"</span>;</span><br><span class="line">		System.out.println(s.startsWith(<span class="string">"Welcome"</span>)); <span class="comment">/* true */</span></span><br><span class="line">		System.out.println(s.endsWith(<span class="string">"World"</span>)); <span class="comment">/* false */</span></span><br><span class="line">		String sL = s.toLowerCase();</span><br><span class="line">		String sU = s.toUpperCase();</span><br><span class="line">		System.out.println(sL); <span class="comment">/* welcome to java world! */</span></span><br><span class="line">		System.out.println(sU); <span class="comment">/* WELCOME TO JAVA WORLD! */</span></span><br><span class="line">		String subS = s.substring(<span class="number">11</span>);</span><br><span class="line">		System.out.println(subS); <span class="comment">/* Java World! */</span></span><br><span class="line">		String sp = s1.trim();</span><br><span class="line">		System.out.println(sp); <span class="comment">/* sun java */</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）：</p>
+<ul>
+<li>静态重载方法<ul>
+<li><code>public static String valueOf(...)</code>可以将基本类型数据转换为字符串。<br>例如：</li>
+<li><code>public static String valueOf(double d)</code></li>
+<li><code>public static String valueOf(int i)</code></li>
+<li><code>public static String valueOf(Object obj)</code></li>
+<li>…</li>
+</ul>
+</li>
+<li>方法<code>public String[] split(String regex)</code>可以将一个字符串按照指定的分隔符分隔，返回分隔后的字符串数组。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">String04</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">1234567</span>;</span><br><span class="line">		String sNumber = String.valueOf(j);</span><br><span class="line">		System.out.println(<span class="string">"j 是"</span> + sNumber.length() + <span class="string">"位数。"</span>);</span><br><span class="line">		String s = <span class="string">"Mary,F,1976"</span>;</span><br><span class="line">		String[] sPlit = s.split(<span class="string">","</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sPlit.length; i++) &#123;</span><br><span class="line">			System.out.println(sPlit[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">j 是<span class="number">7</span>位数。</span><br><span class="line">Mary</span><br><span class="line">F</span><br><span class="line"><span class="number">1976</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="着重讲解public-static-String-valueOf-Object-obj-的含义与理解："><a href="#着重讲解public-static-String-valueOf-Object-obj-的含义与理解：" class="headerlink" title="着重讲解public static String valueOf(Object obj)的含义与理解："></a>着重讲解<code>public static String valueOf(Object obj)</code>的含义与理解：</h3><ol>
+<li><p>把一个引用类型（对象）转为字符串，其内部是如何转换的？比如：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(String.valueOf(d));</span><br></pre></td></tr></table></figure>
+
+<p> <strong>是调用该对象<code>Object</code>的<code>toString()</code>。</strong></p>
+</li>
+<li><p>该参数类型为<code>Object</code>类型，是所有Java类的基类，即任何一种数据类型的对象都可以放入，放入后会调用<code>Object</code>类的<code>toString()</code>，它会把任何对象都当成<code>Object</code>来看待。<br> 它内部的执行过程是什么样呢？首先把<code>d</code>交到<code>Object</code>的参数里面，相当于<code>d</code>本来的类型已经消失了，我们只能看到作为<code>Object</code>来说那些专有的方法，然后通过<code>String str = String.valueOf(d);</code>来把它转为字符串，相当于这样写：<code>str = d.toString();</code>。但两段代码又有微小的差别，第一段的<code>d</code>被当做<code>Object</code>来看到，本应该调用<code>Object</code>类的<code>toString()</code>，但是<code>Date</code>类重写了<code>toString()</code>，那么通过动态绑定，你实际当中给我的是什么对象，我就调用这个对象的什么方法，所以实际上调用的是该方法：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Year:Month:Day -- "</span> + year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select ename ,sal from emp </span><br><span class="line">where rownum &lt;=3;</span><br></pre></td></tr></table></figure>
+<pre><code>有多态存在，`Date`继承了`Object`，`Date`又重写了`Object`的`toString()`，而且父类引用（`Object obj`）指向子类对象（`d`）。</code></pre><h3 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h3><ol>
+<li>编写一个程序，输出一个字符串中的大写英文字母数，小写英文字母数以及非英文字母数。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestString</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String s = <span class="string">"AaaaABBBcc&amp;*%$asdajefas23189317__  haHa"</span>;</span><br><span class="line">		<span class="keyword">int</span> lowCount = <span class="number">0</span>, upperCount = <span class="number">0</span>, othersCount = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">/* for (int i = 0; i &lt; s.length(); i++) &#123;</span></span><br><span class="line"><span class="comment">			char c = s.charAt(i);</span></span><br><span class="line"><span class="comment">			if (c &gt;= 'a' &amp;&amp; c &lt;= 'z') &#123;</span></span><br><span class="line"><span class="comment">				lowCount++;</span></span><br><span class="line"><span class="comment">			&#125; else if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') &#123;</span></span><br><span class="line"><span class="comment">				upperCount++;</span></span><br><span class="line"><span class="comment">			&#125; else &#123;</span></span><br><span class="line"><span class="comment">				othersCount++;</span></span><br><span class="line"><span class="comment">			&#125;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		</span><br><span class="line">		String sL = <span class="string">"abcdefjhijklmnopqistuvwxyz"</span>;</span><br><span class="line">		String sU = <span class="string">"ABCDEFJHIJKLMNOPQISTUVWXYZ"</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/* for (int i = 0; i &lt; s.length(); i++) &#123;</span></span><br><span class="line"><span class="comment">			char c = s.charAt(i);</span></span><br><span class="line"><span class="comment">			if (sL.indexOf(c) != -1) &#123;</span></span><br><span class="line"><span class="comment">				lowCount++;</span></span><br><span class="line"><span class="comment">			&#125; else if (sU.indexOf(c) != -1) &#123;</span></span><br><span class="line"><span class="comment">				upperCount++;</span></span><br><span class="line"><span class="comment">			&#125; else &#123;</span></span><br><span class="line"><span class="comment">				othersCount++;</span></span><br><span class="line"><span class="comment">			&#125;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">			<span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">			<span class="keyword">if</span> (Character.isLowerCase(c)) &#123;</span><br><span class="line">				lowCount++;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (Character.isUpperCase(c)) &#123;</span><br><span class="line">				upperCount++;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				othersCount++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(lowCount + <span class="string">" "</span> + upperCount + <span class="string">" "</span> + othersCount);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>假如查询的结果集为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1       zs  7000</span><br><span class="line">2       ls  6000</span><br><span class="line">3       ww  5000</span><br><span class="line">4       zl  9000</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>此时的<code>rownum</code>已经确定了，相当于绑定上了。</p>
 <ol start="2">
-<li>再加入SQL语句<code>order by sal desc;</code>，会产生临时表，然后在结果集中排序，排序后的结果在临时表中显示。</li>
+<li>编写一个方法，输出在一个字符串中，指定字符串出现的次数。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1	    zs	7000</span><br><span class="line">2	    ls	6000</span><br><span class="line">3	    ww	5000</span><br><span class="line">4	    zl	9000</span><br><span class="line"></span><br><span class="line">--- order by sal desc</span><br><span class="line"></span><br><span class="line">4	    zl	9000</span><br><span class="line">1	    zs	7000</span><br><span class="line">2	    ls	6000</span><br><span class="line">3	    ww	5000</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestString02</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String s = <span class="string">"sunjavahpjavaokjavajjavahahajavajavagoodjava"</span>;</span><br><span class="line">		String sToFind = <span class="string">"java"</span>;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> index = -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>( (index = s.indexOf(sToFind)) != -<span class="number">1</span>) &#123;</span><br><span class="line">			s = s.substring(index+sToFind.length());</span><br><span class="line">			count++;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/* int fromIndex = 0;</span></span><br><span class="line"><span class="comment">		while( (fromIndex = s.indexOf(sToFind, fromIndex)) != -1 ) &#123;</span></span><br><span class="line"><span class="comment">			fromIndex += sToFind.length();</span></span><br><span class="line"><span class="comment">			count++;</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>此时再<code>rownum &lt;=3;</code>就不正确了，只能查到这样的数据：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1	    zs	7000</span><br><span class="line">2	    ls	6000</span><br><span class="line">3	    ww	5000</span><br></pre></td></tr></table></figure>
-
-
-<p>如何解决？子查询。</p>
-<blockquote>
-<p>子查询一般不排序，除非是<code>top - n</code>的问题。</p>
-</blockquote>
+<h2 id="StringBuffer类"><a href="#StringBuffer类" class="headerlink" title="StringBuffer类"></a>StringBuffer类</h2><p><code>Buffer</code>是缓冲区，在内存里面有一小块区域，你放什么东西都先往那一小块区域放，然后再放入其他的区域。比如：平时接水，先接到小桶（缓冲区）里，再倒入别的地方。</p>
 <ol>
-<li>先作为新表进行查询、降序。</li>
+<li><p><code>java.lang.StringBuffer</code>代表<strong>可变的</strong>字符序列。</p>
+<p> 什么叫可变或不可变？如图：</p>
+<p> <img src="https://s2.ax1x.com/2019/12/08/QaVaAU.png" alt="QaVaAU.png"></p>
+<p> 注意：</p>
+<ul>
+<li>由于<code>String</code>是不可变的字符序列，所以不能通过将<code>s2</code>的内容加到<code>s1</code>内容的后面的方式。</li>
+<li><code>String</code>的追加只能使用这种开辟新空间，然后将<code>s1</code>的引用重新指向新空间的方式，但效率不高。</li>
+</ul>
+</li>
+<li><p><code>StringBuffer</code>和<code>String</code>类似，但<code>StringBuffer</code>可以对其字符串进行改变。</p>
+</li>
+<li><p><code>StringBuffer</code>类的常见构造方法：</p>
+<ul>
+<li><code>StringBuffer()</code><br>  创建一个不包含字符序列的“空”的<code>StringBuffer</code>对象。</li>
+<li><code>StringBuffer(String str)</code><br>  创建一个<code>StringBuffer</code>对象，包含与<code>String</code>对象<code>str</code>相同的字符序列。</li>
+</ul>
+</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp order by sal desc;</span><br></pre></td></tr></table></figure>
+<h2 id="StringBuffer常用方法"><a href="#StringBuffer常用方法" class="headerlink" title="StringBuffer常用方法"></a>StringBuffer常用方法</h2><ul>
+<li>重载方法<code>public StringBuffer append(...)</code>可以为该<code>StringBuffer</code>对象添加字符序列，返回添加后的该<code>StringBuffer</code>对象引用，例如：<br>  <code>public StringBuffer append(String str)</code><br>  <code>public StringBuffer append(StringBuffer sbuf)</code><br>  <code>public StringBuffer append(char[] str)</code><br>  <code>public StringBuffer append(char[] str, int offset, int len)</code><br>  <code>public StringBuffer append(double d)</code><br>  <code>public StringBuffer append(Object obj)</code><br>  …</li>
+<li>重载方法<code>public StringBuffer insert(...)</code>可以为该<code>StringBuffer</code>对象在指定位置插入字符序列，返回修改后的该<code>StringBuffer</code>对象引用，例如：<br>  <code>public StringBuffer insert(int offset, String str)</code><br>  <code>public StringBuffer insert(int offset, double d)</code><br>  …</li>
+<li>方法<code>public StringBuffer delete(int start, int end)</code>可以删除从<code>start</code>开始到<code>end-1</code>为止的一段字符序列，返回修改后的该<code>StringBuffer</code>对象引用。</li>
+<li>和<code>String</code>类含义类似的方法：<br>  <code>public int indextOf(String str)</code><br>  <code>public int indextOf(String str, int fromIndex)</code><br>  <code>public String substring(int start)</code><br>  <code>public String substring(int start, int end)</code><br>  <code>public int length()</code></li>
+<li>方法<code>public StringBuffer reverse()</code>用于将字符串序列逆序，返回修改后的该<code>StringBuffer</code>对象引用。</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String s = <span class="string">"Microsoft"</span>;</span><br><span class="line">		<span class="keyword">char</span>[] a = &#123; <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span> &#125;;</span><br><span class="line">		StringBuffer sb1 = <span class="keyword">new</span> StringBuffer(s);</span><br><span class="line">		sb1.append(<span class="string">'/'</span>).append(<span class="string">"IBM"</span>).append(<span class="string">'/'</span>).append(<span class="string">"Sun"</span>);</span><br><span class="line">		System.out.println(sb1);</span><br><span class="line">		StringBuffer sb2 = <span class="keyword">new</span> StringBuffer(<span class="string">"数字"</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">9</span>; i++) &#123;</span><br><span class="line">			sb2.append(i);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(sb2);</span><br><span class="line">		sb2.delete(<span class="number">8</span>, sb2.length()).insert(<span class="number">0</span>, a);</span><br><span class="line">		System.out.println(sb2);</span><br><span class="line">		System.out.println(sb2.reverse());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ename sal</span><br><span class="line">zl	9000</span><br><span class="line">zs	7000</span><br><span class="line">ls	6000</span><br><span class="line">ww	5000</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Microsoft/IBM/Sun</span><br><span class="line">数字<span class="number">0123456789</span></span><br><span class="line">abc数字<span class="number">012345</span></span><br><span class="line"><span class="number">543210</span>字数cba</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>再对新表进行查询。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, ename, sal from (select * from emp order by sal desc);</span><br></pre></td></tr></table></figure>
+<h2 id="基本数据类型包装类"><a href="#基本数据类型包装类" class="headerlink" title="基本数据类型包装类"></a>基本数据类型包装类</h2><p>每一个基础数据类型一般情况下都是分配在栈上，如果想把它包装成对象分配在堆上面，怎么办呢？使用基础类型的包装类。</p>
+<ul>
+<li><p>包装类（如：<code>Integer</code>，<code>Double</code>等）这些类封装了一个相应的基本数据类型数值，并为其提供了一系列操作。</p>
+</li>
+<li><p>以<code>java.lang.Integer</code>类为例，构造方法：</p>
+<ul>
+<li><code>Integer(int value)</code></li>
+<li><code>Integer(String s)</code></li>
+</ul>
+</li>
+<li><p>以下方法以<code>java.lang.Integer</code>为例：</p>
+<ul>
+<li><code>public static final int MAX_VALUE</code>最大的int型数（2^31-1）。</li>
+<li><code>public static final int MIN_VALUE</code>最小的int型数（-2^31）。</li>
+<li><code>public long longValue()</code>返回封装数据的long型值。</li>
+<li><code>public double doubleValue()</code>返回封装数据的double型值。</li>
+<li><code>public int intValue()</code>返回封装数据的int型值。</li>
+<li><code>public static int parseInt(String s) throws NumberFormatException</code>将字符串解析成int型数据，返回该数据。</li>
+<li><code>public static Integer valueOf(String s) throws NumberFormatException</code>返回Integer对象，其中封装的整型数据为字符串s所表示。</li>
+</ul>
+</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestWrapper</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Integer i = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line">		Double d = <span class="keyword">new</span> Double(<span class="string">"123.456"</span>);</span><br><span class="line">		<span class="keyword">int</span> j = i.intValue() + d.intValue();</span><br><span class="line">		<span class="keyword">float</span> f = i.floatValue() + d.floatValue();</span><br><span class="line">		System.out.println(j);</span><br><span class="line">		System.out.println(f);</span><br><span class="line">		<span class="keyword">double</span> pi = Double.parseDouble(<span class="string">"3.1415926"</span>);</span><br><span class="line">		<span class="keyword">double</span> r = Double.valueOf(<span class="string">"2.0"</span>).doubleValue();</span><br><span class="line">		<span class="keyword">double</span> s = pi * r * r;</span><br><span class="line">		System.out.println(s);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> k = Integer.parseInt(<span class="string">"1.25"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			System.out.println(<span class="string">"数据格式不对！"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(Integer.toBinaryString(<span class="number">123</span>) + <span class="string">"B"</span>);</span><br><span class="line">		System.out.println(Integer.toHexString(<span class="number">123</span>) + <span class="string">"H"</span>);</span><br><span class="line">		System.out.println(Integer.toOctalString(<span class="number">123</span>) + <span class="string">"O"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1       zl	9000</span><br><span class="line">2       zs	7000</span><br><span class="line">3       ls	6000</span><br><span class="line">4       ww	5000</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">223</span></span><br><span class="line"><span class="number">223.456</span></span><br><span class="line"><span class="number">12.5663704</span></span><br><span class="line">数据格式不对！</span><br><span class="line"><span class="number">1111011</span>B</span><br><span class="line"><span class="number">7</span>bH</span><br><span class="line"><span class="number">173</span>O</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li>最后进行筛选即可。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, ename, sal from (select * from emp order by sal desc) where rownum &lt;= 3;</span><br></pre></td></tr></table></figure>
+<h3 id="小测验-1"><a href="#小测验-1" class="headerlink" title="小测验"></a>小测验</h3><p>编写一个方法，返回一个<code>double</code>型二维数组，数组中的元素通过解析字符串参数获得。如字符串参数：<code>&quot;1,2;3,4,5;6,7,8&quot;</code><br>对于的数组为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d[0,0] = 1.0 d[0,1] = 2.0</span><br><span class="line">d[1,0] = 3.0 d[1,1] = 4.0 d[1,2] = 5.0</span><br><span class="line">d[2,0] = 6.0 d[2,1] = 7.0 d[2,2] = 8.0</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rownum ename sal</span><br><span class="line">1       zl	9000</span><br><span class="line">2       zs	7000</span><br><span class="line">3       ls	6000</span><br></pre></td></tr></table></figure>
+<p>程序为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayParser</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">double</span>[][] d;</span><br><span class="line">		String s = <span class="string">"1,2;3,4,5;6,7,8"</span>;</span><br><span class="line">		String[] sFirst = s.split(<span class="string">";"</span>);</span><br><span class="line">		d = <span class="keyword">new</span> <span class="keyword">double</span>[sFirst.length][];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sFirst.length; i++) &#123;</span><br><span class="line">			String[] sSecond = sFirst[i].split(<span class="string">","</span>);</span><br><span class="line">			d[i] = <span class="keyword">new</span> <span class="keyword">double</span>[sSecond.length];</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; sSecond.length; j++) &#123;</span><br><span class="line">				d[i][j] = Double.parseDouble(sSecond[j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; d[i].length; j++) &#123;</span><br><span class="line">				System.out.print(d[i][j] + <span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="总结-top-n类问题如何解决。"><a href="#总结-top-n类问题如何解决。" class="headerlink" title="总结 top - n类问题如何解决。"></a>总结 <code>top - n</code>类问题如何解决。</h3><p><code>top - n</code>：前n个数据 比如：前三、前五…</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, .... from (select * from xxx order by ...) where rownum &lt;= n ;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.0</span> <span class="number">2.0</span> </span><br><span class="line"><span class="number">3.0</span> <span class="number">4.0</span> <span class="number">5.0</span> </span><br><span class="line"><span class="number">6.0</span> <span class="number">7.0</span> <span class="number">8.0</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="rownum-rowid：删除重复数据"><a href="#rownum-rowid：删除重复数据" class="headerlink" title="rownum/rowid：删除重复数据"></a>rownum/rowid：删除重复数据</h2><p>首先插入一些数据及重复数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">create table mystudent(</span><br><span class="line">stuno number,</span><br><span class="line">stuname varchar2(10),</span><br><span class="line">stuage number </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">insert into mystudent values(1,&apos;zs&apos;,23) ;</span><br><span class="line">insert into mystudent values(1,&apos;zs&apos;,23) ;</span><br><span class="line"></span><br><span class="line">insert into mystudent values(2,&apos;ls&apos;,24) ;</span><br><span class="line">insert into mystudent values(2,&apos;ls&apos;,24) ;</span><br><span class="line"></span><br><span class="line">insert into mystudent values(3,&apos;ww&apos;,25) ;</span><br></pre></td></tr></table></figure>
+<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><p><code>java.lang.Math</code>提供了一系列静态方法用于科学计算，其方法的参数与返回值类型一般为<code>double</code>型。</p>
+<ul>
+<li><code>abs</code>：绝对值</li>
+<li><code>acos</code>、<code>asin</code>、<code>atan</code>、<code>cos</code>、<code>sin</code>、<code>tan</code></li>
+<li><code>sqrt</code>：平方根</li>
+<li><code>pow(double a, double b)</code>：a的b次幂</li>
+<li><code>log</code>：自然对数</li>
+<li><code>exp</code>：e为底指数</li>
+<li><code>max(double a, double b)</code>：求最大值</li>
+<li><code>min(double a, double b)</code>：求最小值</li>
+<li><code>random()</code>：返回0.0到1.0的随机数</li>
+<li><code>long round(double a)</code>：<code>double</code>型的数据a转换为<code>long</code>型（四舍五入）</li>
+<li><code>toDegrees(double angrad)</code>：弧度-&gt;角度</li>
+<li><code>toRadians(double angdeg)</code>：角度-&gt;弧度</li>
+</ul>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p><code>java.io.File</code>类代表系统文件名（路径和文件名）</p>
+<h2 id="File类的常见构造方法"><a href="#File类的常见构造方法" class="headerlink" title="File类的常见构造方法"></a>File类的常见构造方法</h2><ul>
+<li><p><code>public File(String pathname)</code><br>  以<code>pathname</code>为路径创建<code>File</code>对象，如果<code>pathname</code>是相对路径，则默认的当前路径在系统属性<code>user.dir</code>中存储。</p>
+</li>
+<li><p><code>public File(String parent, String child)</code><br>  以<code>parent</code>为父路径，<code>child</code>为子路径创建<code>File</code>对象。</p>
+</li>
+<li><p><code>File</code>的静态属性<code>String separator</code>存储了当前系统的路径分隔符（即Linux的<code>/</code>或Windows的<code>\</code>）</p>
+</li>
+</ul>
+<h2 id="File类常用方法"><a href="#File类常用方法" class="headerlink" title="File类常用方法"></a>File类常用方法</h2><ul>
+<li><p>通过<code>File</code>对象可以访问文件的属性。</p>
+<ul>
+<li><code>public boolean canRead()</code></li>
+<li><code>public boolean canWrite()</code></li>
+<li><code>public boolean exists()</code></li>
+<li><code>public boolean isDirectory()</code></li>
+<li><code>public boolean isFile()</code></li>
+<li><code>public boolean isHidden()</code></li>
+<li><code>public long lastModified()</code></li>
+<li><code>public long length()</code></li>
+<li><code>public String getName()</code></li>
+<li><code>public String getPath()</code></li>
+</ul>
+</li>
+<li><p>通过<code>File</code>对象创建空文件或目录（在该对象所指的文件或目录不存在的情况下）</p>
+<ul>
+<li><code>public boolean createNewFile() throws IOException</code></li>
+<li><code>public boolean delete()</code></li>
+<li><code>public boolean mkdir()</code></li>
+<li><code>public boolean mkdirs() //创建在路径中的一系列目录</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFile</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String separator = File.separator;</span><br><span class="line">		String filename = <span class="string">"myfile.txt"</span>;</span><br><span class="line">		String directory = <span class="string">"mydir1"</span> + separator + <span class="string">"mydir2"</span>;</span><br><span class="line">		File f = <span class="keyword">new</span> File(directory, filename);</span><br><span class="line">		<span class="keyword">if</span> (f.exists()) &#123;</span><br><span class="line">			System.out.println(<span class="string">"文件名： "</span> + f.getAbsolutePath());</span><br><span class="line">			System.out.println(<span class="string">"文件大小： "</span> + f.length());</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			f.getParentFile().mkdirs();</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				f.createNewFile();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     STUNO STUNAME        STUAGE</span><br><span class="line">---------- ---------- ----------</span><br><span class="line">         1 zs                 23</span><br><span class="line">         1 zs                 23</span><br><span class="line">         2 ls                 24</span><br><span class="line">         2 ls                 24</span><br><span class="line">         3 ww                 25</span><br></pre></td></tr></table></figure>
+<h3 id="小测验-2"><a href="#小测验-2" class="headerlink" title="小测验"></a>小测验</h3><p>编写一个程序，以树状结构展现特定的文件夹及其子文件（夹），如图：</p>
+<p><img src="https://s2.ax1x.com/2019/12/08/QaVN7T.png" alt="QaVN7T.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileList</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		File f = <span class="keyword">new</span> File(<span class="string">"d:/A"</span>);</span><br><span class="line">		System.out.println(f.getName());</span><br><span class="line">		tree(f, <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">tree</span><span class="params">(File f, <span class="keyword">int</span> level)</span> </span>&#123;</span><br><span class="line">		String preStr = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; i++) &#123;</span><br><span class="line">			preStr += <span class="string">"    "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		File[] childs = f.listFiles();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; childs.length; i++) &#123;</span><br><span class="line">			System.out.println(preStr + childs[i].getName());</span><br><span class="line">			<span class="keyword">if</span> (childs[i].isDirectory()) &#123;</span><br><span class="line">				tree(childs[i], level + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="通过多条SQL语句来删除"><a href="#通过多条SQL语句来删除" class="headerlink" title="通过多条SQL语句来删除"></a>通过多条SQL语句来删除</h3><p>平时删除是这样做的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from mystudent where stuno = 1;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">    B</span><br><span class="line">        E</span><br><span class="line">            H</span><br><span class="line">            i.txt</span><br><span class="line">        f.txt</span><br><span class="line">        g.txt</span><br><span class="line">    C</span><br><span class="line">    d.txt</span><br></pre></td></tr></table></figure>
 
-<p>但这样是不行的，把两条数据都删除了，我们只需要删除一个数据。<br>我们可以通过伪列来删除。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, s.* from mystudent s;</span><br></pre></td></tr></table></figure>
+<h2 id="Enum类"><a href="#Enum类" class="headerlink" title="Enum类"></a>Enum类</h2><p><code>java.lang.Enum</code>枚举类型</p>
+<p>在某些情景里，与其在程序运行期间来限制某些数据的值，不如在编译期间就进行限制，提前发现错误，越提前越好，记住一个原则：如果一个错误非要产生的话，尽量让错误提前产生。通过枚举类型就可以在编译期间，限定某一种类型必须来取某一些特定的值之一。</p>
+<p>枚举类型：</p>
+<ul>
+<li>只能够取特定值中一个。</li>
+<li>使用<code>enum</code>关键字。</li>
+<li>是<code>java.lang.Enum</code>类型。</li>
+</ul>
+<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestEnum</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">enum</span> MyColor &#123;</span><br><span class="line">		red, blue, yellow</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		MyColor m = MyColor.red;</span><br><span class="line">		<span class="keyword">switch</span> (m) &#123;</span><br><span class="line">		<span class="keyword">case</span> red:</span><br><span class="line">			System.out.println(<span class="string">"red"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> blue:</span><br><span class="line">			System.out.println(<span class="string">"blue"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> yellow:</span><br><span class="line">			System.out.println(<span class="string">"yellow"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			System.out.println(<span class="string">"default"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(m);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    ROWNUM      STUNO STUNAME        STUAGE</span><br><span class="line">---------- ---------- ---------- ----------</span><br><span class="line">         1          1 zs                 23</span><br><span class="line">         2          1 zs                 23</span><br><span class="line">         3          2 ls                 24</span><br><span class="line">         4          2 ls                 24</span><br><span class="line">         5          3 ww                 25</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">red</span><br><span class="line">red</span><br></pre></td></tr></table></figure>
 
-<p>通过<code>delete from mystudent where rownum = 1</code>即可把一个个重复的数据一条条的删除。或者：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rownum, rowid, s.* from mystudent s;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    ROWNUM ROWID                   STUNO STUNAME        STUAGE</span><br><span class="line">---------- ------------------ ---------- ---------- ----------</span><br><span class="line">         1 AAASPzAAEAAAAKMAAB          1 zs                 23</span><br><span class="line">         2 AAASPzAAEAAAAKMAAC          2 ls                 24</span><br><span class="line">         3 AAASPzAAEAAAAKMAAD          2 ls                 24</span><br><span class="line">         4 AAASPzAAEAAAAKMAAE          3 ww                 25</span><br></pre></td></tr></table></figure>
-
-<p>此时<code>rownum</code>又重新生成了一组序列。通过<code>delete from mystudent where rowid = &#39;AAASPzAAEAAAAKMAAC&#39;;</code>即可把一个个重复的数据一条条的删除。</p>
-<h3 id="通过一条SQL语句来删除"><a href="#通过一条SQL语句来删除" class="headerlink" title="通过一条SQL语句来删除"></a>通过一条SQL语句来删除</h3><p>使用<code>distinct</code>能否可以？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct stuno from mystudent;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     STUNO</span><br><span class="line">----------</span><br><span class="line">         1</span><br><span class="line">         2</span><br><span class="line">         3</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from mystudent where stuno in( select distinct stuno from mystudent );</span><br></pre></td></tr></table></figure>
-
-<p>这样就把全部数据删除了，肯定不行！</p>
-<p>那么如何解决呢？我们要仔细研究一下<code>rowid</code>的规律：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rowid, s.* from mystudent s;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ROWID                   STUNO STUNAME        STUAGE</span><br><span class="line">------------------ ---------- ---------- ----------</span><br><span class="line">AAASP0AAEAAAAKMAAA          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAB          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAC          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAD          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAE          3 ww                 25</span><br></pre></td></tr></table></figure>
-
-<p>观察<code>rowid</code>的最后一位是<code>A B C D E</code>，我们再插入几条数据慢慢观察。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into mystudent values(3,&apos;ww&apos;,25) ;</span><br><span class="line"></span><br><span class="line">insert into mystudent values(4,&apos;zl&apos;,26) ;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ROWID                   STUNO STUNAME        STUAGE</span><br><span class="line">------------------ ---------- ---------- ----------</span><br><span class="line">AAASP0AAEAAAAKMAAA          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAB          1 zs                 23</span><br><span class="line">AAASP0AAEAAAAKMAAC          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAD          2 ls                 24</span><br><span class="line">AAASP0AAEAAAAKMAAE          3 ww                 25</span><br><span class="line">AAASP0AAEAAAAKMAAF          3 ww                 25</span><br><span class="line">AAASP0AAEAAAAKMAAG          4 zl                 26</span><br></pre></td></tr></table></figure>
-
-<p>我们发现：<strong><code>rowid</code>是根据插入的顺序依次递增。</strong><br>所以我们有了一个思路：根据编号进行分组（将重复的数据<code>stuno</code>放到一组），然后每组数据中只保留一个。如何只保留一个？我们可以只保留<code>rowid</code>的最大值或最小值（因为无论多少个重复的编号，每个编号的<code>rowid</code>是唯一的，而且<code>rowid</code>的最大值或最小值也是唯一的）。现在我们选择保留<code>rowid</code>最小的。</p>
-<ol>
-<li>通过<code>select min(rowid) from mystudent group by stuno;</code>来进行分组。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MIN(ROWID)</span><br><span class="line">------------------</span><br><span class="line">AAASP0AAEAAAAKMAAA</span><br><span class="line">AAASP0AAEAAAAKMAAC</span><br><span class="line">AAASP0AAEAAAAKMAAG</span><br><span class="line">AAASP0AAEAAAAKMAAE</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>再进行删除，只保留上述的<code>rowid</code>即可。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete from mystudent where rowid not in </span><br><span class="line">(select min(rowid) from mystudent  group by stuno );</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">     STUNO STUNAME        STUAGE</span><br><span class="line">---------- ---------- ----------</span><br><span class="line">         1 zs                 23</span><br><span class="line">         2 ls                 24</span><br><span class="line">         3 ww                 25</span><br><span class="line">         4 zl                 26</span><br></pre></td></tr></table></figure>
-
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>String相关<ul>
+<li>正则表达式</li>
+</ul>
+</li>
+<li>基础类型包装类</li>
+<li>Math</li>
+<li>File<ul>
+<li>递归</li>
+</ul>
+</li>
+<li>枚举类型</li>
+</ul>
 <h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
       
 
@@ -317,11 +474,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java中级</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">常用类</a>
         		</li>
       		
 		</ul>
@@ -377,7 +534,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/03/Oracle——伪列 学习笔记/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/25/【白话版】Java常用类 学习笔记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -391,18 +548,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/05/Oracle——约束 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/27/【白话版】JavaIO流 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Oracle——约束 学习笔记
+          白话版：JavaIO流 学习笔记
         
       </div>
     </a>
   
   
-    <a href="/2019/10/28/Java——反射机制与动态代理 学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java——反射机制与动态代理 学习笔记</div>
+    <a href="/2019/03/16/Hexo博客如何远程部署到GitHub及使用yilia主题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hexo博客如何远程部署到GitHub及使用yilia主题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -429,7 +586,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#伪列的基本概念"><span class="toc-number">1.</span> <span class="toc-text">伪列的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rownum"><span class="toc-number">2.</span> <span class="toc-text">rownum</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。"><span class="toc-number">2.1.</span> <span class="toc-text">什么叫在相同SQL语句执行时，rownum的值保持一致？如何理解。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结-top-n类问题如何解决。"><span class="toc-number">2.2.</span> <span class="toc-text">总结 top - n类问题如何解决。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rownum-rowid：删除重复数据"><span class="toc-number">3.</span> <span class="toc-text">rownum/rowid：删除重复数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过多条SQL语句来删除"><span class="toc-number">3.1.</span> <span class="toc-text">通过多条SQL语句来删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过一条SQL语句来删除"><span class="toc-number">3.2.</span> <span class="toc-text">通过一条SQL语句来删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">4.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">5.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">6.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String类"><span class="toc-number">1.1.</span> <span class="toc-text">String类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例1："><span class="toc-number">1.1.1.</span> <span class="toc-text">实例1：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String类常用方法"><span class="toc-number">1.2.</span> <span class="toc-text">String类常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#着重讲解public-static-String-valueOf-Object-obj-的含义与理解："><span class="toc-number">1.2.1.</span> <span class="toc-text">着重讲解public static String valueOf(Object obj)的含义与理解：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小测验"><span class="toc-number">1.2.2.</span> <span class="toc-text">小测验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuffer类"><span class="toc-number">1.3.</span> <span class="toc-text">StringBuffer类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuffer常用方法"><span class="toc-number">1.4.</span> <span class="toc-text">StringBuffer常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">1.4.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本数据类型包装类"><span class="toc-number">1.5.</span> <span class="toc-text">基本数据类型包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-1"><span class="toc-number">1.5.1.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小测验-1"><span class="toc-number">1.5.2.</span> <span class="toc-text">小测验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math类"><span class="toc-number">1.6.</span> <span class="toc-text">Math类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File类"><span class="toc-number">1.7.</span> <span class="toc-text">File类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File类的常见构造方法"><span class="toc-number">1.8.</span> <span class="toc-text">File类的常见构造方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File类常用方法"><span class="toc-number">1.9.</span> <span class="toc-text">File类常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-2"><span class="toc-number">1.9.1.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小测验-2"><span class="toc-number">1.9.2.</span> <span class="toc-text">小测验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enum类"><span class="toc-number">1.10.</span> <span class="toc-text">Enum类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例-3"><span class="toc-number">1.10.1.</span> <span class="toc-text">实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢您花时间阅读我的文章！"><span class="toc-number">2.1.</span> <span class="toc-text">感谢您花时间阅读我的文章！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><span class="toc-number">2.2.</span> <span class="toc-text">如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-liuandcolin630-github-io"><span class="toc-number">2.3.</span> <span class="toc-text">https://liuandcolin630.github.io/</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

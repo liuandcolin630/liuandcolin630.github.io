@@ -171,116 +171,7 @@
 <li>闪回事务查询</li>
 <li>实例5：闪回事务查询</li>
 </ul>
-<h2 id="闪回的作用"><a href="#闪回的作用" class="headerlink" title="闪回的作用"></a>闪回的作用</h2><ol>
-<li>将错误的DML操作并且<code>commit</code>的，进行撤销，即撤销已提交的事务。</li>
-<li>还原删除的表。</li>
-<li>获取表上的历史记录。例如<code>Git</code>的版本控制，</li>
-</ol>
-<h2 id="闪回的类型"><a href="#闪回的类型" class="headerlink" title="闪回的类型"></a>闪回的类型</h2><ul>
-<li>闪回表中的数据：将表中的数据回退到历史的某一个点。</li>
-<li>闪回删除的表：还原表。</li>
-<li>闪回事务查询：根据提交次数来进行的。主要进行查询<code>undo_sql</code>。</li>
-<li>闪回数据库（了解）：将数据库中的数据回退到历史的某一个点。</li>
-<li>闪回归档日志（了解）。</li>
-</ul>
-<h2 id="闪回操作"><a href="#闪回操作" class="headerlink" title="闪回操作"></a>闪回操作</h2><h3 id="闪回参数"><a href="#闪回参数" class="headerlink" title="闪回参数"></a>闪回参数</h3><p>在<code>sys</code>用户下查询闪回参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; show parameter undo;</span><br><span class="line"></span><br><span class="line">NAME                                 TYPE        VALUE</span><br><span class="line">------------------------------------ ----------- ------------------------------</span><br><span class="line">undo_management                      string      AUTO</span><br><span class="line">undo_retention                       integer     900</span><br><span class="line">undo_tablespace                      string      UNDOTBS1</span><br><span class="line">```		</span><br><span class="line"></span><br><span class="line">假设闪回区大小为3G，参数`undo_retention：900`的意思为超过闪回区的数据必须在900秒内闪回，否则将失效。也可以进行修改：</span><br></pre></td></tr></table></figure>
-
-<p>SQL&gt; alter system set undo_retention = 1200 scope = both;</p>
-<p>系统已更改。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">设置`scope`的参数可选：</span><br><span class="line"></span><br><span class="line">- `both`：当前数据库有效，重启也有效。</span><br><span class="line">- `memory`：当前数据库有效，重启失效。</span><br><span class="line">- `spfile`：当前数据库无效，重启有效。</span><br><span class="line"></span><br><span class="line">### SCN</span><br><span class="line"></span><br><span class="line">闪回的前提是，必须知道回退的时间点或者SCN，一般推荐将时间转换为SCN，这样更加标准。</span><br><span class="line">将时间转为SCN：</span><br><span class="line"></span><br><span class="line">```Oracle</span><br><span class="line">SQL&gt; select  timestamp_to_scn(sysdate) SCN, sysdate from dual;</span><br><span class="line"></span><br><span class="line">       SCN SYSDATE</span><br><span class="line">---------- --------------</span><br><span class="line">   1474294 03-12月-19</span><br></pre></td></tr></table></figure>
-
-<h2 id="实例1：闪回表中的数据"><a href="#实例1：闪回表中的数据" class="headerlink" title="实例1：闪回表中的数据"></a>实例1：闪回表中的数据</h2><p>将表中的数据回退到历史的某一个点。</p>
-<ol>
-<li><p>首先创建测试表并适当插入一些数据后提交。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">    SQL&gt; create table testfb</span><br><span class="line">      2  (</span><br><span class="line">      3  id number,</span><br><span class="line">      4  name varchar(10)</span><br><span class="line">      5  );</span><br><span class="line">    </span><br><span class="line">    表已创建。</span><br><span class="line">    </span><br><span class="line">    SQL&gt; insert into testfb values(1,&apos;a&apos;);</span><br><span class="line">    </span><br><span class="line">    已创建 1 行。</span><br><span class="line">    </span><br><span class="line">    SQL&gt; insert into testfb values(2,&apos;b&apos;);</span><br><span class="line">    </span><br><span class="line">    已创建 1 行。</span><br><span class="line">    </span><br><span class="line">    SQL&gt; insert into testfb values(1,&apos;c&apos;);</span><br><span class="line">    </span><br><span class="line">    已创建 1 行。</span><br><span class="line">    </span><br><span class="line">    SQL&gt; commit;</span><br><span class="line">    </span><br><span class="line">    提交完成。</span><br><span class="line">    </span><br><span class="line">    SQL&gt; select * from testfb;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">         1 a</span><br><span class="line">         2 b</span><br><span class="line">         1 c</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>记录SCN的时间以备用。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select timestamp_to_scn(sysdate) SCN, sysdate from dual;</span><br><span class="line"></span><br><span class="line">       SCN SYSDATE</span><br><span class="line">---------- --------------</span><br><span class="line">   1475579 03-12月-19</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除一些数据并提交，然后闪回到之前的SCN处。</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; delete testfb where id = 1;</span><br><span class="line"></span><br><span class="line">已删除2行。</span><br><span class="line"></span><br><span class="line">SQL&gt; commit;</span><br><span class="line"></span><br><span class="line">提交完成。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from testfb;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">         2 b</span><br><span class="line"></span><br><span class="line">SQL&gt; flashback table testfb  to scn 1475579;</span><br><span class="line">flashback table testfb  to scn 1475579</span><br><span class="line">                *</span><br><span class="line">第 1 行出现错误:</span><br><span class="line">ORA-08189: 因为未启用行移动功能, 不能闪回表</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SQL&gt; alter table testfb enable row movement;</span><br><span class="line"></span><br><span class="line">表已更改。</span><br><span class="line"></span><br><span class="line">SQL&gt; flashback table testfb to scn 1475579;</span><br><span class="line"></span><br><span class="line">闪回完成。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from testfb;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">         1 a</span><br><span class="line">         2 b</span><br><span class="line">         1 c</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ol>
-<li>如果某个用户在闪回时权限不足，需要进入<code>sys</code>用户进行授权：<br><code>grant flashback any table to 用户;</code></li>
-<li>无法闪回的情况：表定义已更改后，则无法闪回到SCN处。</li>
-</ol>
-</blockquote>
-<h2 id="实例2：闪回删除的表"><a href="#实例2：闪回删除的表" class="headerlink" title="实例2：闪回删除的表"></a>实例2：闪回删除的表</h2><p>本质即还原Oracle回收站中的表。</p>
-<p>首先查看回收站：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; show recyclebin;</span><br><span class="line">ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME</span><br><span class="line">---------------- ------------------------------ ------------ -------------------</span><br><span class="line">DDLTABLE         BIN$A9AorFldTaWDJ9AHeQaQlg==$0 TABLE        2019-11-27:19:07:24</span><br><span class="line">DEPARTMENT       BIN$dgRYEqQ1R5Kf/BiLG2H87Q==$0 TABLE        2019-11-05:14:08:28</span><br><span class="line">PERSON           BIN$e4RRmNxrT7qTQvW1jhkf+w==$0 TABLE        2019-11-15:16:10:52</span><br><span class="line">STUDENT          BIN$3y392kA4Q7qwxrxjjW67tg==$0 TABLE        2019-11-05:15:44:49</span><br><span class="line">STUDENT          BIN$hD0hHHAHQIW8B6ANpwhdeg==$0 TABLE        2019-11-05:15:10:35</span><br><span class="line">STUDENT          BIN$bY3w95WeSxCfPMjRZJ9B+w==$0 TABLE        2019-11-05:14:08:15</span><br><span class="line">STUDENT3         BIN$zceT9peaSvue/nHCWeVlGw==$0 TABLE        2019-11-05:17:37:55</span><br><span class="line">STUDENT3         BIN$WpSLnzr0TUGytMFhASz26g==$0 TABLE        2019-11-05:17:31:14</span><br><span class="line">STUDENT3         BIN$ya4J7gEgSFW7oDG6uBXVTw==$0 TABLE        2019-11-05:16:38:24</span><br><span class="line">SUB              BIN$35zkj6khRxalmGtzxt5QQA==$0 TABLE        2019-11-05:16:59:41</span><br><span class="line">TEACHER          BIN$okpfdYOaRHWKLIWmtR9bRg==$0 TABLE        2019-11-05:14:08:21</span><br></pre></td></tr></table></figure>
-
-<p>在闪回之前删除的表时有多种情况：</p>
-<ol>
-<li><p>通过回收站中的表名来闪回已删除的表。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; flashback table DDLTABLE to before drop;</span><br><span class="line"></span><br><span class="line">闪回完成。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from DDLTABLE;</span><br><span class="line"></span><br><span class="line">未选定行</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果回收站中有多个相同的表而只是之前删除的时间不同，则<strong>默认</strong>闪回的是最近一次删除的表，如图：</p>
-<p> <img src="https://s2.ax1x.com/2019/12/05/Q8nymF.png" alt="Q8nymF.png"></p>
-</li>
-<li><p>如果即将要闪回的表和数据库中目前的表重名，则会发生冲突，必须对表进行重命名。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; show recyclebin;</span><br><span class="line">ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME</span><br><span class="line">---------------- ------------------------------ ------------ -------------------</span><br><span class="line">DDLTABLE         BIN$3qpTz0dBQPCZY2gWs4W8fQ==$0 TABLE        2019-12-03:16:52:40</span><br><span class="line">DEPARTMENT       BIN$dgRYEqQ1R5Kf/BiLG2H87Q==$0 TABLE        2019-11-05:14:08:28</span><br><span class="line">PERSON           BIN$e4RRmNxrT7qTQvW1jhkf+w==$0 TABLE        2019-11-15:16:10:52</span><br><span class="line">STUDENT          BIN$3y392kA4Q7qwxrxjjW67tg==$0 TABLE        2019-11-05:15:44:49</span><br><span class="line">STUDENT          BIN$hD0hHHAHQIW8B6ANpwhdeg==$0 TABLE        2019-11-05:15:10:35</span><br><span class="line">STUDENT          BIN$bY3w95WeSxCfPMjRZJ9B+w==$0 TABLE        2019-11-05:14:08:15</span><br><span class="line">STUDENT3         BIN$zceT9peaSvue/nHCWeVlGw==$0 TABLE        2019-11-05:17:37:55</span><br><span class="line">STUDENT3         BIN$WpSLnzr0TUGytMFhASz26g==$0 TABLE        2019-11-05:17:31:14</span><br><span class="line">STUDENT3         BIN$ya4J7gEgSFW7oDG6uBXVTw==$0 TABLE        2019-11-05:16:38:24</span><br><span class="line">SUB              BIN$35zkj6khRxalmGtzxt5QQA==$0 TABLE        2019-11-05:16:59:41</span><br><span class="line">TEACHER          BIN$okpfdYOaRHWKLIWmtR9bRg==$0 TABLE        2019-11-05:14:08:21</span><br><span class="line">SQL&gt; flashback table PERSON to before drop;</span><br><span class="line">flashback table PERSON to before drop</span><br><span class="line">*</span><br><span class="line">第 1 行出现错误:</span><br><span class="line">ORA-38312: 原始名称已被现有对象使用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SQL&gt; flashback table PERSON to before drop rename to person2;</span><br><span class="line"></span><br><span class="line">闪回完成。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from person2;</span><br><span class="line"></span><br><span class="line">未选定行</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from person;</span><br><span class="line"></span><br><span class="line">       PID PNAME</span><br><span class="line">---------- ----------</span><br><span class="line">        99 abcd</span><br><span class="line">       101 ls4</span><br><span class="line">       103 ws4</span><br><span class="line">        93 ls</span><br><span class="line">       105 zs4</span><br><span class="line">        94 ws</span><br><span class="line">        95 zs</span><br><span class="line"></span><br><span class="line">已选择7行。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过回收站中的<strong>回收站中的名字</strong>来闪回已删除的表。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; show recyclebin;</span><br><span class="line">ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME</span><br><span class="line">---------------- ------------------------------ ------------ -------------------</span><br><span class="line">DDLTABLE         BIN$G+5VcURhTyi3PgonfGpQew==$0 TABLE        2019-12-03:17:08:43</span><br><span class="line">DDLTABLE         BIN$3qpTz0dBQPCZY2gWs4W8fQ==$0 TABLE        2019-12-03:16:52:40</span><br><span class="line">DEPARTMENT       BIN$dgRYEqQ1R5Kf/BiLG2H87Q==$0 TABLE        2019-11-05:14:08:28</span><br><span class="line">STUDENT          BIN$3y392kA4Q7qwxrxjjW67tg==$0 TABLE        2019-11-05:15:44:49</span><br><span class="line">STUDENT          BIN$hD0hHHAHQIW8B6ANpwhdeg==$0 TABLE        2019-11-05:15:10:35</span><br><span class="line">STUDENT          BIN$bY3w95WeSxCfPMjRZJ9B+w==$0 TABLE        2019-11-05:14:08:15</span><br><span class="line">STUDENT3         BIN$zceT9peaSvue/nHCWeVlGw==$0 TABLE        2019-11-05:17:37:55</span><br><span class="line">STUDENT3         BIN$WpSLnzr0TUGytMFhASz26g==$0 TABLE        2019-11-05:17:31:14</span><br><span class="line">STUDENT3         BIN$ya4J7gEgSFW7oDG6uBXVTw==$0 TABLE        2019-11-05:16:38:24</span><br><span class="line">SUB              BIN$35zkj6khRxalmGtzxt5QQA==$0 TABLE        2019-11-05:16:59:41</span><br><span class="line">TEACHER          BIN$okpfdYOaRHWKLIWmtR9bRg==$0 TABLE        2019-11-05:14:08:21</span><br><span class="line">SQL&gt; flashback table &quot;BIN$3qpTz0dBQPCZY2gWs4W8fQ==$0&quot; to before drop;</span><br><span class="line"></span><br><span class="line">闪回完成。</span><br><span class="line">SQL&gt; select * from DDLTABLE;</span><br><span class="line"></span><br><span class="line">未选定行</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：<br>回收站中的名字一定要加双引号<code>&quot;&quot;</code>。</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<ol>
-<li>清空回收站：<code>purge recyclebin;</code></li>
-<li>彻底删除某一张表（不经过回收站）：<code>drop table 表名 purge;</code></li>
-</ol>
-</blockquote>
-<h2 id="实例3：闪回已删除但有触发器的表"><a href="#实例3：闪回已删除但有触发器的表" class="headerlink" title="实例3：闪回已删除但有触发器的表"></a>实例3：闪回已删除但有触发器的表</h2><p>在SQL Developer下测试，原表<code>mystudent</code>自带多个触发器，包括添加数据的触发器<code>logstudent</code>等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">set serveroutput on;</span><br><span class="line"></span><br><span class="line">insert into mystudent values(1,&apos;aa&apos;,11);</span><br><span class="line">commit;</span><br><span class="line"></span><br><span class="line">    添加成功</span><br><span class="line">    增加成功</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    1行已插入。</span><br><span class="line">    提交完成。</span><br><span class="line">    </span><br><span class="line">drop table mystudent;</span><br><span class="line">commit;</span><br><span class="line"></span><br><span class="line">    Table MYSTUDENT已删除。</span><br><span class="line">    提交完成。</span><br><span class="line">    </span><br><span class="line">show recyclebin;</span><br><span class="line"></span><br><span class="line">    ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE DROP TIME           </span><br><span class="line">    ---------------- ------------------------------ ----------- ------------------- </span><br><span class="line">    LOGSTUDENT       BIN$bf/5XM4jRV6WlIKh1yxVpA==$0 TRIGGER     2019-12-05:14:19:01 </span><br><span class="line">    LOGUPDATESTUDENT BIN$aSTdXuHITiag8LrVt6TaHg==$0 TRIGGER     2019-12-05:14:19:01 </span><br><span class="line">    DDLTABLE         BIN$G+5VcURhTyi3PgonfGpQew==$0 TABLE       2019-12-03:17:08:43 </span><br><span class="line">    LOGADDSTUDENT    BIN$mAgDub3iQ9Kq6JLnNBfEvw==$0 TRIGGER     2019-12-05:14:19:01 </span><br><span class="line">    SECURITYSTUDENT  BIN$Y7ApQCaHSGabrHJREuDZbA==$0 TRIGGER     2019-12-05:14:19:01 </span><br><span class="line">    MYSTUDENT        BIN$kjLFDCMORMK9PzshlfoRGw==$0 TABLE       2019-12-05:14:19:01 </span><br><span class="line">    SYS_C0011192     BIN$vFR0DI2fT4WG96RY8LfmbA==$0 INDEX       2019-11-05:14:08:15 </span><br><span class="line">    STUDENT          BIN$bY3w95WeSxCfPMjRZJ9B+w==$0 TABLE       2019-11-05:14:08:15 </span><br><span class="line">    SYS_C0011182     BIN$pmo4EF7+TB6ten/VHVHVoA==$0 INDEX       2019-11-05:14:08:21 </span><br><span class="line">    TEACHER          BIN$okpfdYOaRHWKLIWmtR9bRg==$0 TABLE       2019-11-05:14:08:21 </span><br><span class="line">    SYS_C0011180     BIN$+g5muFWYStWIS08/84IKBA==$0 INDEX       2019-11-05:14:08:28 </span><br><span class="line">    DEPARTMENT       BIN$dgRYEqQ1R5Kf/BiLG2H87Q==$0 TABLE       2019-11-05:14:08:28 </span><br><span class="line">    SYS_C0011205     BIN$b7fOiJ2+RpW3Egiz+ZRb5Q==$0 INDEX       2019-11-05:15:10:35 </span><br><span class="line">    SYS_C0011206     BIN$8H/FkqlKTW6ju1qjw9i5Ig==$0 INDEX       2019-11-05:15:10:35 </span><br><span class="line">    STUDENT          BIN$hD0hHHAHQIW8B6ANpwhdeg==$0 TABLE       2019-11-05:15:10:35 </span><br><span class="line">    SYS_C0011208     BIN$ziyUVJWwRhOyHr3PJJnIEw==$0 INDEX       2019-11-05:15:44:49 </span><br><span class="line">    SYS_C0011209     BIN$kZYCI+1kSgaRLOrhdAHPmQ==$0 INDEX       2019-11-05:15:44:49 </span><br><span class="line">    STUDENT          BIN$3y392kA4Q7qwxrxjjW67tg==$0 TABLE       2019-11-05:15:44:49 </span><br><span class="line">    STUDENT3         BIN$ya4J7gEgSFW7oDG6uBXVTw==$0 TABLE       2019-11-05:16:38:24 </span><br><span class="line">    SUB              BIN$35zkj6khRxalmGtzxt5QQA==$0 TABLE       2019-11-05:16:59:41 </span><br><span class="line">    STUDENT3         BIN$WpSLnzr0TUGytMFhASz26g==$0 TABLE       2019-11-05:17:31:14 </span><br><span class="line">    STUDENT3         BIN$zceT9peaSvue/nHCWeVlGw==$0 TABLE       2019-11-05:17:37:55 </span><br><span class="line">    </span><br><span class="line">flashback table mystudent to before drop;</span><br><span class="line"></span><br><span class="line">    Flashback 成功。</span><br><span class="line">    </span><br><span class="line">show recyclebin;</span><br><span class="line"></span><br><span class="line">    ORIGINAL NAME RECYCLEBIN NAME                OBJECT TYPE DROP TIME           </span><br><span class="line">    ------------- ------------------------------ ----------- ------------------- </span><br><span class="line">    DDLTABLE      BIN$G+5VcURhTyi3PgonfGpQew==$0 TABLE       2019-12-03:17:08:43 </span><br><span class="line">    SYS_C0011192  BIN$vFR0DI2fT4WG96RY8LfmbA==$0 INDEX       2019-11-05:14:08:15 </span><br><span class="line">    STUDENT       BIN$bY3w95WeSxCfPMjRZJ9B+w==$0 TABLE       2019-11-05:14:08:15 </span><br><span class="line">    SYS_C0011182  BIN$pmo4EF7+TB6ten/VHVHVoA==$0 INDEX       2019-11-05:14:08:21 </span><br><span class="line">    TEACHER       BIN$okpfdYOaRHWKLIWmtR9bRg==$0 TABLE       2019-11-05:14:08:21 </span><br><span class="line">    SYS_C0011180  BIN$+g5muFWYStWIS08/84IKBA==$0 INDEX       2019-11-05:14:08:28 </span><br><span class="line">    DEPARTMENT    BIN$dgRYEqQ1R5Kf/BiLG2H87Q==$0 TABLE       2019-11-05:14:08:28 </span><br><span class="line">    SYS_C0011205  BIN$b7fOiJ2+RpW3Egiz+ZRb5Q==$0 INDEX       2019-11-05:15:10:35 </span><br><span class="line">    SYS_C0011206  BIN$8H/FkqlKTW6ju1qjw9i5Ig==$0 INDEX       2019-11-05:15:10:35 </span><br><span class="line">    STUDENT       BIN$hD0hHHAHQIW8B6ANpwhdeg==$0 TABLE       2019-11-05:15:10:35 </span><br><span class="line">    SYS_C0011208  BIN$ziyUVJWwRhOyHr3PJJnIEw==$0 INDEX       2019-11-05:15:44:49 </span><br><span class="line">    SYS_C0011209  BIN$kZYCI+1kSgaRLOrhdAHPmQ==$0 INDEX       2019-11-05:15:44:49 </span><br><span class="line">    STUDENT       BIN$3y392kA4Q7qwxrxjjW67tg==$0 TABLE       2019-11-05:15:44:49 </span><br><span class="line">    STUDENT3      BIN$ya4J7gEgSFW7oDG6uBXVTw==$0 TABLE       2019-11-05:16:38:24 </span><br><span class="line">    SUB           BIN$35zkj6khRxalmGtzxt5QQA==$0 TABLE       2019-11-05:16:59:41 </span><br><span class="line">    STUDENT3      BIN$WpSLnzr0TUGytMFhASz26g==$0 TABLE       2019-11-05:17:31:14 </span><br><span class="line">    STUDENT3      BIN$zceT9peaSvue/nHCWeVlGw==$0 TABLE       2019-11-05:17:37:55 </span><br><span class="line"></span><br><span class="line">insert into mystudent values(33,&apos;sw2a&apos;,53);</span><br><span class="line"></span><br><span class="line">    添加成功</span><br><span class="line">    增加成功</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    1行已插入。</span><br></pre></td></tr></table></figure>
-
-<p>由此可发现默认情况下，闪回表操作会一并闪回该表所拥有的触发器，而且触发器的功能还能正常使用。但是通过该图发现触发器的名称有所更改，变成了系统默认形式的名称：</p>
-<p><img src="https://s2.ax1x.com/2019/12/05/Q8nDyT.png" alt="Q8nDyT.png"></p>
-<h2 id="不同用户的删除特点"><a href="#不同用户的删除特点" class="headerlink" title="不同用户的删除特点"></a>不同用户的删除特点</h2><p>普通用户：删除后进入回收站，然后在回收站内可以选择<strong>清空</strong>或者<strong>还原</strong>操作。</p>
-<p>而管理员：删除表后不经过回收站，直接彻底删除。</p>
-<h2 id="闪回事务查询"><a href="#闪回事务查询" class="headerlink" title="闪回事务查询"></a>闪回事务查询</h2><p>闪回事务与闪回DML+<code>commit</code>的不同之处：</p>
-<ul>
-<li>闪回DML+<code>commit</code>依赖于时间点，需要将时间点转换成SCN值。</li>
-<li>闪回事务依赖的是提交次数（<code>undo_sql</code>）。</li>
-</ul>
-<p>那么如何查询提交次数呢？通过闪回版本查询（即事务编号），它的版本信息就像是伪列一样。语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列名, versions_xid, versions_operation, versions_starttime, versions_endtime from 表名 versions between timestamp minvalue and maxvalue;</span><br></pre></td></tr></table></figure>
-
-<h3 id="事务闪回的核心：undo-sql"><a href="#事务闪回的核心：undo-sql" class="headerlink" title="事务闪回的核心：undo_sql"></a>事务闪回的核心：<code>undo_sql</code></h3><p><code>undo_sql</code>存在于<code>flashback_transaction_query</code>表中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; desc flashback_transaction_query;</span><br><span class="line"> 名称</span><br><span class="line">               是否为空? 类型</span><br><span class="line"> ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------</span><br><span class="line"> XID</span><br><span class="line">                        RAW(8)</span><br><span class="line"> START_SCN</span><br><span class="line">                        NUMBER</span><br><span class="line"> START_TIMESTAMP</span><br><span class="line">                        DATE</span><br><span class="line"> COMMIT_SCN</span><br><span class="line">                        NUMBER</span><br><span class="line"> COMMIT_TIMESTAMP</span><br><span class="line">                        DATE</span><br><span class="line"> LOGON_USER</span><br><span class="line">                        VARCHAR2(30)</span><br><span class="line"> UNDO_CHANGE#</span><br><span class="line">                        NUMBER</span><br><span class="line"> OPERATION</span><br><span class="line">                        VARCHAR2(32)</span><br><span class="line"> TABLE_NAME</span><br><span class="line">                        VARCHAR2(256)</span><br><span class="line"> TABLE_OWNER</span><br><span class="line">                        VARCHAR2(32)</span><br><span class="line"> ROW_ID</span><br><span class="line">                        VARCHAR2(19)</span><br><span class="line"> UNDO_SQL</span><br><span class="line">                        VARCHAR2(4000)</span><br></pre></td></tr></table></figure>
-
-<p>通过<code>select * from flashback_transaction_query;</code>可以查询出数据库全部的事务操作，由于数据太多就不展示了。</p>
-<blockquote>
-<p>注意：<br>查询<code>flashback_transaction_query</code>表的数据需要进入<code>sys</code>用户进行授权：<code>grant select any transaction to scott;</code></p>
-</blockquote>
-<p>在数据库中的所有DML与查询操作，都需要日志来保存和记录你所进行的某些操作，如果你想闪回到你某次的操作，那么就要依赖于日志文件。所以在进行操作之前，务必要打开日志，以便于来记录你的操作。所以在查询<code>undo_sql</code>前需要打开日志，进入<code>sys</code>用户中修改设置：<code>alter database add supplemental log data;</code></p>
-<h2 id="实例5：闪回事务查询"><a href="#实例5：闪回事务查询" class="headerlink" title="实例5：闪回事务查询"></a>实例5：闪回事务查询</h2><p>创建一张新表并适当添加一些数据。</p>
-<blockquote>
-<p>注意：<br>务必要提前开启日志，否则之后的操作没法顺利进行。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; create table tb_version</span><br><span class="line">  2  (</span><br><span class="line">  3  id number,</span><br><span class="line">  4  name varchar2(10)</span><br><span class="line">  5  );</span><br><span class="line"></span><br><span class="line">表已创建。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(11,&apos;a1&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(12,&apos;a2&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(13,&apos;a3&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; commit;</span><br><span class="line"></span><br><span class="line">提交完成。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(21,&apos;b1&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(22,&apos;b2&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(23,&apos;b3&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; commit;</span><br><span class="line"></span><br><span class="line">提交完成。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(31,&apos;c1&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(32,&apos;c2&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; insert into tb_version values(33,&apos;c3&apos;);</span><br><span class="line"></span><br><span class="line">已创建 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; commit;</span><br><span class="line"></span><br><span class="line">提交完成。</span><br><span class="line"></span><br><span class="line">SQL&gt; select id, name, versions_xid, versions_operation, versions_starttime, versions_endtime from tb_version versions between timestamp minvalue and maxvalue;</span><br><span class="line"></span><br><span class="line">        ID NAME       VERSIONS_XID     V VERSIONS_STARTTIME                                                          VERSIONS_ENDTIME</span><br><span class="line">---------- ---------- ---------------- - --------------------------------------------------------------------------- ---------------------------------------------------------------------------</span><br><span class="line">        33 c3         0700160011030000 I 05-12月-19 04.24.48 下午</span><br><span class="line">        32 c2         0700160011030000 I 05-12月-19 04.24.48 下午</span><br><span class="line">        31 c1         0700160011030000 I 05-12月-19 04.24.48 下午</span><br><span class="line">        23 b3         03002100F8030000 I 05-12月-19 04.24.30 下午</span><br><span class="line">        22 b2         03002100F8030000 I 05-12月-19 04.24.30 下午</span><br><span class="line">        21 b1         03002100F8030000 I 05-12月-19 04.24.30 下午</span><br><span class="line">        13 a3         0800080087040000 I 05-12月-19 04.24.15 下午</span><br><span class="line">        12 a2         0800080087040000 I 05-12月-19 04.24.15 下午</span><br><span class="line">        11 a1         0800080087040000 I 05-12月-19 04.24.15 下午</span><br><span class="line"></span><br><span class="line">已选择9行。</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：<br>如果插入数据且<code>commit</code>的操作速度太快，可能会丢失事务信息。</p>
-</blockquote>
-<p>通过<code>versions_xid</code>去查询<code>flashback_transaction_query</code>表以得到<code>undo_sql</code>。比如查询</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">23 b3         03002100F8030000 I 05-12月-19 04.24.30 下午</span><br><span class="line">22 b2         03002100F8030000 I 05-12月-19 04.24.30 下午</span><br><span class="line">21 b1         03002100F8030000 I 05-12月-19 04.24.30 下午</span><br></pre></td></tr></table></figure>
-
-<p>该块数据的<code>undo_sql</code>，使用任意一个<code>versions_xid</code>即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select operation, undo_sql from flashback_transaction_query where xid = &apos;03002100F8030000&apos;;</span><br><span class="line"></span><br><span class="line">OPERATION</span><br><span class="line">--------------------------------</span><br><span class="line">UNDO_SQL</span><br><span class="line">----------------------------------------------------------------------------------------------------</span><br><span class="line">INSERT</span><br><span class="line">delete from &quot;SCOTT&quot;.&quot;TB_VERSION&quot; where ROWID = &apos;AAASXBAAEAAAAJfAAF&apos;;</span><br><span class="line"></span><br><span class="line">INSERT</span><br><span class="line">delete from &quot;SCOTT&quot;.&quot;TB_VERSION&quot; where ROWID = &apos;AAASXBAAEAAAAJfAAE&apos;;</span><br><span class="line"></span><br><span class="line">INSERT</span><br><span class="line">delete from &quot;SCOTT&quot;.&quot;TB_VERSION&quot; where ROWID = &apos;AAASXBAAEAAAAJfAAD&apos;;</span><br><span class="line"></span><br><span class="line">BEGIN</span><br></pre></td></tr></table></figure>
-
-<p>回想一下，所查询的那块数据，之前增加了三次，所以对应于三条<code>undo_sql</code>，任意执行一句来查看效果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; delete from &quot;SCOTT&quot;.&quot;TB_VERSION&quot; where ROWID = &apos;AAASXBAAEAAAAJfAAE&apos;;</span><br><span class="line"></span><br><span class="line">已删除 1 行。</span><br><span class="line"></span><br><span class="line">SQL&gt; select * from tb_version;</span><br><span class="line"></span><br><span class="line">        ID NAME</span><br><span class="line">---------- ----------</span><br><span class="line">        11 a1</span><br><span class="line">        12 a1</span><br><span class="line">        13 a3</span><br><span class="line">        21 b1</span><br><span class="line">        23 b3</span><br><span class="line">        31 c1</span><br><span class="line">        32 c2</span><br><span class="line">        33 c3</span><br><span class="line"></span><br><span class="line">已选择8行。</span><br></pre></td></tr></table></figure>
-
-<p>由此我们发现，<code>b2</code>的那条数据被删除了，<code>undo_sql</code>的语句顺序与之前添加数据的顺序是一致的。可是我们有一个问题？为什么不直接使用<code>delete from tb_version where name = b2;</code>这条语句呢？这样的删除的确与使用<code>undo_sql</code>语句的功能上是等价的，但是理论是不同的。比如有两块数据，一块数据100条，而另一个数据200条，使用普通<code>delete</code>删除，则数据为 100+200-1 = 299条 ，而使用<code>undo_sql</code>语句删除，则数据为 100+(200-1) = 300条 。<code>undo_sql</code>修改的是历史。</p>
-<h2 id="感谢您花时间阅读我的文章！"><a href="#感谢您花时间阅读我的文章！" class="headerlink" title="感谢您花时间阅读我的文章！"></a><strong>感谢您花时间阅读我的文章！</strong></h2><h2 id="如果本文对您有用，请您推广我的-Hexo-博客。谢谢！"><a href="#如果本文对您有用，请您推广我的-Hexo-博客。谢谢！" class="headerlink" title="如果本文对您有用，请您推广我的 Hexo 博客。谢谢！"></a><strong>如果本文对您有用，请您推广我的 Hexo 博客。谢谢！</strong></h2><h2 id="https-liuandcolin630-github-io"><a href="#https-liuandcolin630-github-io" class="headerlink" title="https://liuandcolin630.github.io/"></a><strong><a href="https://liuandcolin630.github.io/" target="_blank" rel="noopener">https://liuandcolin630.github.io/</a></strong></h2>
+        
       
 
       
@@ -293,15 +184,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -388,15 +279,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -483,15 +374,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -583,15 +474,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -670,15 +561,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -758,15 +649,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -848,15 +739,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -1044,15 +935,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -1210,15 +1101,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -1334,15 +1225,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
@@ -1503,26 +1394,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java高级</a>
               </li>
              
@@ -1535,6 +1406,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java初级</a>
               </li>
              
@@ -1543,7 +1418,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java中级</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RPC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">常用类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1552,10 +1451,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
             
             <div class="clearfix"></div>
