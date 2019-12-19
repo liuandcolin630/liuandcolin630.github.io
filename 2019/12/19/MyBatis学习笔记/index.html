@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MyBatis学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="@TOC MyBatis是什么？ MyBatis是在MVC模式中的DAO层里封装了JDBC的一种框架。  MyBatis是支持定制化SQL、存储过程以及高级映射的优秀的持久层框架。  MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。  MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的">
+  <meta name="description" content="MyBatis是什么？ MyBatis是在MVC模式中的DAO层里封装了JDBC的一种框架。  MyBatis是支持定制化SQL、存储过程以及高级映射的优秀的持久层框架。  MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。  MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的Java对">
 <meta name="keywords" content="学习笔记,框架,MyBatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/12/19/MyBatis学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="@TOC MyBatis是什么？ MyBatis是在MVC模式中的DAO层里封装了JDBC的一种框架。  MyBatis是支持定制化SQL、存储过程以及高级映射的优秀的持久层框架。  MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。  MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的">
+<meta property="og:description" content="MyBatis是什么？ MyBatis是在MVC模式中的DAO层里封装了JDBC的一种框架。  MyBatis是支持定制化SQL、存储过程以及高级映射的优秀的持久层框架。  MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。  MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的Java对">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QTsfHO.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/18/QTsI4H.png">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/19/QbQRdP.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/19/Qqawlt.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/19/QqBRET.png">
-<meta property="og:updated_time" content="2019-12-19T12:43:19.749Z">
+<meta property="og:updated_time" content="2019-12-19T12:46:41.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyBatis学习笔记">
-<meta name="twitter:description" content="@TOC MyBatis是什么？ MyBatis是在MVC模式中的DAO层里封装了JDBC的一种框架。  MyBatis是支持定制化SQL、存储过程以及高级映射的优秀的持久层框架。  MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。  MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的">
+<meta name="twitter:description" content="MyBatis是什么？ MyBatis是在MVC模式中的DAO层里封装了JDBC的一种框架。  MyBatis是支持定制化SQL、存储过程以及高级映射的优秀的持久层框架。  MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集。  MyBatis可以使用简单的XML或注解用于配置和原始映射，将接口和Java的POJO（Plain Old Java Objects，普通的Java对">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/12/18/QTsfHO.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -173,8 +173,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>@<a href="文章目录">TOC</a></p>
-<h2 id="MyBatis是什么？"><a href="#MyBatis是什么？" class="headerlink" title="MyBatis是什么？"></a>MyBatis是什么？</h2><ul>
+        <h2 id="MyBatis是什么？"><a href="#MyBatis是什么？" class="headerlink" title="MyBatis是什么？"></a>MyBatis是什么？</h2><ul>
 <li><p>MyBatis是在MVC模式中的DAO层里封装了JDBC的一种框架。</p>
 </li>
 <li><p>MyBatis是支持定制化SQL、存储过程以及高级映射的优秀的持久层框架。</p>
@@ -187,6 +186,8 @@
 <p>  <img src="https://s2.ax1x.com/2019/12/18/QTsfHO.png" alt="QTsfHO.png"></p>
 </li>
 </ul>
+<a id="more"></a>
+
 <h2 id="MyBatis的优点"><a href="#MyBatis的优点" class="headerlink" title="MyBatis的优点"></a>MyBatis的优点</h2><ul>
 <li><p>MyBatis是一个半自动化的持久化层框架。 </p>
 </li>
@@ -795,6 +796,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
@@ -804,14 +813,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -867,15 +868,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
